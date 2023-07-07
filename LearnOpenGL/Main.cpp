@@ -4,7 +4,6 @@
 
 #include "Shader.h"
 
-
 int main(void)
 {
 	GLFWwindow* window;
@@ -44,10 +43,8 @@ int main(void)
 
 	Shader ourShader("shader.vs", "shader.fs");
 
-	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
-		/* Render here */
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -57,10 +54,8 @@ int main(void)
 
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
-		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
 
-		/* Poll for and process events */
 		glfwPollEvents();
 	}
 
