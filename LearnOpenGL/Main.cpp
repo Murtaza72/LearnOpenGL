@@ -52,6 +52,9 @@ int main(void)
 
 		ourShader.use();
 
+		int offsetUniformLoc = glGetUniformLocation(ourShader.ID, "offset");
+		glUniform3f(offsetUniformLoc, 0.3, 0.0, 0.0);
+
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		glfwSwapBuffers(window);
