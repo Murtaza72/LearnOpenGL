@@ -6,6 +6,10 @@
 
 #include "Shader.h"
 
+void processInput(GLFWwindow* window);
+
+float mix = 0.5f;
+
 int main(void)
 {
 	GLFWwindow* window;
@@ -27,10 +31,10 @@ int main(void)
 
 	float vertices[] = {
 		// positions         // colors           // texture coords
-		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // top right
+		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // bottom right
 	   -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-	   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+	   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // top left 
 	};
 
 	unsigned int indices[] = {
@@ -63,9 +67,9 @@ int main(void)
 	glGenTextures(1, &woodTex);
 	glBindTexture(GL_TEXTURE_2D, woodTex);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	stbi_set_flip_vertically_on_load(true);
@@ -110,6 +114,8 @@ int main(void)
 
 	while (!glfwWindowShouldClose(window))
 	{
+		processInput(window);
+
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -117,6 +123,8 @@ int main(void)
 		glBindTexture(GL_TEXTURE_2D, woodTex);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, faceTex);
+
+		ourShader.setFloat("change", mix);
 
 		ourShader.use();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -130,4 +138,23 @@ int main(void)
 
 	glfwTerminate();
 	return 0;
+}
+
+void processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		mix += 0.0008f;
+		if (mix >= 1.0f)
+			mix = 1.0f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		mix -= 0.0008f;
+		if (mix <= 0.0f)
+			mix = 0.0f;
+	}
 }
