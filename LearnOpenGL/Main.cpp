@@ -2,6 +2,10 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include "stb_image.h"
 
 #include "Shader.h"
@@ -31,10 +35,10 @@ int main(void)
 
 	float vertices[] = {
 		// positions         // colors           // texture coords
-		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // top right
-		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // bottom right
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+		0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
 	   -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-	   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // top left 
+	   -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 	};
 
 	unsigned int indices[] = {
@@ -86,6 +90,7 @@ int main(void)
 	{
 		std::cout << "Failed to load" << std::endl;
 	}
+	stbi_image_free(wood);
 
 	unsigned int faceTex;
 	glGenTextures(1, &faceTex);
@@ -107,10 +112,16 @@ int main(void)
 	{
 		std::cout << "Failed to load" << std::endl;
 	}
+	stbi_image_free(face);
 
 	ourShader.use();
 	ourShader.setInt("tex1", 0);
 	ourShader.setInt("tex2", 1);
+
+	// transformation with matrices and vectors
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+	trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -118,6 +129,14 @@ int main(void)
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		glm::mat4 trans = glm::mat4(1.0f);
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+		trans = glm::rotate(trans, (float) glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		ourShader.use();
+		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, woodTex);
@@ -132,9 +151,6 @@ int main(void)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
-	stbi_image_free(wood);
-	stbi_image_free(face);
 
 	glfwTerminate();
 	return 0;
