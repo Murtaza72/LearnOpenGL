@@ -131,8 +131,8 @@ int main(void)
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glm::mat4 trans = glm::mat4(1.0f);
-		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
 		trans = glm::rotate(trans, (float) glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
 
 		ourShader.use();
 		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
@@ -146,6 +146,20 @@ int main(void)
 		ourShader.setFloat("change", mix);
 
 		ourShader.use();
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+		glm::mat4 sc = glm::mat4(1.0f);
+		sc = glm::scale(sc, glm::vec3(sin((float) glfwGetTime()), sin((float) glfwGetTime()), 0.0f));
+		sc = glm::translate(sc, glm::vec3(-0.5f, 0.5f, 1.0f));
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(sc));
+
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+		trans = glm::mat4(1.0f);
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+		trans = glm::rotate(trans, (float) glfwGetTime(), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
