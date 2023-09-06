@@ -37,22 +37,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader.vs">
+    <None Include="colors.vs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shader.fs">
+    <None Include="colors.fs">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="container.jpg">
+    <None Include="light_cube.fs">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="awesomeface.png">
+    </None>
+    <None Include="light_cube.vs">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="image.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    </None>
   </ItemGroup>
 </Project>
