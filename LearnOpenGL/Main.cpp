@@ -17,8 +17,8 @@ void processInput(GLFWwindow* window);
 
 float mix = 0.5f;
 
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCREEN_WIDTH / 2.0f;
@@ -146,6 +146,24 @@ int main(void)
 		lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 		lightingShader.setVec3("lightPos", lightPos);
 		lightingShader.setVec3("viewPos", camera.Position);
+
+		// Lighting
+		lightingShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+		lightingShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+		lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		lightingShader.setFloat("material.shininess", 32.0f);
+
+		glm::vec3 lightColor;
+		lightColor.x = sin(glfwGetTime() * 2.0f);
+		lightColor.y = sin(glfwGetTime() * 0.7f);
+		lightColor.z = sin(glfwGetTime() * 1.3f);
+
+		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+
+		lightingShader.setVec3("light.ambient", ambientColor);
+		lightingShader.setVec3("light.diffuse", diffuseColor);
+		lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 		lightingShader.setMat4("projection", projection);
