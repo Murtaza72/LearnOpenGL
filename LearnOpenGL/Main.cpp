@@ -52,6 +52,8 @@ int main(void)
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 
+	glEnable(GL_DEPTH_TEST);
+
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error" << std::endl;
 
