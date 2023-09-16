@@ -7,6 +7,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 #include "tests/Test.h"
+#include "tests/TestClearColor.h"
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -43,7 +44,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	//testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -74,6 +75,10 @@ int main(void)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	delete currentTest;
+	if (currentTest != testMenu)
+		delete testMenu;
 
 	glfwTerminate();
 	return 0;

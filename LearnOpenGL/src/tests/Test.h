@@ -22,11 +22,11 @@ namespace test
 		TestMenu(Test*& currentTestPointer);
 
 		template <typename T>
-		void RegisterTest(const std::string& testName)
+		void RegisterTest(const std::string& name)
 		{
-			std::cout << "Registering test " << name << std::endl;
+			//std::cout << "Registering test " << name << std::endl;
 
-			m_Tests.push_back(std::make_pair(testName, []() { return new T(); })
+			m_Tests.push_back(std::make_pair(name, []() { return new T(); }));
 		}
 
 		void OnImGuiRender() override;
