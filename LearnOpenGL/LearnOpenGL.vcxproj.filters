@@ -15,15 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stb_image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,15 +71,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -148,17 +130,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="colors.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="colors.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="light_cube.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="light_cube.vs">
-      <Filter>Resource Files</Filter>
-    </None>
+    <None Include="src\colors.fs" />
+    <None Include="src\colors.vs" />
+    <None Include="src\light_cube.fs" />
+    <None Include="src\light_cube.vs" />
   </ItemGroup>
 </Project>
