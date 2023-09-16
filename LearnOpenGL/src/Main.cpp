@@ -207,7 +207,8 @@ int main(void)
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		{
-			ImGui::SliderFloat3("Light Position", &lightPos.x, -1.0f, 1.0f);
+			ImGui::SliderFloat3("Light Position", &lightPos.x, -5.0f, 5.0f);
+
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
 			ImGui::Render();
