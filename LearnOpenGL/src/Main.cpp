@@ -9,6 +9,7 @@
 #include "tests/Test.h"
 #include "tests/TestClearColor.h"
 #include "tests/TestPhongLighting.h"
+#include "tests/TestTriangle.h"
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -47,10 +48,11 @@ int main(void)
 
 	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
+	testMenu->RegisterTest<test::TestTriangle>("Triangle");
 
 	while (!glfwWindowShouldClose(window))
 	{
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		ImGui_ImplOpenGL3_NewFrame();

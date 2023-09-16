@@ -8,8 +8,8 @@ namespace test
 	TestPhongLighting::TestPhongLighting()
 		:
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
-		m_LightingShader{ "colors.vs", "colors.fs" },
-		m_LightCubeShader{ "light_cube.vs", "light_cube.fs" },
+		m_LightingShader{ "res/shaders/colors.vs", "res/shaders/colors.fs" },
+		m_LightCubeShader{ "res/shaders/light_cube.vs", "res/shaders/light_cube.fs" },
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f))
 	{
 		float vertices[] = {

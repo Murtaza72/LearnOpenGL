@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -141,6 +141,7 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
     <ClCompile Include="src\tests\TestPhongLighting.cpp" />
+    <ClCompile Include="src\tests\TestTriangle.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_draw.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
     <ClInclude Include="src\tests\TestPhongLighting.h" />
+    <ClInclude Include="src\tests\TestTriangle.h" />
     <ClInclude Include="src\vendor\imgui\imconfig.h" />
     <ClInclude Include="src\vendor\imgui\imgui.h" />
     <ClInclude Include="src\vendor\imgui\imgui_impl_glfw.h" />
@@ -167,10 +169,12 @@
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\colors.fs" />
-    <None Include="src\colors.vs" />
-    <None Include="src\light_cube.fs" />
-    <None Include="src\light_cube.vs" />
+    <None Include="res\shaders\colors.fs" />
+    <None Include="res\shaders\colors.vs" />
+    <None Include="res\shaders\light_cube.fs" />
+    <None Include="res\shaders\light_cube.vs" />
+    <None Include="res\shaders\shader.fs" />
+    <None Include="res\shaders\shader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
