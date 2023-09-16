@@ -8,12 +8,16 @@ namespace test
 	TestPhongLighting::TestPhongLighting()
 		:
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
-		m_LightingShader{ "res/shaders/colors.vs", "res/shaders/colors.fs" },
+		m_LightingShader{ "res/shaders/phong_colors.vs", "res/shaders/phong_colors.fs" },
 		m_LightCubeShader{ "res/shaders/light_cube.vs", "res/shaders/light_cube.fs" },
-		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f))
+		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
+		m_CubeVAO(0),
+		m_VBO(0),
+		m_LightCubeVAO(0)
 	{
-		float vertices[] = {
+		//glEnable(GL_DEPTH_TEST);
 
+		float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -57,7 +61,6 @@ namespace test
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 		};
 
-
 		glGenBuffers(1, &m_VBO);
 		glGenVertexArrays(1, &m_CubeVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -84,12 +87,15 @@ namespace test
 
 	TestPhongLighting::~TestPhongLighting()
 	{
+		glDisable(GL_DEPTH_TEST);
 
+		glDeleteVertexArrays(1, &m_CubeVAO);
+		glDeleteVertexArrays(1, &m_LightCubeVAO);
+		glDeleteBuffers(1, &m_VBO);
 	}
 
 	void TestPhongLighting::OnUpdate()
 	{
-
 	}
 
 	void TestPhongLighting::OnRender()
@@ -117,18 +123,19 @@ namespace test
 
 		// draw light cube
 		m_LightCubeShader.use();
-
 		m_LightCubeShader.setMat4("projection", projection);
 		m_LightCubeShader.setMat4("view", view);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, m_LightPos);
 		model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+		m_LightCubeShader.setMat4("model", model);
+
+		glBindVertexArray(m_LightCubeVAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 
 	void TestPhongLighting::OnImGuiRender()
 	{
-
 	}
-
 }
