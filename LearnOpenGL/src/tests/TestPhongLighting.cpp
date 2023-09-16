@@ -3,6 +3,8 @@
 #include <GL/glew.h>
 #include "GLFW/glfw3.h"
 
+#include "imgui/imgui.h"
+
 namespace test
 {
 	TestPhongLighting::TestPhongLighting()
@@ -13,7 +15,9 @@ namespace test
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
 		m_CubeVAO(0),
 		m_VBO(0),
-		m_LightCubeVAO(0)
+		m_LightCubeVAO(0),
+		m_ObjectColor{ 1.0f, 0.5f, 0.31f },
+		m_LightColor{ 1.0f,1.0f,1.0f }
 	{
 		//glEnable(GL_DEPTH_TEST);
 
@@ -100,14 +104,13 @@ namespace test
 
 	void TestPhongLighting::OnRender()
 	{
-
 		m_LightPos.x = 2.0f * sin(glfwGetTime());
 		m_LightPos.y = -0.3f;
 		m_LightPos.z = 1.5f * cos(glfwGetTime());
 
 		m_LightingShader.use();
-		m_LightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		m_LightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+		m_LightingShader.setVec3("objectColor", m_ObjectColor);
+		m_LightingShader.setVec3("lightColor", m_LightColor);
 		m_LightingShader.setVec3("lightPos", m_LightPos);
 		m_LightingShader.setVec3("viewPos", m_Camera.Position);
 
@@ -137,5 +140,8 @@ namespace test
 
 	void TestPhongLighting::OnImGuiRender()
 	{
+		ImGui::SliderFloat3("Light Position", &m_LightPos.x, -5.0f, 5.0f);
+		ImGui::ColorPicker3("Light Color", &m_LightColor.x);
+		ImGui::ColorPicker3("Object Color", &m_ObjectColor.x);
 	}
 }

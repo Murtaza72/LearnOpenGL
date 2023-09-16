@@ -7,6 +7,9 @@
 #include "Shader.h"
 #include "Camera.h"
 
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_HEIGHT;
+
 namespace test
 {
 	class TestPhongLighting : public Test
@@ -27,7 +30,7 @@ namespace test
 
 		Camera m_Camera;
 
-		int SCREEN_WIDTH = 800;
-		int SCREEN_HEIGHT = 600;
+		glm::vec3 m_ObjectColor;
+		glm::vec3 m_LightColor;
 	};
 }
