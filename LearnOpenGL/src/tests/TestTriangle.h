@@ -16,7 +16,7 @@ namespace test
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_VBO;
+		unsigned int m_VBO, m_VAO;
 
 		Shader m_Shader;
 	};
