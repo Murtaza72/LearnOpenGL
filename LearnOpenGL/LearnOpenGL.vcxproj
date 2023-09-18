@@ -141,6 +141,7 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
     <ClCompile Include="src\tests\TestPhongLighting.cpp" />
+    <ClCompile Include="src\tests\TestTextures.cpp" />
     <ClCompile Include="src\tests\TestTriangle.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
@@ -157,7 +158,9 @@
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
     <ClInclude Include="src\tests\TestPhongLighting.h" />
+    <ClInclude Include="src\tests\TestTextures.h" />
     <ClInclude Include="src\tests\TestTriangle.h" />
+    <ClInclude Include="src\Utils.h" />
     <ClInclude Include="vendor\imgui\imconfig.h" />
     <ClInclude Include="vendor\imgui\imgui.h" />
     <ClInclude Include="vendor\imgui\imgui_impl_glfw.h" />
@@ -175,6 +178,12 @@
     <None Include="res\shaders\light_cube.vs" />
     <None Include="res\shaders\shader.fs" />
     <None Include="res\shaders\shader.vs" />
+    <None Include="res\shaders\texture.fs" />
+    <None Include="res\shaders\texture.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\me.png" />
+    <Image Include="res\textures\me.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

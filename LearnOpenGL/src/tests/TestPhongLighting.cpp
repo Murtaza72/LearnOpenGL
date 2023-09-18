@@ -66,13 +66,12 @@ namespace test
 		};
 
 		glGenBuffers(1, &m_VBO);
-		glGenVertexArrays(1, &m_CubeVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+		glGenVertexArrays(1, &m_CubeVAO);
 		glBindVertexArray(m_CubeVAO);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
@@ -106,9 +105,9 @@ namespace test
 	{
 		m_Camera = camera;
 
-		/*m_LightPos.x = 2.0f * sin(glfwGetTime());
+		m_LightPos.x = 2.0f * sin(glfwGetTime());
 		m_LightPos.y = -0.3f;
-		m_LightPos.z = 1.5f * cos(glfwGetTime());*/
+		m_LightPos.z = 1.5f * cos(glfwGetTime());
 
 		m_LightingShader.use();
 		m_LightingShader.setVec3("objectColor", m_ObjectColor);

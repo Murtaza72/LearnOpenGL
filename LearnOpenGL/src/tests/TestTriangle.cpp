@@ -17,12 +17,12 @@ namespace test
 			 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f
 		};
 
-		// need vao in core profile otherwise OpenGL won't render
-		glGenVertexArrays(1, &m_VAO);
 		glGenBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+		// need VertexArray in core profile otherwise OpenGL won't render
+		glGenVertexArrays(1, &m_VAO);
 		glBindVertexArray(m_VAO);
 
 		glEnableVertexAttribArray(0);
@@ -34,6 +34,7 @@ namespace test
 
 	TestTriangle::~TestTriangle()
 	{
+		glDeleteBuffers(1, &m_VBO);
 	}
 
 	void TestTriangle::OnRender(Camera camera)

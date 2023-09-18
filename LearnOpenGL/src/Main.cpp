@@ -10,6 +10,7 @@
 #include "tests/TestClearColor.h"
 #include "tests/TestPhongLighting.h"
 #include "tests/TestTriangle.h"
+#include "tests/TestTextures.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -64,6 +65,7 @@ int main(void)
 
 	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 	testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	testMenu->RegisterTest<test::TestTextures>("Textures");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 
 	while (!glfwWindowShouldClose(window))
