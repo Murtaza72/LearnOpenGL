@@ -4,6 +4,8 @@
 #include <string>
 #include <functional>
 
+#include "Camera.h"
+
 namespace test
 {
 	class Test {
@@ -12,7 +14,7 @@ namespace test
 		virtual ~Test() {}
 
 		virtual void OnUpdate() {}
-		virtual void OnRender() {}
+		virtual void OnRender(Camera camera) {}
 		virtual void OnImGuiRender() {}
 	};
 

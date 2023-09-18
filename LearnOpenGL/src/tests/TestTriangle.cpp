@@ -36,7 +36,7 @@ namespace test
 	{
 	}
 
-	void TestTriangle::OnRender()
+	void TestTriangle::OnRender(Camera camera)
 	{
 		m_Shader.use();
 

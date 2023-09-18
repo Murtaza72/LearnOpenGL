@@ -6,13 +6,13 @@
 
 namespace test
 {
-	class TestTriangle :public Test
+	class TestTriangle : public Test
 	{
 	public:
 		TestTriangle();
 		~TestTriangle();
 
-		void OnRender() override;
+		void OnRender(Camera camera) override;
 		void OnImGuiRender() override;
 
 	private:

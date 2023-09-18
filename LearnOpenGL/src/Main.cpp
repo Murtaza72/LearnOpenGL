@@ -81,7 +81,7 @@ int main(void)
 
 		if (currentTest) {
 			currentTest->OnUpdate();
-			currentTest->OnRender();
+			currentTest->OnRender(camera);
 
 			ImGui::Begin("Test");
 

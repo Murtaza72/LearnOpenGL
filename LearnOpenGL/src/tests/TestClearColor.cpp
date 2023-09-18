@@ -11,7 +11,7 @@ namespace test {
 	{
 	}
 
-	void test::TestClearColor::OnRender()
+	void test::TestClearColor::OnRender(Camera camera)
 	{
 		glClearColor(m_Color[0], m_Color[1], m_Color[2], m_Color[3]);
 		glClear(GL_COLOR_BUFFER_BIT);

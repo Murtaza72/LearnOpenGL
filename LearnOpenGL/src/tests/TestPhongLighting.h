@@ -19,7 +19,7 @@ namespace test
 		~TestPhongLighting();
 
 		void OnUpdate() override;
-		void OnRender() override;
+		void OnRender(Camera camera) override;
 		void OnImGuiRender() override;
 
 	private:
@@ -27,9 +27,7 @@ namespace test
 		glm::vec3 m_LightPos;
 		Shader m_LightingShader;
 		Shader m_LightCubeShader;
-
 		Camera m_Camera;
-
 		glm::vec3 m_ObjectColor;
 		glm::vec3 m_LightColor;
 	};

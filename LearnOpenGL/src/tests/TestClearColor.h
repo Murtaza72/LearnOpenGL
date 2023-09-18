@@ -9,7 +9,7 @@ namespace test {
 	public:
 		TestClearColor();
 
-		void OnRender() override;
+		void OnRender(Camera camera) override;
 		void OnImGuiRender() override;
 
 	private:
