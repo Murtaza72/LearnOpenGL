@@ -106,9 +106,9 @@ namespace test
 	{
 		m_Camera = camera;
 
-		m_LightPos.x = 2.0f * sin(glfwGetTime());
+		/*m_LightPos.x = 2.0f * sin(glfwGetTime());
 		m_LightPos.y = -0.3f;
-		m_LightPos.z = 1.5f * cos(glfwGetTime());
+		m_LightPos.z = 1.5f * cos(glfwGetTime());*/
 
 		m_LightingShader.use();
 		m_LightingShader.setVec3("objectColor", m_ObjectColor);

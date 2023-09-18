@@ -47,6 +47,8 @@ int main(void)
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
 
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error" << std::endl;
@@ -61,8 +63,8 @@ int main(void)
 	currentTest = testMenu;
 
 	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
-	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 	testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -157,7 +159,8 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 	lastX = xpos;
 	lastY = ypos;
 
-	camera.ProcessMouseMovement(xoffset, yoffset);
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
+		camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
