@@ -17,32 +17,32 @@ namespace test
 			 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f
 		};
 
-		glGenBuffers(1, &m_VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		GLCall(glGenBuffers(1, &m_VBO));
+		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_VBO));
+		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW));
 
 		// need VertexArray in core profile otherwise OpenGL won't render
-		glGenVertexArrays(1, &m_VAO);
-		glBindVertexArray(m_VAO);
+		GLCall(glGenVertexArrays(1, &m_VAO));
+		GLCall(glBindVertexArray(m_VAO));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
+		GLCall(glEnableVertexAttribArray(0));
+		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0));
 
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		GLCall(glEnableVertexAttribArray(1));
+		GLCall(glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float))));
 	}
 
 	TestTriangle::~TestTriangle()
 	{
-		glDeleteBuffers(1, &m_VBO);
+		GLCall(glDeleteBuffers(1, &m_VBO));
 	}
 
 	void TestTriangle::OnRender(Camera camera)
 	{
 		m_Shader.use();
 
-		glBindVertexArray(m_VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		GLCall(glBindVertexArray(m_VAO));
+		GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
 	}
 
 	void TestTriangle::OnImGuiRender()

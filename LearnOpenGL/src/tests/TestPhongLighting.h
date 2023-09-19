@@ -29,5 +29,6 @@ namespace test
 		Camera m_Camera;
 		glm::vec3 m_ObjectColor;
 		glm::vec3 m_LightColor;
+		int m_RotateCube;
 	};
 }

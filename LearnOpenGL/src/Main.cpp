@@ -65,12 +65,12 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
-	testMenu->RegisterTest<test::TestTriangle>("Triangle");
-	testMenu->RegisterTest<test::TestTextures>("Textures");
-	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
-	testMenu->RegisterTest<test::TestMaterials>("Materials");
 	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
+	testMenu->RegisterTest<test::TestMaterials>("Materials");
+	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
+	testMenu->RegisterTest<test::TestTextures>("Textures");
+	testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	//testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	while (!glfwWindowShouldClose(window))
 	{

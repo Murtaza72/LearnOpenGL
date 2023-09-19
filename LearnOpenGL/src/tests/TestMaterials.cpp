@@ -19,7 +19,7 @@ namespace test {
 		m_LightingShader("res/shaders/materials.vs", "res/shaders/materials.fs"),
 		m_LightCubeShader("res/shaders/light_cube.vs", "res/shaders/light_cube.fs")
 	{
-		glEnable(GL_DEPTH_TEST);
+		GLCall(glEnable(GL_DEPTH_TEST));
 
 		float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -65,35 +65,35 @@ namespace test {
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
 		};
 
-		glGenBuffers(1, &m_VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		GLCall(GLCall(glGenBuffers(1, &m_VBO)));
+		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_VBO));
+		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW));
 
 		// Base Cube
-		glGenVertexArrays(1, &m_CubeVAO);
-		glBindVertexArray(m_CubeVAO);
+		GLCall(glGenVertexArrays(1, &m_CubeVAO));
+		GLCall(glBindVertexArray(m_CubeVAO));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)0);
+		GLCall(glEnableVertexAttribArray(0));
+		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)0));
 
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)(3 * sizeof(float)));
+		GLCall(glEnableVertexAttribArray(1));
+		GLCall(glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)(3 * sizeof(float))));
 
 		// Light Cube
-		glGenVertexArrays(1, &m_LightCubeVAO);
-		glBindVertexArray(m_LightCubeVAO);
+		GLCall(glGenVertexArrays(1, &m_LightCubeVAO));
+		GLCall(glBindVertexArray(m_LightCubeVAO));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)0);
+		GLCall(glEnableVertexAttribArray(0));
+		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (const void*)0));
 	}
 
 	TestMaterials::~TestMaterials()
 	{
-		glDisable(GL_DEPTH_TEST);
+		GLCall(glDisable(GL_DEPTH_TEST));
 
-		glDeleteBuffers(1, &m_VBO);
-		glDeleteVertexArrays(1, &m_CubeVAO);
-		glDeleteVertexArrays(1, &m_LightCubeVAO);
+		GLCall(glDeleteBuffers(1, &m_VBO));
+		GLCall(glDeleteVertexArrays(1, &m_CubeVAO));
+		GLCall(glDeleteVertexArrays(1, &m_LightCubeVAO));
 
 	}
 
@@ -101,9 +101,9 @@ namespace test {
 	{
 		m_Camera = camera;
 
-		/*m_LightPos.x = 2.0f * sin(glfwGetTime());
+		/*m_LightPos.x = 2.0f * sin(GLCall(glfwGetTime()));
 		m_LightPos.y = -0.3f;
-		m_LightPos.z = 1.5f * cos(glfwGetTime());*/
+		m_LightPos.z = 1.5f * cos(GLCall(glfwGetTime()));*/
 
 		m_LightingShader.use();
 		m_LightingShader.setVec3("objectColor", m_ObjectColor);
@@ -136,8 +136,8 @@ namespace test {
 		glm::mat4 model = glm::mat4(1.0f);
 		m_LightingShader.setMat4("model", model);
 
-		glBindVertexArray(m_CubeVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		GLCall(glBindVertexArray(m_CubeVAO));
+		GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 
 		// draw light cube
 		m_LightCubeShader.use();
@@ -149,8 +149,8 @@ namespace test {
 		model = glm::scale(model, glm::vec3(0.2f));
 		m_LightCubeShader.setMat4("model", model);
 
-		glBindVertexArray(m_LightCubeVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		GLCall(glBindVertexArray(m_LightCubeVAO));
+		GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 	}
 
 	void TestMaterials::OnImGuiRender()
