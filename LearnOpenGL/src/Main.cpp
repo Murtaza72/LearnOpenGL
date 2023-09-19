@@ -12,6 +12,7 @@
 #include "tests/TestTriangle.h"
 #include "tests/TestTextures.h"
 #include "tests/TestMaterials.h"
+#include "tests/TestLightingMaps.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -69,6 +70,7 @@ int main(void)
 	testMenu->RegisterTest<test::TestTextures>("Textures");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 	testMenu->RegisterTest<test::TestMaterials>("Materials");
+	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -78,7 +80,7 @@ int main(void)
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		ImGui_ImplOpenGL3_NewFrame();

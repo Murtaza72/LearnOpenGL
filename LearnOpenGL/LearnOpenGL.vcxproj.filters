@@ -63,6 +63,9 @@
     <ClCompile Include="src\tests\TestMaterials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestLightingMaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -119,6 +122,9 @@
     <ClInclude Include="src\tests\TestMaterials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\TestLightingMaps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\phong_colors.fs">
@@ -139,12 +145,17 @@
     <None Include="res\shaders\texture.vs" />
     <None Include="res\shaders\materials.fs" />
     <None Include="res\shaders\materials.vs" />
+    <None Include="res\shaders\lighting_maps.fs" />
+    <None Include="res\shaders\lighting_maps.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\me.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\container.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
