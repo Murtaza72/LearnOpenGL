@@ -77,6 +77,8 @@ namespace test
 		unsigned int textureID;
 		GLCall(glGenTextures(1, &textureID));
 
+		stbi_set_flip_vertically_on_load(true);
+
 		int width, height, nComponents;
 		unsigned char* data = stbi_load(path.c_str(), &width, &height, &nComponents, 0);
 		if (data)
