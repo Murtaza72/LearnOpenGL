@@ -15,6 +15,7 @@ namespace test
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
 		m_Shininess(32.0f),
 		m_DiffuseMap(0),
+		m_RotateCube(0),
 		m_LightingShader("res/shaders/lighting_maps.vs", "res/shaders/lighting_maps.fs"),
 		m_LightCubeShader("res/shaders/light_cube.vs", "res/shaders/light_cube.fs")
 	{
@@ -93,18 +94,22 @@ namespace test
 		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)0));
 
 		m_DiffuseMap = LoadTexture("res/textures/container.png");
+		m_SpecularMap = LoadTexture("res/textures/container_specular.png");
 
 		m_LightingShader.use();
-		m_LightingShader.setInt("diffuse", 0);
+		m_LightingShader.setInt("material.diffuse", 0);
+		m_LightingShader.setInt("material.specular", 1);
 	}
 
 	TestLightingMaps::~TestLightingMaps()
 	{
 		GLCall(glDisable(GL_DEPTH_TEST));
+		GLCall(glDisable(GL_BLEND));
 
 		GLCall(glDeleteBuffers(1, &m_VBO));
 		GLCall(glDeleteVertexArrays(1, &m_CubeVAO));
 		GLCall(glDeleteVertexArrays(1, &m_LightCubeVAO));
+
 		GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 
@@ -112,9 +117,10 @@ namespace test
 	{
 		m_Camera = camera;
 
-		/*m_LightPos.x = 2.0f * sin(GLCall(glfwGetTime()));
-		m_LightPos.y = -0.3f;
-		m_LightPos.z = 1.5f * cos(GLCall(glfwGetTime()));*/
+		if (m_RotateCube) {
+			m_LightPos.x = 2.0f * sin(glfwGetTime());
+			m_LightPos.z = 1.5f * cos(glfwGetTime());
+		}
 
 		m_LightingShader.use();
 		m_LightingShader.setVec3("light.position", m_LightPos);
@@ -126,7 +132,6 @@ namespace test
 		m_LightingShader.setVec3("light.specular", glm::vec3(1.0f));
 
 		// material properties
-		m_LightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		m_LightingShader.setFloat("material.shininess", m_Shininess);
 
 		// view/projection transformations
@@ -140,6 +145,10 @@ namespace test
 		// bind diffuse map
 		GLCall(glActiveTexture(GL_TEXTURE0));
 		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseMap));
+
+		// binding specular map
+		GLCall(glActiveTexture(GL_TEXTURE1));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap));
 
 		// render the cube
 		GLCall(glBindVertexArray(m_CubeVAO));
@@ -162,6 +171,7 @@ namespace test
 	{
 		ImGui::SliderFloat3("Light Position", &m_LightPos.x, -5.0f, 5.0f);
 		ImGui::SliderFloat("Shininess", &m_Shininess, 0.0f, 64.0f);
+		ImGui::SliderInt("Rotate", &m_RotateCube, 0, 1);
 	}
 
 	unsigned int TestLightingMaps::LoadTexture(const std::string& path)
@@ -189,7 +199,7 @@ namespace test
 
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
-			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR));
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
 
 			stbi_image_free(data);

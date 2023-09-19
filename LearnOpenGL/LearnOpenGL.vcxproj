@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\container.png" />
+    <Image Include="res\textures\container_specular.png" />
     <Image Include="res\textures\me.png" />
     <Image Include="res\textures\me.jpg" />
   </ItemGroup>
