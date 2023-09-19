@@ -3,6 +3,8 @@
 #include "Test.h"
 #include "Shader.h"
 
+#include <string>
+
 namespace test
 {
 	class TestTextures : public Test {
@@ -14,9 +16,12 @@ namespace test
 		void OnImGuiRender() override;
 
 	private:
+		unsigned int LoadTexture(const std::string& path);
+
+	private:
 		unsigned int m_VBO, m_IBO, m_VAO;
 		Shader m_Shader;
-		unsigned int m_Texture;
+		unsigned int m_TextureID;
 		unsigned char* m_ImageBuffer;
 	};
 }

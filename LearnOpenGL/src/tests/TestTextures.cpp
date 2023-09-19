@@ -11,7 +11,7 @@ namespace test
 		m_VBO(0),
 		m_VAO(0),
 		m_IBO(0),
-		m_Texture(0),
+		m_TextureID(0),
 		m_ImageBuffer(nullptr),
 		m_Shader("res/shaders/texture.vs", "res/shaders/texture.fs")
 	{
@@ -48,29 +48,7 @@ namespace test
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 
-		glGenTextures(1, &m_Texture);
-		glBindTexture(GL_TEXTURE_2D, m_Texture);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		stbi_set_flip_vertically_on_load(true);
-
-		int width, height, nChannels;
-		m_ImageBuffer = stbi_load("res/textures/me.png", &width, &height, &nChannels, 0);
-
-		if (m_ImageBuffer)
-		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_ImageBuffer);
-			glGenerateMipmap(GL_TEXTURE_2D);
-		}
-		else
-		{
-			std::cout << "Failed to load" << std::endl;
-		}
-		stbi_image_free(m_ImageBuffer);
+		m_TextureID = LoadTexture("res/textures/me.png");
 	}
 
 	TestTextures::~TestTextures()
@@ -80,7 +58,7 @@ namespace test
 	void TestTextures::OnRender(Camera camera)
 	{
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_Texture);
+		glBindTexture(GL_TEXTURE_2D, m_TextureID);
 
 		m_Shader.use();
 		m_Shader.setInt("tex1", 0);
@@ -92,5 +70,42 @@ namespace test
 	void TestTextures::OnImGuiRender()
 	{
 
+	}
+
+	unsigned int TestTextures::LoadTexture(const std::string& path)
+	{
+		unsigned int textureID;
+		GLCall(glGenTextures(1, &textureID));
+
+		int width, height, nComponents;
+		unsigned char* data = stbi_load(path.c_str(), &width, &height, &nComponents, 0);
+		if (data)
+		{
+			GLenum format;
+			if (nComponents == 1)
+				format = GL_RED;
+			else if (nComponents == 3)
+				format = GL_RGB;
+			else if (nComponents == 4)
+				format = GL_RGBA;
+
+			GLCall(glBindTexture(GL_TEXTURE_2D, textureID));
+			GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data));
+			GLCall(glGenerateMipmap(GL_TEXTURE_2D));
+
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+
+			stbi_image_free(data);
+		}
+		else
+		{
+			std::cout << "Texture failed to load at path: " << path << std::endl;
+			stbi_image_free(data);
+		}
+
+		return textureID;
 	}
 }
