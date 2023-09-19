@@ -6,6 +6,8 @@
 
 #include <string>
 
+#include "Utils.h"
+
 class Shader
 {
 public:
