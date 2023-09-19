@@ -18,7 +18,6 @@ namespace test
 		TestPhongLighting();
 		~TestPhongLighting();
 
-		void OnUpdate() override;
 		void OnRender(Camera camera) override;
 		void OnImGuiRender() override;
 

@@ -14,7 +14,6 @@ namespace test
 		Test() {}
 		virtual ~Test() {}
 
-		virtual void OnUpdate() {}
 		virtual void OnRender(Camera camera) {}
 		virtual void OnImGuiRender() {}
 	};

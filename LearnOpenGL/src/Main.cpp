@@ -11,6 +11,7 @@
 #include "tests/TestPhongLighting.h"
 #include "tests/TestTriangle.h"
 #include "tests/TestTextures.h"
+#include "tests/TestMaterials.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -67,6 +68,7 @@ int main(void)
 	testMenu->RegisterTest<test::TestTriangle>("Triangle");
 	testMenu->RegisterTest<test::TestTextures>("Textures");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
+	testMenu->RegisterTest<test::TestMaterials>("Materials");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -84,7 +86,6 @@ int main(void)
 		ImGui::NewFrame();
 
 		if (currentTest) {
-			currentTest->OnUpdate();
 			currentTest->OnRender(camera);
 
 			ImGui::Begin("Test");
