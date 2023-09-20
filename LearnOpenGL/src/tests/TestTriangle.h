@@ -2,8 +2,6 @@
 
 #include "Test.h"
 
-#include "Shader.h"
-
 namespace test
 {
 	class TestTriangle : public Test

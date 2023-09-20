@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Test.h"
-#include "Shader.h"
 
 namespace test
 {

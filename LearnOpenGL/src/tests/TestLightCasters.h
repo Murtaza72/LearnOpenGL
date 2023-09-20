@@ -2,11 +2,6 @@
 
 #include "Test.h"
 
-#include "Shader.h"
-
-extern const int SCREEN_WIDTH;
-extern const int SCREEN_HEIGHT;
-
 namespace test
 {
 	class TestLightCasters : public Test {

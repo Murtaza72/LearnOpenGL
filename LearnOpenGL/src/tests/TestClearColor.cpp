@@ -1,9 +1,5 @@
 #include "TestClearColor.h"
 
-#include <GL/glew.h>
-
-#include "imgui/imgui.h"
-
 namespace test {
 
 	test::TestClearColor::TestClearColor()

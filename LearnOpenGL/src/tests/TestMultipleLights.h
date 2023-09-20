@@ -2,11 +2,6 @@
 
 #include "Test.h"
 
-#include "Shader.h"
-
-extern const int SCREEN_WIDTH;
-extern const int SCREEN_HEIGHT;
-
 struct DirectionalLight {
 	glm::vec3 direction;
 	glm::vec3 ambient;

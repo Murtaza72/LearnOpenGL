@@ -2,14 +2,6 @@
 
 #include "Test.h"
 
-#include "glm/glm.hpp"
-
-#include "Shader.h"
-#include "Camera.h"
-
-extern const int SCREEN_WIDTH;
-extern const int SCREEN_HEIGHT;
-
 namespace test
 {
 	class TestPhongLighting : public Test

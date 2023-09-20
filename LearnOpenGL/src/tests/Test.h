@@ -10,9 +10,14 @@
 
 #include "imgui/imgui.h"
 #include "stb_image/stb_image.h"
+#include "glm/glm.hpp"
 
 #include "Camera.h"
+#include "Shader.h"
 #include "Utils.h"
+
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_HEIGHT;
 
 namespace test
 {
