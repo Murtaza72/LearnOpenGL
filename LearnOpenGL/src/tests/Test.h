@@ -5,7 +5,14 @@
 #include <string>
 #include <functional>
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include "imgui/imgui.h"
+#include "stb_image/stb_image.h"
+
 #include "Camera.h"
+#include "Utils.h"
 
 namespace test
 {

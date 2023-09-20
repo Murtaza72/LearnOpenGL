@@ -1,9 +1,5 @@
 #include "TestMaterials.h"
 
-#include <GLFW/glfw3.h>
-
-#include "imgui/imgui.h"
-
 namespace test {
 
 	TestMaterials::TestMaterials()

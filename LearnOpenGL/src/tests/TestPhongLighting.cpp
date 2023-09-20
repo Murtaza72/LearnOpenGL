@@ -1,10 +1,5 @@
 #include "TestPhongLighting.h"
 
-#include <GL/glew.h>
-#include "GLFW/glfw3.h"
-
-#include "imgui/imgui.h"
-
 namespace test
 {
 	TestPhongLighting::TestPhongLighting()

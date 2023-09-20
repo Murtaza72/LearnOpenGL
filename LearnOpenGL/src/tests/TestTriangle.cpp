@@ -1,7 +1,5 @@
 #include "TestTriangle.h"
 
-#include "GL/glew.h"
-
 namespace test
 {
 	TestTriangle::TestTriangle()

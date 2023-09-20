@@ -1,9 +1,5 @@
 #include "TestTextures.h"
 
-#include <iostream>
-
-#include "stb_image/stb_image.h"
-
 namespace test
 {
 	TestTextures::TestTextures()

@@ -1,11 +1,5 @@
 #include "TestMultipleLights.h"
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "imgui/imgui.h"
-#include "stb_image/stb_image.h"
-
 #include <string>
 
 namespace test
