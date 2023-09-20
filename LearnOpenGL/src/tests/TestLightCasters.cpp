@@ -19,7 +19,7 @@ namespace test
 		m_RotationSpeed(20.0f),
 		m_Radius(2.0f),
 		m_LightingShader("res/shaders/light_casters.vs.glsl", "res/shaders/light_casters.fs.glsl"),
-		m_LightCubeShader("res/shaders/light_cube.vs", "res/shaders/light_cube.fs")
+		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 

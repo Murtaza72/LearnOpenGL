@@ -16,8 +16,8 @@ namespace test
 		m_Shininess(32.0f),
 		m_DiffuseMap(0),
 		m_RotateCube(0),
-		m_LightingShader("res/shaders/lighting_maps.vs", "res/shaders/lighting_maps.fs"),
-		m_LightCubeShader("res/shaders/light_cube.vs", "res/shaders/light_cube.fs")
+		m_LightingShader("res/shaders/lighting_maps.vs.glsl", "res/shaders/lighting_maps.fs.glsl"),
+		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 

@@ -6,7 +6,7 @@ namespace test
 {
 	TestTriangle::TestTriangle()
 		:
-		m_Shader{ "res/shaders/shader.vs", "res/shaders/shader.fs" },
+		m_Shader{ "res/shaders/shader.vs.glsl", "res/shaders/shader.fs.glsl" },
 		m_VBO(0),
 		m_VAO(0)
 	{

@@ -10,8 +10,8 @@ namespace test
 	TestPhongLighting::TestPhongLighting()
 		:
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
-		m_LightingShader{ "res/shaders/phong_colors.vs", "res/shaders/phong_colors.fs" },
-		m_LightCubeShader{ "res/shaders/light_cube.vs", "res/shaders/light_cube.fs" },
+		m_LightingShader{ "res/shaders/phong_colors.vs.glsl", "res/shaders/phong_colors.fs.glsl" },
+		m_LightCubeShader{ "res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl" },
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
 		m_CubeVAO(0),
 		m_VBO(0),

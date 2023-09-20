@@ -133,42 +133,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\phong_colors.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\phong_colors.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\light_cube.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\light_cube.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\lighting_maps.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\lighting_maps.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\materials.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\materials.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\shader.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\shader.vs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\texture.fs">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\shaders\texture.vs">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="res\shaders\light_casters.fs.glsl" />
     <None Include="res\shaders\light_casters.vs.glsl" />
     <None Include="res\shaders\texture.vs.glsl" />

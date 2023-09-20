@@ -16,8 +16,8 @@ namespace test {
 		m_AmbientColor{ 0.0f, 0.0f, 0.0f },
 		m_DiffuseColor{ 0.0f, 0.0f, 0.0f },
 		m_Shininess(32.0f),
-		m_LightingShader("res/shaders/materials.vs", "res/shaders/materials.fs"),
-		m_LightCubeShader("res/shaders/light_cube.vs", "res/shaders/light_cube.fs")
+		m_LightingShader("res/shaders/materials.vs.glsl", "res/shaders/materials.fs.glsl"),
+		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 

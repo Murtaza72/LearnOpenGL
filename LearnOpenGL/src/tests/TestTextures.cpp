@@ -12,7 +12,7 @@ namespace test
 		m_VAO(0),
 		m_IBO(0),
 		m_TextureID(0),
-		m_Shader("res/shaders/texture.vs", "res/shaders/texture.fs")
+		m_Shader("res/shaders/texture.vs.glsl", "res/shaders/texture.fs.glsl")
 	{
 		GLCall(glEnable(GL_BLEND));
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
