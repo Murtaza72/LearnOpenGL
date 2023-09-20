@@ -4,8 +4,6 @@
 
 #include "Shader.h"
 
-#include <string>
-
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
@@ -19,9 +17,6 @@ namespace test
 
 		void OnRender(Camera camera) override;
 		void OnImGuiRender() override;
-
-	private:
-		unsigned int LoadTexture(const std::string& path);
 
 	private:
 		unsigned int m_VBO, m_LightCubeVAO, m_CubeVAO;
