@@ -171,6 +171,18 @@
     </None>
     <None Include="res\shaders\light_casters.fs.glsl" />
     <None Include="res\shaders\light_casters.vs.glsl" />
+    <None Include="res\shaders\texture.vs.glsl" />
+    <None Include="res\shaders\texture.fs.glsl" />
+    <None Include="res\shaders\shader.vs.glsl" />
+    <None Include="res\shaders\shader.fs.glsl" />
+    <None Include="res\shaders\phong_colors.vs.glsl" />
+    <None Include="res\shaders\phong_colors.fs.glsl" />
+    <None Include="res\shaders\materials.vs.glsl" />
+    <None Include="res\shaders\materials.fs.glsl" />
+    <None Include="res\shaders\lighting_maps.vs.glsl" />
+    <None Include="res\shaders\lighting_maps.fs.glsl" />
+    <None Include="res\shaders\light_cube.vs.glsl" />
+    <None Include="res\shaders\light_cube.fs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">

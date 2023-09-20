@@ -180,19 +180,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\lighting_maps.fs" />
+    <None Include="res\shaders\lighting_maps.fs.glsl" />
     <None Include="res\shaders\lighting_maps.vs" />
+    <None Include="res\shaders\lighting_maps.vs.glsl" />
     <None Include="res\shaders\light_casters.fs.glsl" />
     <None Include="res\shaders\light_casters.vs.glsl" />
+    <None Include="res\shaders\light_cube.fs.glsl" />
+    <None Include="res\shaders\light_cube.vs.glsl" />
     <None Include="res\shaders\materials.fs" />
+    <None Include="res\shaders\materials.fs.glsl" />
     <None Include="res\shaders\materials.vs" />
+    <None Include="res\shaders\materials.vs.glsl" />
     <None Include="res\shaders\phong_colors.fs" />
+    <None Include="res\shaders\phong_colors.fs.glsl" />
     <None Include="res\shaders\phong_colors.vs" />
     <None Include="res\shaders\light_cube.fs" />
     <None Include="res\shaders\light_cube.vs" />
+    <None Include="res\shaders\phong_colors.vs.glsl" />
     <None Include="res\shaders\shader.fs" />
+    <None Include="res\shaders\shader.fs.glsl" />
     <None Include="res\shaders\shader.vs" />
+    <None Include="res\shaders\shader.vs.glsl" />
     <None Include="res\shaders\texture.fs" />
+    <None Include="res\shaders\texture.fs.glsl" />
     <None Include="res\shaders\texture.vs" />
+    <None Include="res\shaders\texture.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\container.png" />
