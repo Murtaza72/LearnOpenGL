@@ -13,7 +13,7 @@ namespace test
 		m_RotationSpeed(20.0f),
 		m_LightingShader("res/shaders/multiple_lights.vs.glsl", "res/shaders/multiple_lights.fs.glsl"),
 		m_LightCubeShader("res/shaders/multiple_lights_cube.vs.glsl", "res/shaders/multiple_lights_cube.fs.glsl"),
-		m_EnableDirLight(false), m_EnablePointLight(false), m_EnableSpotLight(false),
+		m_EnableDirLight(true), m_EnablePointLight(true), m_EnableSpotLight(true),
 		m_DirLight{ glm::vec3(-1.0f), glm::vec4(0.5f), glm::vec4(0.4f), glm::vec4(0.5f) },
 
 		m_SpotLight{ glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(0.1f), glm::vec3(1.0f),
