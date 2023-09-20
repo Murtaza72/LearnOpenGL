@@ -13,6 +13,7 @@
 #include "tests/TestTextures.h"
 #include "tests/TestMaterials.h"
 #include "tests/TestLightingMaps.h"
+#include "tests/TestLightCasters.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -65,6 +66,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
 	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
 	testMenu->RegisterTest<test::TestMaterials>("Materials");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");

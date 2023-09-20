@@ -141,6 +141,7 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestLightCasters.cpp" />
     <ClCompile Include="src\tests\TestLightingMaps.cpp" />
     <ClCompile Include="src\tests\TestMaterials.cpp" />
     <ClCompile Include="src\tests\TestPhongLighting.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestLightCasters.h" />
     <ClInclude Include="src\tests\TestLightingMaps.h" />
     <ClInclude Include="src\tests\TestMaterials.h" />
     <ClInclude Include="src\tests\TestPhongLighting.h" />
@@ -179,6 +181,8 @@
   <ItemGroup>
     <None Include="res\shaders\lighting_maps.fs" />
     <None Include="res\shaders\lighting_maps.vs" />
+    <None Include="res\shaders\light_casters.fs.glsl" />
+    <None Include="res\shaders\light_casters.vs.glsl" />
     <None Include="res\shaders\materials.fs" />
     <None Include="res\shaders\materials.vs" />
     <None Include="res\shaders\phong_colors.fs" />
