@@ -12,7 +12,6 @@ namespace test
 		m_VAO(0),
 		m_IBO(0),
 		m_TextureID(0),
-		m_ImageBuffer(nullptr),
 		m_Shader("res/shaders/texture.vs", "res/shaders/texture.fs")
 	{
 		GLCall(glEnable(GL_BLEND));
@@ -101,7 +100,7 @@ namespace test
 
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
-			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR));
 			GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
 
 			stbi_image_free(data);

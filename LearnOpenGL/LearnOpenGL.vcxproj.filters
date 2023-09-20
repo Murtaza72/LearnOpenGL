@@ -139,14 +139,30 @@
     <None Include="res\shaders\light_cube.vs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\shaders\shader.vs" />
-    <None Include="res\shaders\shader.fs" />
-    <None Include="res\shaders\texture.fs" />
-    <None Include="res\shaders\texture.vs" />
-    <None Include="res\shaders\materials.fs" />
-    <None Include="res\shaders\materials.vs" />
-    <None Include="res\shaders\lighting_maps.fs" />
-    <None Include="res\shaders\lighting_maps.vs" />
+    <None Include="res\shaders\lighting_maps.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\lighting_maps.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\materials.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\materials.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\shader.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\shader.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\texture.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\shaders\texture.vs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
