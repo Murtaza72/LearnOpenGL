@@ -144,6 +144,7 @@
     <ClCompile Include="src\tests\TestLightCasters.cpp" />
     <ClCompile Include="src\tests\TestLightingMaps.cpp" />
     <ClCompile Include="src\tests\TestMaterials.cpp" />
+    <ClCompile Include="src\tests\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\TestTextures.cpp" />
     <ClCompile Include="src\tests\TestTriangle.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\tests\TestLightCasters.h" />
     <ClInclude Include="src\tests\TestLightingMaps.h" />
     <ClInclude Include="src\tests\TestMaterials.h" />
+    <ClInclude Include="src\tests\TestMultipleLights.h" />
     <ClInclude Include="src\tests\TestPhongLighting.h" />
     <ClInclude Include="src\tests\TestTextures.h" />
     <ClInclude Include="src\tests\TestTriangle.h" />
@@ -187,6 +189,8 @@
     <None Include="res\shaders\light_cube.vs.glsl" />
     <None Include="res\shaders\materials.fs.glsl" />
     <None Include="res\shaders\materials.vs.glsl" />
+    <None Include="res\shaders\multiple_lights.fs.glsl" />
+    <None Include="res\shaders\multiple_lights.vs.glsl" />
     <None Include="res\shaders\phong_colors.fs.glsl" />
     <None Include="res\shaders\phong_colors.vs.glsl" />
     <None Include="res\shaders\shader.fs.glsl" />
