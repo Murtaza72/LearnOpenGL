@@ -15,13 +15,15 @@ namespace test
 		m_VBO(0), m_CubeVAO(0), m_LightCubeVAO(0),
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
-		m_Shininess(32.0f),
 		m_DiffuseMap(0),
-		m_RotateCube(0),
 		m_RotationSpeed(20.0f),
-		m_Radius(2.0f),
 		m_LightingShader("res/shaders/multiple_lights.vs.glsl", "res/shaders/multiple_lights.fs.glsl"),
-		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
+		m_LightCubeShader("res/shaders/multiple_lights_cube.vs.glsl", "res/shaders/multiple_lights_cube.fs.glsl"),
+		m_EnableDirLight(false), m_EnablePointLight(false), m_EnableSpotLight(false),
+		m_DirLight{ glm::vec3(-1.0f), glm::vec4(0.5f), glm::vec4(0.4f), glm::vec4(0.5f) },
+
+		m_SpotLight{ glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(0.1f), glm::vec3(1.0f),
+					 glm::vec3(1.0f), 12.5f, 15.0f }
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 
@@ -89,6 +91,11 @@ namespace test
 		m_PointLightPos.push_back(glm::vec3(-4.0f, 2.0f, -12.0f));
 		m_PointLightPos.push_back(glm::vec3(0.0f, 0.0f, -3.0f));
 
+		m_PointLightColor.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
+		m_PointLightColor.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
+		m_PointLightColor.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
+		m_PointLightColor.push_back(glm::vec3(1.0f, 1.0f, 0.0f));
+
 		GLCall(glGenBuffers(1, &m_VBO));
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_VBO));
 		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW));
@@ -137,21 +144,18 @@ namespace test
 	{
 		m_Camera = camera;
 
-		if (m_RotateCube) {
-			m_LightPos.x = m_Radius * sin(glfwGetTime());
-			m_LightPos.z = m_Radius * cos(glfwGetTime());
-		}
-
 		m_LightingShader.use();
 
 		// directional light
-		m_LightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		m_LightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-		m_LightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-		m_LightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+		if (m_EnableDirLight) {
+			m_LightingShader.setVec3("dirLight.direction", m_DirLight.direction);
+			m_LightingShader.setVec3("dirLight.ambient", m_DirLight.ambient);
+			m_LightingShader.setVec3("dirLight.diffuse", m_DirLight.diffuse);
+			m_LightingShader.setVec3("dirLight.specular", m_DirLight.specular);
+		}
 
 		// point lights
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0, size = m_PointLightPos.size(); i < size; i++) {
 			std::string index = std::to_string(i);
 
 			m_LightingShader.setVec3("pointLights[" + index + "].position", m_PointLightPos[i]);
@@ -164,19 +168,21 @@ namespace test
 		}
 
 		// spotLight
-		m_LightingShader.setVec3("spotLight.position", camera.Position);
-		m_LightingShader.setVec3("spotLight.direction", camera.Front);
-		m_LightingShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-		m_LightingShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-		m_LightingShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-		m_LightingShader.setFloat("spotLight.constant", 1.0f);
-		m_LightingShader.setFloat("spotLight.linear", 0.09f);
-		m_LightingShader.setFloat("spotLight.quadratic", 0.032f);
-		m_LightingShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-		m_LightingShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+		if (m_EnableSpotLight) {
+			m_LightingShader.setVec3("spotLight.position", camera.Position);
+			m_LightingShader.setVec3("spotLight.direction", camera.Front);
+			m_LightingShader.setVec3("spotLight.ambient", m_SpotLight.ambient);
+			m_LightingShader.setVec3("spotLight.diffuse", m_SpotLight.diffuse);
+			m_LightingShader.setVec3("spotLight.specular", m_SpotLight.specular);
+			m_LightingShader.setFloat("spotLight.constant", 1.0f);
+			m_LightingShader.setFloat("spotLight.linear", 0.09f);
+			m_LightingShader.setFloat("spotLight.quadratic", 0.032f);
+			m_LightingShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(m_SpotLight.cutOff)));
+			m_LightingShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(m_SpotLight.outerCutOff)));
+		}
 
 		// material properties
-		m_LightingShader.setFloat("material.shininess", m_Shininess);
+		m_LightingShader.setFloat("material.shininess", 64.0f);
 
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
@@ -213,22 +219,53 @@ namespace test
 		m_LightCubeShader.setMat4("view", view);
 
 		glBindVertexArray(m_LightCubeVAO);
-		for (unsigned int i = 0; i < 4; i++)
+		for (int i = 0, size = m_PointLightPos.size(); i < size; i++)
 		{
 			model = glm::mat4(1.0f);
 			model = glm::translate(model, m_PointLightPos[i]);
 			model = glm::scale(model, glm::vec3(0.2f));
 			m_LightCubeShader.setMat4("model", model);
+
+			m_LightCubeShader.setVec3("colorIn", m_PointLightColor[i]);
 			GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 		}
 	}
 
 	void TestMultipleLights::OnImGuiRender()
 	{
-		ImGui::SliderFloat3("Light Position", &m_LightPos.x, -5.0f, 5.0f);
-		ImGui::SliderFloat("Shininess", &m_Shininess, 0.0f, 64.0f);
-		ImGui::SliderFloat("Rotation Speed", &m_RotationSpeed, 0.0f, 100.0f);
-		ImGui::SliderInt("Rotate", &m_RotateCube, 0, 1);
-		ImGui::SliderFloat("Radius", &m_Radius, 0.0f, 20.0f);
+		ImGui::Begin("Controls");
+		{
+			ImGui::DragFloat("Rotation Speed", &m_RotationSpeed, 0.1f, 0.0f, 20.0f);
+		}
+		ImGui::End();
+
+		ImGui::Begin("Directional Light");
+		{
+			ImGui::Checkbox("Enabled", &m_EnableDirLight);
+			ImGui::DragFloat3("Direction", &m_DirLight.direction.x, 0.1f, -10.0f, 10.0f);
+			ImGui::ColorEdit3("Ambient", (float*)&m_DirLight.ambient, ImGuiColorEditFlags_Float);
+			ImGui::ColorEdit3("Diffuse", (float*)&m_DirLight.diffuse, ImGuiColorEditFlags_Float);
+			ImGui::ColorEdit3("Specular", (float*)&m_DirLight.specular, ImGuiColorEditFlags_Float);
+		}
+		ImGui::End();
+
+		ImGui::Begin("Point Light");
+		{
+
+		}
+		ImGui::End();
+
+		ImGui::Begin("Spot Light");
+		{
+			ImGui::Checkbox("Enabled", &m_EnableSpotLight);
+			ImGui::DragFloat3("Position", &m_SpotLight.position.x, 0.1f, -10.0f, 10.0f);
+			ImGui::DragFloat3("Direction", &m_SpotLight.direction.x, 0.1f, -10.0f, 10.0f);
+			ImGui::ColorEdit3("Ambient", (float*)&m_SpotLight.ambient, ImGuiColorEditFlags_Float);
+			ImGui::ColorEdit3("Diffuse", (float*)&m_SpotLight.diffuse, ImGuiColorEditFlags_Float);
+			ImGui::ColorEdit3("Specular", (float*)&m_SpotLight.specular, ImGuiColorEditFlags_Float);
+			ImGui::DragFloat("Inner Cutoff", &m_SpotLight.cutOff, 0.1f, 0.0f, 15.0f);
+			ImGui::DragFloat("Outer Cutoff", &m_SpotLight.outerCutOff, 0.1f, 0.0f, 15.0f);
+		}
+		ImGui::End();
 	}
 }

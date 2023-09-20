@@ -7,6 +7,36 @@
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
+struct DirectionalLight {
+	glm::vec3 direction;
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+};
+
+struct PointLight {
+	glm::vec3 position;
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+
+	float constant;
+	float linear;
+	float quadratic;
+};
+
+struct SpotLight
+{
+	glm::vec3 position;
+	glm::vec3 direction;
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+
+	float cutOff;
+	float outerCutOff;
+};
+
 namespace test
 {
 	class TestMultipleLights : public Test {
@@ -22,10 +52,12 @@ namespace test
 		Shader m_LightingShader, m_LightCubeShader;
 		Camera m_Camera;
 		glm::vec3 m_LightPos;
-		float m_Shininess;
 		unsigned int m_DiffuseMap, m_SpecularMap;
-		int m_RotateCube;
-		std::vector<glm::vec3> m_CubePositions, m_PointLightPos;
-		float m_RotationSpeed, m_Radius;
+		std::vector<glm::vec3> m_CubePositions, m_PointLightPos, m_PointLightColor;
+		float m_RotationSpeed;
+		DirectionalLight m_DirLight;
+		PointLight m_PointLight;
+		SpotLight m_SpotLight;
+		bool m_EnableDirLight, m_EnablePointLight, m_EnableSpotLight;
 	};
 }

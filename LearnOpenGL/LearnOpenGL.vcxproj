@@ -191,6 +191,8 @@
     <None Include="res\shaders\materials.vs.glsl" />
     <None Include="res\shaders\multiple_lights.fs.glsl" />
     <None Include="res\shaders\multiple_lights.vs.glsl" />
+    <None Include="res\shaders\multiple_lights_cube.fs.glsl" />
+    <None Include="res\shaders\multiple_lights_cube.vs.glsl" />
     <None Include="res\shaders\phong_colors.fs.glsl" />
     <None Include="res\shaders\phong_colors.vs.glsl" />
     <None Include="res\shaders\shader.fs.glsl" />

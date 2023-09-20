@@ -94,7 +94,7 @@ int main(void)
 		if (currentTest) {
 			currentTest->OnRender(camera);
 
-			ImGui::Begin("Test");
+			ImGui::Begin("Tests");
 
 			if (currentTest != testMenu && ImGui::Button("<-")) {
 				delete currentTest;
@@ -118,7 +118,13 @@ int main(void)
 	if (currentTest != testMenu)
 		delete testMenu;
 
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+
+	glfwDestroyWindow(window);
 	glfwTerminate();
+
 	return 0;
 }
 
