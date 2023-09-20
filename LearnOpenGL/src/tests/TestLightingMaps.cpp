@@ -15,6 +15,8 @@ namespace test
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
 		m_Shininess(32.0f),
 		m_DiffuseMap(0),
+		m_SpecularMap(0),
+		m_EmissionMap(0),
 		m_RotateCube(0),
 		m_LightingShader("res/shaders/lighting_maps.vs.glsl", "res/shaders/lighting_maps.fs.glsl"),
 		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
@@ -95,10 +97,12 @@ namespace test
 
 		m_DiffuseMap = LoadTexture("res/textures/container.png");
 		m_SpecularMap = LoadTexture("res/textures/container_specular.png");
+		m_EmissionMap = LoadTexture("res/textures/emission_map.png");
 
 		m_LightingShader.use();
 		m_LightingShader.setInt("material.diffuse", 0);
 		m_LightingShader.setInt("material.specular", 1);
+		m_LightingShader.setInt("material.emission", 2);
 	}
 
 	TestLightingMaps::~TestLightingMaps()
@@ -149,6 +153,9 @@ namespace test
 		// binding specular map
 		GLCall(glActiveTexture(GL_TEXTURE1));
 		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap));
+
+		GLCall(glActiveTexture(GL_TEXTURE2));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_EmissionMap));
 
 		// render the cube
 		GLCall(glBindVertexArray(m_CubeVAO));

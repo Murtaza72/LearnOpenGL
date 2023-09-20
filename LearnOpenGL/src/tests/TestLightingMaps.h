@@ -24,7 +24,7 @@ namespace test
 		Camera m_Camera;
 		glm::vec3 m_LightPos;
 		float m_Shininess;
-		unsigned int m_DiffuseMap, m_SpecularMap;
+		unsigned int m_DiffuseMap, m_SpecularMap, m_EmissionMap;
 		int m_RotateCube;
 	};
 }
