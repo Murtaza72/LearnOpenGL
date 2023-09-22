@@ -117,25 +117,23 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 }
 
 vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
-{
-    // ambient
-    vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;
-        
+{    
     // diffuse 
-    vec3 lightDir = normalize(light.position - FragPos);
+    vec3 lightDir = normalize(light.position - fragPos);
     float diff = max(dot(normal, lightDir), 0.0);
-    vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
         
     // specular
     vec3 reflectDir = reflect(-lightDir, normal);  
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;  
         
     // soft edges
     float theta = dot(lightDir, normalize(-light.direction));
     float epsilon = light.cutOff - light.outerCutOff;
     float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0); 
 
+    vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;    
+    vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
+    vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;  
     ambient *= intensity;
     diffuse *= intensity;
     specular *= intensity;

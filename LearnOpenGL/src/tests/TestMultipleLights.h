@@ -7,6 +7,8 @@ struct DirectionalLight {
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
 	glm::vec3 specular;
+
+	bool enable;
 };
 
 struct PointLight {
@@ -18,6 +20,9 @@ struct PointLight {
 	float constant;
 	float linear;
 	float quadratic;
+
+	glm::vec3 color;
+	bool enable;
 };
 
 struct SpotLight
@@ -30,6 +35,8 @@ struct SpotLight
 
 	float cutOff;
 	float outerCutOff;
+
+	bool enable;
 };
 
 namespace test
@@ -48,11 +55,12 @@ namespace test
 		Camera m_Camera;
 		glm::vec3 m_LightPos;
 		unsigned int m_DiffuseMap, m_SpecularMap;
-		std::vector<glm::vec3> m_CubePositions, m_PointLightPos, m_PointLightColor;
+		std::vector<glm::vec3> m_CubePositions;
 		float m_RotationSpeed;
 		DirectionalLight m_DirLight;
-		PointLight m_PointLight;
+		std::vector<PointLight> m_PointLights;
 		SpotLight m_SpotLight;
 		bool m_EnableDirLight, m_EnablePointLight, m_EnableSpotLight;
+		glm::vec3 m_ClearColor;
 	};
 }
