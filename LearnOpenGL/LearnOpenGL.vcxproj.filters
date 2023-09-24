@@ -48,28 +48,31 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestClearColor.cpp">
+    <ClCompile Include="src\tests\Basic\TestClearColor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestPhongLighting.cpp">
+    <ClCompile Include="src\tests\Basic\TestTextures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestTriangle.cpp">
+    <ClCompile Include="src\tests\Basic\TestTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestTextures.cpp">
+    <ClCompile Include="src\tests\Lighting\Basic\TestLightCasters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestMaterials.cpp">
+    <ClCompile Include="src\tests\Lighting\Basic\TestLightingMaps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestLightingMaps.cpp">
+    <ClCompile Include="src\tests\Lighting\Basic\TestMaterials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestLightCasters.cpp">
+    <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestMultipleLights.cpp">
+    <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestDepth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,53 +113,58 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestClearColor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\TestPhongLighting.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\TestTriangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\TestTextures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestMaterials.h">
+    <ClInclude Include="src\tests\Basic\TestClearColor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestLightingMaps.h">
+    <ClInclude Include="src\tests\Basic\TestTextures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestLightCasters.h">
+    <ClInclude Include="src\tests\Basic\TestTriangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestMultipleLights.h">
+    <ClInclude Include="src\tests\Lighting\Basic\TestLightCasters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Basic\TestLightingMaps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Basic\TestMaterials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestDepth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\light_casters.fs.glsl" />
-    <None Include="res\shaders\light_casters.vs.glsl" />
-    <None Include="res\shaders\texture.vs.glsl" />
-    <None Include="res\shaders\texture.fs.glsl" />
-    <None Include="res\shaders\shader.vs.glsl" />
-    <None Include="res\shaders\shader.fs.glsl" />
-    <None Include="res\shaders\phong_colors.vs.glsl" />
-    <None Include="res\shaders\phong_colors.fs.glsl" />
-    <None Include="res\shaders\materials.vs.glsl" />
-    <None Include="res\shaders\materials.fs.glsl" />
-    <None Include="res\shaders\lighting_maps.vs.glsl" />
-    <None Include="res\shaders\lighting_maps.fs.glsl" />
-    <None Include="res\shaders\light_cube.vs.glsl" />
-    <None Include="res\shaders\light_cube.fs.glsl" />
-    <None Include="res\shaders\multiple_lights.fs.glsl" />
-    <None Include="res\shaders\multiple_lights.vs.glsl" />
-    <None Include="res\shaders\multiple_lights_cube.fs.glsl" />
-    <None Include="res\shaders\multiple_lights_cube.vs.glsl" />
+    <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
+    <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\lighting_maps.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\light_casters.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\light_casters.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\light_cube.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\light_cube.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\materials.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\materials.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\multiple_lights.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\multiple_lights.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\multiple_lights_cube.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\multiple_lights_cube.vs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\phong_colors.fs.glsl" />
+    <None Include="res\shaders\Lighting\Basic\phong_colors.vs.glsl" />
+    <None Include="res\shaders\Basic\shader.fs.glsl" />
+    <None Include="res\shaders\Basic\shader.vs.glsl" />
+    <None Include="res\shaders\Basic\texture.fs.glsl" />
+    <None Include="res\shaders\Basic\texture.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
@@ -172,6 +180,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\emission_map.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\marble.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\metal.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
