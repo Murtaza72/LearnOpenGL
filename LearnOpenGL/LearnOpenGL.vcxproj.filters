@@ -75,6 +75,12 @@
     <ClCompile Include="src\tests\Advanced\TestDepth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -143,6 +149,15 @@
     <ClInclude Include="src\tests\Advanced\TestDepth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
@@ -165,6 +180,8 @@
     <None Include="res\shaders\Basic\shader.vs.glsl" />
     <None Include="res\shaders\Basic\texture.fs.glsl" />
     <None Include="res\shaders\Basic\texture.vs.glsl" />
+    <None Include="res\shaders\model\model_loading.fs.glsl" />
+    <None Include="res\shaders\model\model_loading.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">

@@ -11,6 +11,7 @@
 #include "tests/Basic/TestClearColor.h"
 #include "tests/Basic/TestTriangle.h"
 #include "tests/Basic/TestTextures.h"
+#include "tests/TestModel.h"
 
 #include "tests/Lighting/Basic/TestPhongLighting.h"
 #include "tests/Lighting/Basic/TestMaterials.h"
@@ -71,6 +72,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestModel>("Backpack Model");
 	testMenu->RegisterTest<test::TestDepth>("Depth Test");
 
 	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
