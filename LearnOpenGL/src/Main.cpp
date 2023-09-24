@@ -7,14 +7,18 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 #include "tests/Test.h"
+
 #include "tests/Basic/TestClearColor.h"
 #include "tests/Basic/TestTriangle.h"
 #include "tests/Basic/TestTextures.h"
+
 #include "tests/Lighting/Basic/TestPhongLighting.h"
 #include "tests/Lighting/Basic/TestMaterials.h"
 #include "tests/Lighting/Basic/TestLightingMaps.h"
 #include "tests/Lighting/Basic/TestLightCasters.h"
 #include "tests/Lighting/Basic/TestMultipleLights.h"
+
+#include "tests/Advanced/TestDepth.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -66,6 +70,8 @@ int main(void)
 	test::Test* currentTest = nullptr;
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
+
+	testMenu->RegisterTest<test::TestDepth>("Depth Test");
 
 	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
 	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");

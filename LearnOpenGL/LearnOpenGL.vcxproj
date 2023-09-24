@@ -147,15 +147,16 @@
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightCasters.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightingMaps.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestMaterials.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
+    <ClCompile Include="src\tests\Test.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
@@ -168,16 +169,17 @@
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\Basic\TestClearColor.h" />
+    <ClInclude Include="src\tests\Basic\TestTextures.h" />
+    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightCasters.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightingMaps.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestMaterials.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
-    <ClInclude Include="src\tests\Basic\TestTextures.h" />
-    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
+    <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\Utils.h" />
+    <ClInclude Include="src\tests\Advanced\TestDepth.h" />
     <ClInclude Include="vendor\imgui\imconfig.h" />
     <ClInclude Include="vendor\imgui\imgui.h" />
     <ClInclude Include="vendor\imgui\imgui_impl_glfw.h" />
@@ -189,6 +191,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
+    <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\light_casters.fs.glsl" />
@@ -212,8 +216,10 @@
     <Image Include="res\textures\container.png" />
     <Image Include="res\textures\container_specular.png" />
     <Image Include="res\textures\emission_map.png" />
+    <Image Include="res\textures\marble.jpg" />
     <Image Include="res\textures\me.png" />
     <Image Include="res\textures\me.jpg" />
+    <Image Include="res\textures\metal.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
