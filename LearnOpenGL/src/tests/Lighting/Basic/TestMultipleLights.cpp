@@ -2,8 +2,8 @@
 
 #include <string>
 
-namespace test
-{
+namespace test {
+
 	TestMultipleLights::TestMultipleLights()
 		:
 		m_VBO(0), m_CubeVAO(0), m_LightCubeVAO(0),
@@ -12,8 +12,8 @@ namespace test
 		m_DiffuseMap(0),
 		m_RotationSpeed(0.0f),
 		m_ClearColor(glm::vec3(0.1f)),
-		m_LightingShader("res/shaders/multiple_lights.vs.glsl", "res/shaders/multiple_lights.fs.glsl"),
-		m_LightCubeShader("res/shaders/multiple_lights_cube.vs.glsl", "res/shaders/multiple_lights_cube.fs.glsl"),
+		m_LightingShader("res/shaders/Lighting/Basic/multiple_lights.vs.glsl", "res/shaders/Lighting/Basic/multiple_lights.fs.glsl"),
+		m_LightCubeShader("res/shaders/Lighting/Basic/multiple_lights_cube.vs.glsl", "res/shaders/Lighting/Basic/multiple_lights_cube.fs.glsl"),
 		m_DirLight{ glm::vec3(-1.0f), glm::vec4(0.5f), glm::vec4(0.4f), glm::vec4(0.5f), false },
 		m_SpotLight{ glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(0.1f), glm::vec3(1.0f),
 					 glm::vec3(1.0f), 12.5f, 15.0f, false }
@@ -138,7 +138,8 @@ namespace test
 		m_LightingShader.use();
 
 		// directional light
-		if (m_DirLight.enable) {
+		if (m_DirLight.enable)
+		{
 			m_LightingShader.setVec3("dirLight.direction", m_DirLight.direction);
 			m_LightingShader.setVec3("dirLight.ambient", m_DirLight.ambient);
 			m_LightingShader.setVec3("dirLight.diffuse", m_DirLight.diffuse);
@@ -146,7 +147,8 @@ namespace test
 		}
 
 		// point lights
-		for (int i = 0, size = m_PointLights.size(); i < size; i++) {
+		for (int i = 0, size = m_PointLights.size(); i < size; i++)
+		{
 			std::string index = std::to_string(i);
 
 			m_LightingShader.setVec3("pointLights[" + index + "].position", m_PointLights[i].position);
@@ -160,7 +162,8 @@ namespace test
 		}
 
 		// spotLight
-		if (m_SpotLight.enable) {
+		if (m_SpotLight.enable)
+		{
 			m_LightingShader.setVec3("spotLight.position", camera.Position);
 			m_LightingShader.setVec3("spotLight.direction", camera.Front);
 			m_LightingShader.setVec3("spotLight.ambient", m_SpotLight.ambient);
@@ -263,7 +266,8 @@ namespace test
 			}
 		}
 
-		for (int i = 0, size = m_PointLights.size(); i < size; i++) {
+		for (int i = 0, size = m_PointLights.size(); i < size; i++)
+		{
 			std::string header = "Point Light " + std::to_string(i);
 
 			if (ImGui::CollapsingHeader(header.c_str()))

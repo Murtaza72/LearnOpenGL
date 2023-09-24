@@ -1,7 +1,7 @@
 #include "TestLightCasters.h"
 
-namespace test
-{
+namespace test {
+
 	TestLightCasters::TestLightCasters()
 		:
 		m_VBO(0), m_CubeVAO(0), m_LightCubeVAO(0),
@@ -12,8 +12,8 @@ namespace test
 		m_RotateCube(0),
 		m_RotationSpeed(20.0f),
 		m_Radius(2.0f),
-		m_LightingShader("res/shaders/light_casters.vs.glsl", "res/shaders/light_casters.fs.glsl"),
-		m_LightCubeShader("res/shaders/light_cube.vs.glsl", "res/shaders/light_cube.fs.glsl")
+		m_LightingShader("res/shaders/Lighting/Basic/light_casters.vs.glsl", "res/shaders/Lighting/Basic/light_casters.fs.glsl"),
+		m_LightCubeShader("res/shaders/Lighting/Basic/light_cube.vs.glsl", "res/shaders/Lighting/Basic/light_cube.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 
@@ -124,7 +124,8 @@ namespace test
 	{
 		m_Camera = camera;
 
-		if (m_RotateCube) {
+		if (m_RotateCube)
+		{
 			m_LightPos.x = m_Radius * sin(glfwGetTime());
 			m_LightPos.z = m_Radius * cos(glfwGetTime());
 		}

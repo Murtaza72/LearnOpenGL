@@ -7,14 +7,14 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 #include "tests/Test.h"
-#include "tests/TestClearColor.h"
-#include "tests/TestPhongLighting.h"
-#include "tests/TestTriangle.h"
-#include "tests/TestTextures.h"
-#include "tests/TestMaterials.h"
-#include "tests/TestLightingMaps.h"
-#include "tests/TestLightCasters.h"
-#include "tests/TestMultipleLights.h"
+#include "tests/Basic/TestClearColor.h"
+#include "tests/Basic/TestTriangle.h"
+#include "tests/Basic/TestTextures.h"
+#include "tests/Lighting/Basic/TestPhongLighting.h"
+#include "tests/Lighting/Basic/TestMaterials.h"
+#include "tests/Lighting/Basic/TestLightingMaps.h"
+#include "tests/Lighting/Basic/TestLightCasters.h"
+#include "tests/Lighting/Basic/TestMultipleLights.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -91,12 +91,14 @@ int main(void)
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		if (currentTest) {
+		if (currentTest)
+		{
 			currentTest->OnRender(camera);
 
 			ImGui::Begin("Tests");
 
-			if (currentTest != testMenu && ImGui::Button("<-")) {
+			if (currentTest != testMenu && ImGui::Button("<-"))
+			{
 				delete currentTest;
 				currentTest = testMenu;
 			}

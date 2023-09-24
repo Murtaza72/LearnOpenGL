@@ -1,7 +1,5 @@
 #include "Test.h"
 
-
-
 namespace test {
 
 	TestMenu::TestMenu(Test*& currentTestPointer)

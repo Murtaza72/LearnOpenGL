@@ -1,14 +1,14 @@
 #include "TestTextures.h"
 
-namespace test
-{
+namespace test {
+
 	TestTextures::TestTextures()
 		:
 		m_VBO(0),
 		m_VAO(0),
 		m_IBO(0),
 		m_TextureID(0),
-		m_Shader("res/shaders/texture.vs.glsl", "res/shaders/texture.fs.glsl")
+		m_Shader("res/shaders/Basic/texture.vs.glsl", "res/shaders/Basic/texture.fs.glsl")
 	{
 		GLCall(glEnable(GL_BLEND));
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));

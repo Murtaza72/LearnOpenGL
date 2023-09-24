@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Test.h"
+#include "tests/Test.h"
 
-namespace test
-{
-	class TestTextures : public Test {
+namespace test {
+
+	class TestTextures : public Test
+	{
 	public:
 		TestTextures();
 		~TestTextures();

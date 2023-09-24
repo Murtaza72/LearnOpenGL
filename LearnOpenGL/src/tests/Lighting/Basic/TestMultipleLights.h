@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Test.h"
+#include "tests/Test.h"
 
-struct DirectionalLight {
+struct DirectionalLight
+{
 	glm::vec3 direction;
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
@@ -11,7 +12,8 @@ struct DirectionalLight {
 	bool enable;
 };
 
-struct PointLight {
+struct PointLight
+{
 	glm::vec3 position;
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
@@ -39,9 +41,10 @@ struct SpotLight
 	bool enable;
 };
 
-namespace test
-{
-	class TestMultipleLights : public Test {
+namespace test {
+
+	class TestMultipleLights : public Test
+	{
 	public:
 		TestMultipleLights();
 		~TestMultipleLights();

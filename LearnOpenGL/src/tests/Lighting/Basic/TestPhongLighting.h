@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Test.h"
+#include "tests/Test.h"
 
-namespace test
-{
+namespace test {
+
 	class TestPhongLighting : public Test
 	{
 	public:

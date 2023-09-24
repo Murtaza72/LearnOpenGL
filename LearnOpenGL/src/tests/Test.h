@@ -18,9 +18,10 @@
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
-namespace test
-{
-	class Test {
+namespace test {
+
+	class Test
+	{
 	public:
 		Test() {}
 		virtual ~Test() {}

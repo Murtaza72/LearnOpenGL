@@ -1,10 +1,10 @@
 #include "TestTriangle.h"
 
-namespace test
-{
+namespace test {
+
 	TestTriangle::TestTriangle()
 		:
-		m_Shader{ "res/shaders/shader.vs.glsl", "res/shaders/shader.fs.glsl" },
+		m_Shader{ "res/shaders/Basic/shader.vs.glsl", "res/shaders/Basic/shader.fs.glsl" },
 		m_VBO(0),
 		m_VAO(0)
 	{

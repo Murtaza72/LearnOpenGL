@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Test.h"
+#include "tests/Test.h"
 
-namespace test
-{
-	class TestLightCasters : public Test {
+namespace test {
+
+	class TestLightCasters : public Test
+	{
 	public:
 		TestLightCasters();
 		~TestLightCasters();
