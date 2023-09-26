@@ -12,7 +12,7 @@ namespace test {
 
 		glEnable(GL_DEPTH_TEST);
 
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
 
 	TestModel::~TestModel()

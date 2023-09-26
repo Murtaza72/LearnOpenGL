@@ -147,7 +147,7 @@ namespace test {
 		}
 
 		// point lights
-		for (int i = 0, size = m_PointLights.size(); i < size; i++)
+		for (unsigned int i = 0, size = m_PointLights.size(); i < size; i++)
 		{
 			std::string index = std::to_string(i);
 
@@ -214,7 +214,7 @@ namespace test {
 		m_LightCubeShader.setMat4("view", view);
 
 		glBindVertexArray(m_LightCubeVAO);
-		for (int i = 0, size = m_PointLights.size(); i < size; i++)
+		for (unsigned int i = 0, size = m_PointLights.size(); i < size; i++)
 		{
 			model = glm::mat4(1.0f);
 			model = glm::translate(model, m_PointLights[i].position);
@@ -266,7 +266,7 @@ namespace test {
 			}
 		}
 
-		for (int i = 0, size = m_PointLights.size(); i < size; i++)
+		for (unsigned int i = 0, size = m_PointLights.size(); i < size; i++)
 		{
 			std::string header = "Point Light " + std::to_string(i);
 
