@@ -11,7 +11,6 @@
 #include "tests/Basic/TestClearColor.h"
 #include "tests/Basic/TestTriangle.h"
 #include "tests/Basic/TestTextures.h"
-#include "tests/TestModel.h"
 
 #include "tests/Lighting/Basic/TestPhongLighting.h"
 #include "tests/Lighting/Basic/TestMaterials.h"
@@ -19,6 +18,7 @@
 #include "tests/Lighting/Basic/TestLightCasters.h"
 #include "tests/Lighting/Basic/TestMultipleLights.h"
 
+#include "tests/TestModel.h"
 #include "tests/Advanced/TestDepth.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -72,16 +72,16 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	testMenu->RegisterTest<test::TestModel>("Backpack Model");
 	testMenu->RegisterTest<test::TestDepth>("Depth Test");
+	testMenu->RegisterTest<test::TestModel>("Backpack Model");
 
-	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
+	/*testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
 	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
 	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
 	testMenu->RegisterTest<test::TestMaterials>("Materials");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 	testMenu->RegisterTest<test::TestTextures>("Textures");
-	testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	testMenu->RegisterTest<test::TestTriangle>("Triangle");*/
 	//testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	while (!glfwWindowShouldClose(window))
