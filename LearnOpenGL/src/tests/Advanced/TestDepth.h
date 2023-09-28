@@ -2,6 +2,8 @@
 
 #include "tests/Test.h"
 
+#include "Model.h"
+
 namespace  test {
 
 	class TestDepth : public Test
@@ -14,8 +16,7 @@ namespace  test {
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_CubeVAO, m_CubeVBO, m_PlaneVAO, m_PlaneVBO;
-		unsigned int m_CubeTexture, m_FloorTexture;
+		Model m_Model;
 		Shader m_Shader;
 	};
 }
