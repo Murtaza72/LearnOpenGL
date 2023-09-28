@@ -10,6 +10,7 @@ namespace test {
 		m_PlaneVBO(0),
 		m_CubeTexture(0),
 		m_FloorTexture(0),
+		m_Scale(1.1f),
 		m_Shader("res/shaders/Advanced/stencil_test.vs.glsl", "res/shaders/Advanced/stencil_test.fs.glsl"),
 		m_OutlineShader("res/shaders/Advanced/stencil_test.vs.glsl", "res/shaders/Advanced/outline_color.fs.glsl")
 	{
@@ -171,13 +172,13 @@ namespace test {
 		GLCall(glBindTexture(GL_TEXTURE_2D, m_CubeTexture));
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
-		model = glm::scale(model, glm::vec3(1.1f));
+		model = glm::scale(model, glm::vec3(m_Scale));
 		m_Shader.setMat4("model", model);
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.1f));
+		model = glm::scale(model, glm::vec3(m_Scale));
 		m_Shader.setMat4("model", model);
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 
@@ -190,6 +191,6 @@ namespace test {
 
 	void TestStencilBuffer::OnImGuiRender()
 	{
-
+		ImGui::DragFloat("Outline Scale", &m_Scale, 0.1f, 1.0f, 3.0f);
 	}
 }

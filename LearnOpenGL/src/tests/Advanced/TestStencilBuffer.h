@@ -18,5 +18,6 @@ namespace  test {
 		unsigned int m_CubeTexture, m_FloorTexture;
 		Shader m_Shader;
 		Shader m_OutlineShader;
+		float m_Scale;
 	};
 }
