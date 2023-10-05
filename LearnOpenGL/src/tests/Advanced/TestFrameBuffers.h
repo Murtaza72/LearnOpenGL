@@ -20,5 +20,7 @@ namespace test {
 		unsigned int m_QuadVAO, m_QuadVBO;
 		Shader m_Shader, m_ScreenShader;
 		Model m_Model;
+		float m_Kernel[9];
+		float m_DivFactor;
 	};
 }

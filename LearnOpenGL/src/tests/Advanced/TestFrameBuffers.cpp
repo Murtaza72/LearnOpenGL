@@ -58,11 +58,17 @@ namespace test {
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+		for (int i = 0; i < 9; i++)
+		{
+			m_Kernel[i] = 2;
+		}
+		m_Kernel[4] = -15;
+		m_DivFactor = 1;
 	}
 
 	TestFrameBuffers::~TestFrameBuffers()
 	{
-
 	}
 
 	void TestFrameBuffers::OnRender(Camera camera)
@@ -92,14 +98,37 @@ namespace test {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		m_ScreenShader.use();
+
+		for (int i = 0; i < 9; i++)
+		{
+
+			m_ScreenShader.setFloat("kernel[" + std::to_string(i) + "]", (m_Kernel[i] / m_DivFactor));
+		}
+
 		glBindVertexArray(m_QuadVAO);
 		glBindTexture(GL_TEXTURE_2D, m_TextureColorBuffer);	// use the color attachment texture as the texture of the quad plane
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-
 	}
 
 	void TestFrameBuffers::OnImGuiRender()
 	{
+		ImGui::Begin("Kernel Effects");
+		if (ImGui::CollapsingHeader("Kernel Value"))
+		{
+			ImGui::PushItemWidth(100);
 
+			for (int i = 0; i < 9; i++)
+			{
+				ImGui::PushID(i);
+				if (i % 3 != 0)
+					ImGui::SameLine();
+				ImGui::DragFloat("", &m_Kernel[i], 1.0f, -20.0f, 20.0f);
+				ImGui::PopID();
+			}
+			ImGui::PopItemWidth();
+
+			ImGui::DragFloat("Div Factor", &m_DivFactor, 1.0f, 1.0f, 20.0f);
+		}
+		ImGui::End();
 	}
 }
