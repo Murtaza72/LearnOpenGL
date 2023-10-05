@@ -85,6 +85,7 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
     <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
     <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
     <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
     <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
     <ClInclude Include="src\tests\Basic\TestClearColor.h" />
     <ClInclude Include="src\tests\Basic\TestTextures.h" />
@@ -138,6 +140,10 @@
   <ItemGroup>
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
     <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer.fs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer.vs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer_screen.fs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer_screen.vs.glsl" />
     <None Include="res\shaders\Advanced\outline_color.fs.glsl" />
     <None Include="res\shaders\Advanced\stencil_test.fs.glsl" />
     <None Include="res\shaders\Advanced\stencil_test.vs.glsl" />

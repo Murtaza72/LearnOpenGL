@@ -90,6 +90,9 @@
     <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -170,6 +173,9 @@
     <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
@@ -197,6 +203,10 @@
     <None Include="res\shaders\Advanced\stencil_test.fs.glsl" />
     <None Include="res\shaders\Advanced\stencil_test.vs.glsl" />
     <None Include="res\shaders\Advanced\outline_color.fs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer.fs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer.vs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer_screen.vs.glsl" />
+    <None Include="res\shaders\Advanced\framebuffer_screen.fs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">

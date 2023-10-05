@@ -21,6 +21,7 @@
 #include "tests/TestModel.h"
 #include "tests/Advanced/TestDepth.h"
 #include "tests/Advanced/TestStencilBuffer.h"
+#include "tests/Advanced/TestFrameBuffers.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -73,6 +74,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestFrameBuffers>("Frame Buffers");
 	testMenu->RegisterTest<test::TestStencilBuffer>("Stencil Test");
 	testMenu->RegisterTest<test::TestDepth>("Depth Test");
 	testMenu->RegisterTest<test::TestModel>("Backpack Model");
