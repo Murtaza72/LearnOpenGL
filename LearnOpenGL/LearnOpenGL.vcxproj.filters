@@ -78,7 +78,7 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\TestModel.cpp">
+    <ClCompile Include="src\tests\Basic\TestModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils.cpp">
@@ -91,6 +91,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,13 +170,16 @@
     <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\TestModel.h">
+    <ClInclude Include="src\tests\Basic\TestModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestCubemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,6 +213,10 @@
     <None Include="res\shaders\Advanced\framebuffer.vs.glsl" />
     <None Include="res\shaders\Advanced\framebuffer_screen.vs.glsl" />
     <None Include="res\shaders\Advanced\framebuffer_screen.fs.glsl" />
+    <None Include="res\shaders\Advanced\skybox.fs.glsl" />
+    <None Include="res\shaders\Advanced\skybox.vs.glsl" />
+    <None Include="res\shaders\Advanced\cubemap.fs.glsl" />
+    <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
@@ -228,6 +238,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\metal.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\back.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\bottom.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\front.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\left.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\right.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\top.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

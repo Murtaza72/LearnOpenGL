@@ -11,6 +11,7 @@
 #include "tests/Basic/TestClearColor.h"
 #include "tests/Basic/TestTriangle.h"
 #include "tests/Basic/TestTextures.h"
+#include "tests/Basic/TestModel.h"
 
 #include "tests/Lighting/Basic/TestPhongLighting.h"
 #include "tests/Lighting/Basic/TestMaterials.h"
@@ -18,10 +19,10 @@
 #include "tests/Lighting/Basic/TestLightCasters.h"
 #include "tests/Lighting/Basic/TestMultipleLights.h"
 
-#include "tests/TestModel.h"
 #include "tests/Advanced/TestDepth.h"
 #include "tests/Advanced/TestStencilBuffer.h"
 #include "tests/Advanced/TestFrameBuffers.h"
+#include "tests/Advanced/TestCubemap.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -74,6 +75,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestCubemap>("Skybox");
 	testMenu->RegisterTest<test::TestFrameBuffers>("Frame Buffers");
 	testMenu->RegisterTest<test::TestStencilBuffer>("Stencil Test");
 	testMenu->RegisterTest<test::TestDepth>("Depth Test");

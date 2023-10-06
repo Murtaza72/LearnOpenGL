@@ -85,6 +85,7 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
     <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
     <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
     <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
@@ -97,7 +98,7 @@
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
-    <ClCompile Include="src\tests\TestModel.cpp" />
+    <ClCompile Include="src\tests\Basic\TestModel.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
     <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
     <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
     <ClInclude Include="src\tests\Basic\TestClearColor.h" />
@@ -124,7 +126,7 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
-    <ClInclude Include="src\tests\TestModel.h" />
+    <ClInclude Include="src\tests\Basic\TestModel.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="src\tests\Advanced\TestDepth.h" />
     <ClInclude Include="vendor\imgui\imconfig.h" />
@@ -138,6 +140,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Advanced\cubemap.fs.glsl" />
+    <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
+    <None Include="res\shaders\Advanced\skybox.fs.glsl" />
+    <None Include="res\shaders\Advanced\skybox.vs.glsl" />
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
     <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
     <None Include="res\shaders\Advanced\framebuffer.fs.glsl" />
@@ -176,6 +182,12 @@
     <Image Include="res\textures\me.png" />
     <Image Include="res\textures\me.jpg" />
     <Image Include="res\textures\metal.png" />
+    <Image Include="res\textures\skybox\back.jpg" />
+    <Image Include="res\textures\skybox\bottom.jpg" />
+    <Image Include="res\textures\skybox\front.jpg" />
+    <Image Include="res\textures\skybox\left.jpg" />
+    <Image Include="res\textures\skybox\right.jpg" />
+    <Image Include="res\textures\skybox\top.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
