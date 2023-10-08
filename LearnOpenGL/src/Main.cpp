@@ -29,8 +29,8 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void processInput(GLFWwindow* window);
 
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_WIDTH = 1366;
+const int SCREEN_HEIGHT = 768;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCREEN_WIDTH / 2.0f;
@@ -53,12 +53,19 @@ int main(void)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Learning OpenGL", NULL, NULL);
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+	// Create a windowed fullscreen window
+	window = glfwCreateWindow(mode->width, mode->height, "Learning OpenGL", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
 		return -1;
 	}
+
+	// Make the window borderless
+	glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_TRUE);
 
 	glfwMakeContextCurrent(window);
 	glfwSetCursorPosCallback(window, mouse_callback);
@@ -83,14 +90,14 @@ int main(void)
 	testMenu->RegisterTest<test::TestDepth>("Depth Test");
 	testMenu->RegisterTest<test::TestModel>("Backpack Model");
 
-	/*testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
+	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
 	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
 	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
 	testMenu->RegisterTest<test::TestMaterials>("Materials");
 	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 	testMenu->RegisterTest<test::TestTextures>("Textures");
-	testMenu->RegisterTest<test::TestTriangle>("Triangle");*/
-	//testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+	testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -199,12 +206,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		wireFrame = !wireFrame;
 
 		if (wireFrame)
-		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		}
 		else
-		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		}
 	}
 }
