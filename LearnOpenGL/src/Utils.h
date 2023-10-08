@@ -1,13 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <string>
 #include <string_view>
-#include <vector>
-
-#include <GL/glew.h>
-
-#include "stb_image/stb_image.h"
 
 #define ASSERT(x) if(!(x)) __debugbreak();
 #define GLCall(x) GLClearError(); x; ASSERT(GLLogCall(#x, __FILE__, __LINE__))

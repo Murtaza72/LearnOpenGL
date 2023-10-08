@@ -1,6 +1,7 @@
-#include "Model.h"
+#include "glpch.h"
 
 #include "Utils.h"
+#include "Model.h"
 
 void Model::LoadModel(std::string const& path)
 {

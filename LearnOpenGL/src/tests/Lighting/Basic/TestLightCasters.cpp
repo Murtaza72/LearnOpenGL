@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestLightCasters.h"
 
 namespace test {

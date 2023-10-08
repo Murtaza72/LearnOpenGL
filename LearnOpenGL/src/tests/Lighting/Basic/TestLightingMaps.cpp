@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestLightingMaps.h"
 
 namespace test {

@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestDepth.h"
 
 namespace test {

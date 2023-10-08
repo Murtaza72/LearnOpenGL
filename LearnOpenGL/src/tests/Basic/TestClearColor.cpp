@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestClearColor.h"
 
 namespace test {

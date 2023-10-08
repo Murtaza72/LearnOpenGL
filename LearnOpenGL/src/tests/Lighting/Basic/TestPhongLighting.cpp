@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestPhongLighting.h"
 
 namespace test {

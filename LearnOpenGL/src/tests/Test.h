@@ -1,16 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <functional>
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "imgui/imgui.h"
-#include "stb_image/stb_image.h"
-#include "glm/glm.hpp"
+#include "glpch.h"
 
 #include "Camera.h"
 #include "Shader.h"

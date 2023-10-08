@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestCubemap.h"
 
 namespace test {

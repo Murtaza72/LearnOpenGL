@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestModel.h"
 
 namespace test {

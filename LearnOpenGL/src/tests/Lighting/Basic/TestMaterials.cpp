@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestMaterials.h"
 
 namespace test {

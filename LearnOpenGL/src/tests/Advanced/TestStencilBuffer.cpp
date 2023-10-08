@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "TestStencilBuffer.h"
 
 namespace test {
