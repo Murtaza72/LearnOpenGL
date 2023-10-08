@@ -4,6 +4,7 @@
 
 #include "Camera.h"
 #include "Shader.h"
+#include "Model.h"
 
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;

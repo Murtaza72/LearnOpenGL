@@ -2,8 +2,6 @@
 
 #include "tests/Test.h"
 
-#include "Model.h"
-
 namespace  test {
 
 	class TestDepth : public Test
