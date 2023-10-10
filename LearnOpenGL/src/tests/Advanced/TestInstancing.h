@@ -14,7 +14,7 @@ namespace test {
 		void OnImGuiRender() override;
 
 	private:
-		Shader m_Shader;
+		Shader m_AsteroidShader, m_PlanetShader;
 		Model m_PlanetModel, m_AsteroidModel;
 		glm::mat4* m_ModelMatrices;
 		int m_Amount;

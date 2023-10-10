@@ -181,6 +181,8 @@
     <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
     <None Include="res\shaders\Advanced\instancing.fs.glsl" />
     <None Include="res\shaders\Advanced\instancing.vs.glsl" />
+    <None Include="res\shaders\Advanced\planet.fs.glsl" />
+    <None Include="res\shaders\Advanced\planet.vs.glsl" />
     <None Include="res\shaders\Advanced\skybox.fs.glsl" />
     <None Include="res\shaders\Advanced\skybox.vs.glsl" />
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />

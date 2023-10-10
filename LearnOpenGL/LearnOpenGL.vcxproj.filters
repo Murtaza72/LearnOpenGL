@@ -233,6 +233,8 @@
     <None Include="res\shaders\Advanced\instancing.vs.glsl" />
     <None Include="res\objects\asteroid\planet.mtl" />
     <None Include="res\objects\asteroid\rock.mtl" />
+    <None Include="res\shaders\Advanced\planet.fs.glsl" />
+    <None Include="res\shaders\Advanced\planet.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
