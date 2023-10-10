@@ -99,6 +99,9 @@
     <ClCompile Include="src\glpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -188,6 +191,9 @@
     <ClInclude Include="src\glpch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestInstancing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
@@ -223,6 +229,10 @@
     <None Include="res\shaders\Advanced\skybox.vs.glsl" />
     <None Include="res\shaders\Advanced\cubemap.fs.glsl" />
     <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
+    <None Include="res\shaders\Advanced\instancing.fs.glsl" />
+    <None Include="res\shaders\Advanced\instancing.vs.glsl" />
+    <None Include="res\objects\asteroid\planet.mtl" />
+    <None Include="res\objects\asteroid\rock.mtl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
@@ -264,5 +274,16 @@
     <Image Include="res\textures\skybox\top.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\objects\asteroid\mars.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\objects\asteroid\rock.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\objects\asteroid\rock.obj" />
+    <Image Include="res\objects\asteroid\planet.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
 </Project>
