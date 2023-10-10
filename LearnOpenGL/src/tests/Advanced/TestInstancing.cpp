@@ -6,55 +6,43 @@ namespace test {
 
 	TestInstancing::TestInstancing()
 		:
-		m_VAO(0),
-		m_VBO(0),
-		m_InstanceVBO(0),
-		m_Shader("res/shaders/Advanced/instancing.vs.glsl", "res/shaders/Advanced/instancing.fs.glsl")
+		m_Shader("res/shaders/Advanced/instancing.vs.glsl", "res/shaders/Advanced/instancing.fs.glsl"),
+		m_PlanetModel("res/objects/asteroid/planet.obj"),
+		m_AsteroidModel("res/objects/asteroid/rock.obj"),
+		m_ModelMatrices(0),
+		m_Amount(1000)
 	{
-		float quadVertices[] = {
-			// positions     // colors
-			-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
-			 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
-			-0.05f, -0.05f,  0.0f, 0.0f, 1.0f,
+		glEnable(GL_DEPTH_TEST);
 
-			-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
-			 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
-			 0.05f,  0.05f,  0.0f, 1.0f, 1.0f
-		};
+		m_ModelMatrices = new glm::mat4[m_Amount];
+		srand(glfwGetTime()); // initialize random seed	
+		float radius = 50.0;
+		float offset = 2.5f;
 
-		GLCall(glGenVertexArrays(1, &m_VAO));
-		GLCall(glBindVertexArray(m_VAO));
-
-		GLCall(glGenBuffers(1, &m_VBO));
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_VBO));
-		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW));
-
-		GLCall(glEnableVertexAttribArray(0));
-		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0));
-		GLCall(glEnableVertexAttribArray(1));
-		GLCall(glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(2 * sizeof(float))));
-
-		glm::vec2 translations[100];
-		int index = 0;
-		float offset = 0.1f;
-		for (int y = -10; y < 10; y += 2)
+		for (int i = 0; i < m_Amount; i++)
 		{
-			for (int x = -10; x < 10; x += 2)
-			{
-				glm::vec2 translation;
-				translation.x = (float)x / 10.0f + offset;
-				translation.y = (float)y / 10.0f + offset;
-				translations[index++] = translation;
-			}
+			glm::mat4 model = glm::mat4(1.0f);
+			// 1. translation: displace along circle with 'radius' in range [-offset, offset]
+			float angle = (float)i / (float)m_Amount * 360.0f;
+			float displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+			float x = sin(angle) * radius + displacement;
+			displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+			float y = displacement * 0.4f; // keep height of field smaller compared to width of x and z
+			displacement = (rand() % (int)(2 * offset * 100)) / 100.0f - offset;
+			float z = cos(angle) * radius + displacement;
+			model = glm::translate(model, glm::vec3(x, y, z));
+
+			// 2. scale: scale between 0.05 and 0.25f
+			float scale = (rand() % 20) / 100.0f + 0.05;
+			model = glm::scale(model, glm::vec3(scale));
+
+			// 3. rotation: add random rotation around a (semi)randomly picked rotation axis vector
+			float rotAngle = (rand() % 360);
+			model = glm::rotate(model, rotAngle, glm::vec3(0.4f, 0.6f, 0.8f));
+
+			// 4. now add to list of matrices
+			m_ModelMatrices[i] = model;
 		}
-
-		GLCall(glGenBuffers(1, &m_InstanceVBO));
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_InstanceVBO));
-		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 100, translations, GL_STATIC_DRAW));
-
-		GLCall(glEnableVertexAttribArray(2));
-		GLCall(glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
-		GLCall(glVertexAttribDivisor(2, 1));
 	}
 
 	TestInstancing::~TestInstancing()
@@ -64,8 +52,23 @@ namespace test {
 	void TestInstancing::OnRender(Camera camera)
 	{
 		m_Shader.use();
-		GLCall(glBindVertexArray(m_VAO));
-		GLCall(glDrawArraysInstanced(GL_TRIANGLES, 0, 6, 100));
+
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 1000.0f);
+		glm::mat4 view = camera.GetViewMatrix();;
+		m_Shader.setMat4("projection", projection);
+		m_Shader.setMat4("view", view);
+
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -3.0f, -30.0f));
+		model = glm::scale(model, glm::vec3(4.0f));
+		m_Shader.setMat4("model", model);
+		m_PlanetModel.Draw(m_Shader);
+
+		for (int i = 0; i < m_Amount; i++)
+		{
+			m_Shader.setMat4("model", m_ModelMatrices[i]);
+			m_AsteroidModel.Draw(m_Shader);
+		}
 	}
 
 	void TestInstancing::OnImGuiRender()

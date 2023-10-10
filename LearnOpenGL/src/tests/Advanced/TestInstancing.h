@@ -14,8 +14,10 @@ namespace test {
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_VAO, m_VBO, m_InstanceVBO;
 		Shader m_Shader;
+		Model m_PlanetModel, m_AsteroidModel;
+		glm::mat4* m_ModelMatrices;
+		int m_Amount;
 	};
 }
 
