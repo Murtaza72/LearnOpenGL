@@ -18,6 +18,7 @@
 #include "tests/Advanced/TestFrameBuffers.h"
 #include "tests/Advanced/TestCubemap.h"
 #include "tests/Advanced/TestInstancing.h"
+#include "tests/Advanced/TestAntiAliasing.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -47,6 +48,9 @@ int main(void)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	// For MSAA
+	glfwWindowHint(GLFW_SAMPLES, 4);
 
 	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
@@ -79,6 +83,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestAntiAliasing>("Anti Aliasing");
 	testMenu->RegisterTest<test::TestInstancing>("Instancing");
 	testMenu->RegisterTest<test::TestCubemap>("Skybox");
 	testMenu->RegisterTest<test::TestFrameBuffers>("Frame Buffers");
