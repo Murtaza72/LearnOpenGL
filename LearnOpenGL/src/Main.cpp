@@ -2,11 +2,23 @@
 
 #include "tests/Test.h"
 
+#include "tests/Basic/TestClearColor.h"
+#include "tests/Basic/TestTriangle.h"
+#include "tests/Basic/TestTextures.h"
+#include "tests/Basic/TestModel.h"
+
 #include "tests/Lighting/Basic/TestPhongLighting.h"
 #include "tests/Lighting/Basic/TestMaterials.h"
 #include "tests/Lighting/Basic/TestLightingMaps.h"
 #include "tests/Lighting/Basic/TestLightCasters.h"
 #include "tests/Lighting/Basic/TestMultipleLights.h"
+
+#include "tests/Advanced/TestDepth.h"
+#include "tests/Advanced/TestStencilBuffer.h"
+#include "tests/Advanced/TestFrameBuffers.h"
+#include "tests/Advanced/TestCubemap.h"
+#include "tests/Advanced/TestInstancing.h"
+#include "tests/Advanced/TestAntiAliasing.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -71,11 +83,22 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestAntiAliasing>("Anti Aliasing");
+	testMenu->RegisterTest<test::TestInstancing>("Instancing");
+	testMenu->RegisterTest<test::TestCubemap>("Skybox");
+	testMenu->RegisterTest<test::TestFrameBuffers>("Frame Buffers");
+	testMenu->RegisterTest<test::TestStencilBuffer>("Stencil Test");
+	testMenu->RegisterTest<test::TestDepth>("Depth Test");
+	testMenu->RegisterTest<test::TestModel>("Backpack Model");
+
 	//testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
 	//testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
 	//testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
 	//testMenu->RegisterTest<test::TestMaterials>("Materials");
 	//testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
+	//testMenu->RegisterTest<test::TestTextures>("Textures");
+	//testMenu->RegisterTest<test::TestTriangle>("Triangle");
+	//testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 
 	while (!glfwWindowShouldClose(window))
 	{
