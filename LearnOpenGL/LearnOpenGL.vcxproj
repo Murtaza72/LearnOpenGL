@@ -93,23 +93,13 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
-    <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightCasters.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightingMaps.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestMaterials.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
-    <ClCompile Include="src\tests\Basic\TestModel.cpp" />
     <ClCompile Include="src\Utils.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -149,23 +139,13 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
-    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
-    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
-    <ClInclude Include="src\tests\Basic\TestClearColor.h" />
-    <ClInclude Include="src\tests\Basic\TestTextures.h" />
-    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightCasters.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightingMaps.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestMaterials.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
-    <ClInclude Include="src\tests\Basic\TestModel.h" />
     <ClInclude Include="src\Utils.h" />
-    <ClInclude Include="src\tests\Advanced\TestDepth.h" />
-    <ClInclude Include="src\tests\Advanced\TestInstancing.h" />
-    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h" />
     <ClInclude Include="vendor\imgui\imconfig.h" />
     <ClInclude Include="vendor\imgui\imgui.h" />
     <ClInclude Include="vendor\imgui\imgui_impl_glfw.h" />
@@ -177,27 +157,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\objects\asteroid\planet.mtl" />
-    <None Include="res\objects\asteroid\rock.mtl" />
-    <None Include="res\shaders\Advanced\anti_aliasing.fs.glsl" />
-    <None Include="res\shaders\Advanced\anti_aliasing.vs.glsl" />
-    <None Include="res\shaders\Advanced\cubemap.fs.glsl" />
-    <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
-    <None Include="res\shaders\Advanced\instancing.fs.glsl" />
-    <None Include="res\shaders\Advanced\instancing.vs.glsl" />
-    <None Include="res\shaders\Advanced\planet.fs.glsl" />
-    <None Include="res\shaders\Advanced\planet.vs.glsl" />
-    <None Include="res\shaders\Advanced\skybox.fs.glsl" />
-    <None Include="res\shaders\Advanced\skybox.vs.glsl" />
-    <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
-    <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer.fs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer.vs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer_screen.fs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer_screen.vs.glsl" />
-    <None Include="res\shaders\Advanced\outline_color.fs.glsl" />
-    <None Include="res\shaders\Advanced\stencil_test.fs.glsl" />
-    <None Include="res\shaders\Advanced\stencil_test.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\light_casters.fs.glsl" />
@@ -212,16 +171,10 @@
     <None Include="res\shaders\Lighting\Basic\multiple_lights_cube.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\phong_colors.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\phong_colors.vs.glsl" />
-    <None Include="res\shaders\Basic\shader.fs.glsl" />
-    <None Include="res\shaders\Basic\shader.vs.glsl" />
-    <None Include="res\shaders\Basic\texture.fs.glsl" />
-    <None Include="res\shaders\Basic\texture.vs.glsl" />
     <None Include="res\shaders\model\model_loading.fs.glsl" />
     <None Include="res\shaders\model\model_loading.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\objects\asteroid\mars.png" />
-    <Image Include="res\objects\asteroid\rock.png" />
     <Image Include="res\textures\container.png" />
     <Image Include="res\textures\container_specular.png" />
     <Image Include="res\textures\emission_map.png" />
@@ -235,17 +188,6 @@
     <Image Include="res\textures\skybox\left.jpg" />
     <Image Include="res\textures\skybox\right.jpg" />
     <Image Include="res\textures\skybox\top.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\objects\asteroid\planet.obj">
-      <FileType>Document</FileType>
-    </Image>
-    <Image Include="res\objects\asteroid\rock.obj">
-      <FileType>Document</FileType>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
