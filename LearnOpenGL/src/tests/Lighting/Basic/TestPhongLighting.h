@@ -22,5 +22,6 @@ namespace test {
 		glm::vec3 m_ObjectColor;
 		glm::vec3 m_LightColor;
 		int m_RotateCube;
+		int m_Shininess;
 	};
 }

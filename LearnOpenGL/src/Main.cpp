@@ -71,11 +71,11 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	//testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
-	//testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
-	//testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
-	//testMenu->RegisterTest<test::TestMaterials>("Materials");
-	//testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
+	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
+	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
+	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
+	testMenu->RegisterTest<test::TestMaterials>("Materials");
+	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 
 	while (!glfwWindowShouldClose(window))
 	{
