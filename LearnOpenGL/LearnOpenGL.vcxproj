@@ -101,6 +101,7 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -148,6 +149,7 @@
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestBlinnPhong.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h" />
     <ClInclude Include="vendor\imgui\imconfig.h" />
     <ClInclude Include="vendor\imgui\imgui.h" />
     <ClInclude Include="vendor\imgui\imgui_impl_glfw.h" />
@@ -161,6 +163,10 @@
   <ItemGroup>
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\depth.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\depth.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\light_casters.fs.glsl" />
@@ -192,6 +198,7 @@
     <Image Include="res\textures\skybox\left.jpg" />
     <Image Include="res\textures\skybox\right.jpg" />
     <Image Include="res\textures\skybox\top.jpg" />
+    <Image Include="res\textures\wood.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

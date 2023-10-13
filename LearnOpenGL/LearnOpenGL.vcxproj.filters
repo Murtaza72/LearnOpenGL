@@ -48,15 +48,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Basic\TestClearColor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\Basic\TestTextures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\Basic\TestTriangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Basic\TestLightCasters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,13 +63,7 @@
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestDepth.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\Basic\TestModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils.cpp">
@@ -87,22 +72,13 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\glpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp">
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp">
+    <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,15 +122,6 @@
     <ClInclude Include="src\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Basic\TestClearColor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\Basic\TestTextures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\Basic\TestTriangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\tests\Lighting\Basic\TestLightCasters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -170,40 +137,23 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestDepth.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Basic\TestModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestCubemap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\glpch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestInstancing.h">
+    <ClInclude Include="src\tests\Lighting\Advanced\TestBlinnPhong.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h">
+    <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Advanced\depth_test.fs.glsl" />
-    <None Include="res\shaders\Advanced\depth_test.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\lighting_maps.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\light_casters.fs.glsl" />
@@ -218,31 +168,14 @@
     <None Include="res\shaders\Lighting\Basic\multiple_lights_cube.vs.glsl" />
     <None Include="res\shaders\Lighting\Basic\phong_colors.fs.glsl" />
     <None Include="res\shaders\Lighting\Basic\phong_colors.vs.glsl" />
-    <None Include="res\shaders\Basic\shader.fs.glsl" />
-    <None Include="res\shaders\Basic\shader.vs.glsl" />
-    <None Include="res\shaders\Basic\texture.fs.glsl" />
-    <None Include="res\shaders\Basic\texture.vs.glsl" />
     <None Include="res\shaders\model\model_loading.fs.glsl" />
     <None Include="res\shaders\model\model_loading.vs.glsl" />
-    <None Include="res\shaders\Advanced\stencil_test.fs.glsl" />
-    <None Include="res\shaders\Advanced\stencil_test.vs.glsl" />
-    <None Include="res\shaders\Advanced\outline_color.fs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer.fs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer.vs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer_screen.vs.glsl" />
-    <None Include="res\shaders\Advanced\framebuffer_screen.fs.glsl" />
-    <None Include="res\shaders\Advanced\skybox.fs.glsl" />
-    <None Include="res\shaders\Advanced\skybox.vs.glsl" />
-    <None Include="res\shaders\Advanced\cubemap.fs.glsl" />
-    <None Include="res\shaders\Advanced\cubemap.vs.glsl" />
-    <None Include="res\shaders\Advanced\instancing.fs.glsl" />
-    <None Include="res\shaders\Advanced\instancing.vs.glsl" />
-    <None Include="res\objects\asteroid\planet.mtl" />
-    <None Include="res\objects\asteroid\rock.mtl" />
-    <None Include="res\shaders\Advanced\planet.fs.glsl" />
-    <None Include="res\shaders\Advanced\planet.vs.glsl" />
-    <None Include="res\shaders\Advanced\anti_aliasing.fs.glsl" />
-    <None Include="res\shaders\Advanced\anti_aliasing.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\blinn_phong.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\blinn_phong.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\depth.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\depth.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
@@ -284,16 +217,8 @@
     <Image Include="res\textures\skybox\top.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\objects\asteroid\mars.png">
+    <Image Include="res\textures\wood.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\objects\asteroid\rock.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\objects\asteroid\rock.obj" />
-    <Image Include="res\objects\asteroid\planet.obj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
 </Project>
