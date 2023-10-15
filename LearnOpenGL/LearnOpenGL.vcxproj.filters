@@ -81,6 +81,9 @@
     <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestPointShadows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -152,6 +155,9 @@
     <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestPointShadows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
@@ -176,6 +182,11 @@
     <None Include="res\shaders\Lighting\Advanced\shadow mapping\depth.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\shadow mapping\shadow.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\point shadows\depth.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\point shadows\depth.gs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\point shadows\depth.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\point shadows\shadow.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\point shadows\shadow.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">

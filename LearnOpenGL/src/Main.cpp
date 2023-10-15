@@ -10,6 +10,7 @@
 
 #include "tests/Lighting/Advanced/TestBlinnPhong.h"
 #include "tests/Lighting/Advanced/TestShadowMapping.h"
+#include "tests/Lighting/Advanced/TestPointShadows.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -74,6 +75,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestPointShadows>("Point Shadows");
 	testMenu->RegisterTest<test::TestShadowMapping>("Shadow Mapping");
 	testMenu->RegisterTest<test::TestBlinnPhong>("Blinn-Phong");
 

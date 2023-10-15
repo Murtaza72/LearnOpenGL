@@ -83,7 +83,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	GLCall(glAttachShader(ID, vertex));
 	GLCall(glAttachShader(ID, fragment));
 	if (geometryPath != nullptr)
+	{
 		GLCall(glAttachShader(ID, geometry));
+	}
 	GLCall(glLinkProgram(ID));
 	checkCompileErrors(ID, "PROGRAM");
 
@@ -91,7 +93,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	GLCall(glDeleteShader(vertex));
 	GLCall(glDeleteShader(fragment));
 	if (geometryPath != nullptr)
+	{
 		GLCall(glDeleteShader(geometry));
+	}
 
 }
 
