@@ -323,3 +323,44 @@ void RenderCube()
 	GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 	GLCall(glBindVertexArray(0));
 }
+
+void DisplayFramebufferTexture(unsigned int textureID)
+{
+	Shader fboShader("res/shaders/Debug/frame_debug.vs.glsl", "res/shaders/Debug/frame_debug.fs.glsl");
+
+	float vertices[] = {
+		// pos		 // texcords
+		0.5f,  0.9f,  0.0f, 1.0f,
+		0.5f,  0.5f,  0.0f, 0.0f,
+		0.95f, 0.5f,  1.0f, 0.0f,
+
+		0.5f,  0.9f,  0.0f, 1.0f,
+		0.95f, 0.5f,  1.0f, 0.0f,
+		0.95f, 0.9f,  1.0f, 1.0f
+	};
+
+	unsigned int quadVAO, quadVBO;
+
+	GLCall(glGenVertexArrays(1, &quadVAO));
+	GLCall(glBindVertexArray(quadVAO));
+
+	GLCall(glGenBuffers(1, &quadVBO));
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, quadVBO));
+	GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW));
+
+	GLCall(glEnableVertexAttribArray(0));
+	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0));
+	GLCall(glEnableVertexAttribArray(1));
+	GLCall(glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float))));
+
+	fboShader.use();
+
+	GLCall(glActiveTexture(GL_TEXTURE0));
+	GLCall(glBindTexture(GL_TEXTURE_2D, textureID));
+	GLCall(glBindVertexArray(quadVAO));
+
+	GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));
+
+	GLCall(glBindVertexArray(0));
+	GLCall(glUseProgram(0));
+}
