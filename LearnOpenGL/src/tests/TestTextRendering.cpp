@@ -11,6 +11,7 @@ namespace test {
 		:
 		m_VAO(0),
 		m_VBO(0),
+		m_Transfrom(glm::mat4(1.0f)),
 		m_Shader("res/shaders/Text/text_rendering.vs.glsl", "res/shaders/Text/text_rendering.fs.glsl")
 	{
 		glEnable(GL_BLEND);
@@ -83,15 +84,22 @@ namespace test {
 		FT_Done_Face(face);
 		FT_Done_FreeType(ft);
 
+		float vertex[] = {
+			0.0f, 1.0f,
+			0.0f, 0.0f,
+			1.0f, 1.0f,
+			1.0f, 0.0f
+		};
+
 		glGenVertexArrays(1, &m_VAO);
 		glBindVertexArray(m_VAO);
 
 		glGenBuffers(1, &m_VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
 		for (int i = 0; i < 30; i++)
 		{
@@ -116,9 +124,7 @@ namespace test {
 
 	void TestTextRendering::OnImGuiRender()
 	{
-
 	}
-
 
 	void TestTextRendering::RenderText(Shader& s, std::string text, float x, float y, float scale, glm::vec3 color)
 	{
@@ -149,34 +155,25 @@ namespace test {
 				float xpos = x + ch.bearing.x * scale;
 				float ypos = y - (ch.size.y - ch.bearing.y) * scale;
 
-				float w = ch.size.x * scale;
-				float h = ch.size.y * scale;
-
-				// update VBO for each character
-				float vertices[6][4] = {
-					{ xpos,     ypos + h,   0.0f, 0.0f },
-					{ xpos,     ypos,       0.0f, 1.0f },
-					{ xpos + w, ypos,       1.0f, 1.0f },
-
-					{ xpos,     ypos + h,   0.0f, 0.0f },
-					{ xpos + w, ypos,       1.0f, 1.0f },
-					{ xpos + w, ypos + h,   1.0f, 0.0f }
-				};
+				m_Transfrom = glm::translate(glm::mat4(1.0f), glm::vec3(xpos, ypos, 0.0f));
+				m_Transfrom = glm::scale(m_Transfrom, glm::vec3(ch.size.x * scale, ch.size.y * scale, 0.0f));
+				s.setMat4("transform", m_Transfrom);
 
 				// render glyph texture over quad
 				glBindTexture(GL_TEXTURE_2D, ch.textureID);
+
 				// update content of VBO memory
 				glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-				glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-				glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 				// render quad
-				glDrawArrays(GL_TRIANGLES, 0, 6);
+				glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 				// now advance cursors for next glyph (note that advance is number of 1/64 pixels)
 
 				x += (ch.advance / 64) * scale;
 			}
 		}
 
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}

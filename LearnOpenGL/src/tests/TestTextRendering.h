@@ -29,5 +29,6 @@ namespace test {
 		std::map<char, Character> m_Characters;
 		Shader m_Shader;
 		std::string m_Text;
+		glm::mat4 m_Transfrom;
 	};
 }
