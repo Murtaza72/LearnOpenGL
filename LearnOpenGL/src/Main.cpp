@@ -12,6 +12,8 @@
 #include "tests/Lighting/Advanced/TestShadowMapping.h"
 #include "tests/Lighting/Advanced/TestPointShadows.h"
 
+#include "tests/TestTextRendering.h"
+
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -74,6 +76,8 @@ int main(void)
 	test::Test* currentTest = nullptr;
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
+
+	testMenu->RegisterTest<test::TestTextRendering>("Text");
 
 	testMenu->RegisterTest<test::TestPointShadows>("Point Shadows");
 	testMenu->RegisterTest<test::TestShadowMapping>("Shadow Mapping");
