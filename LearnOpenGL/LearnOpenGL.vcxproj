@@ -103,7 +103,7 @@
     <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
-    <ClCompile Include="src\tests\TestTextRendering.cpp">
+    <ClCompile Include="src\TextRenderer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -214,7 +214,7 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
-    <ClInclude Include="src\tests\TestTextRendering.h">
+    <ClInclude Include="src\TextRenderer.h">
       <SubType>
       </SubType>
     </ClInclude>

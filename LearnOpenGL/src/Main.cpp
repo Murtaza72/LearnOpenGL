@@ -12,7 +12,7 @@
 #include "tests/Lighting/Advanced/TestShadowMapping.h"
 #include "tests/Lighting/Advanced/TestPointShadows.h"
 
-#include "tests/TestTextRendering.h"
+#include "TextRenderer.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -77,8 +77,6 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	testMenu->RegisterTest<test::TestTextRendering>("Text");
-
 	testMenu->RegisterTest<test::TestPointShadows>("Point Shadows");
 	testMenu->RegisterTest<test::TestShadowMapping>("Shadow Mapping");
 	testMenu->RegisterTest<test::TestBlinnPhong>("Blinn-Phong");
@@ -103,6 +101,10 @@ int main(void)
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
+
+		TextRenderer textRenderer;
+		textRenderer.Load("res/fonts/arial.ttf", 48);
+		textRenderer.RenderText("Murtaza Tuta", 0.0f, 100.0f, 1.0f, glm::vec3(0.5f, 0.3f, 0.9f));
 
 		if (currentTest)
 		{
