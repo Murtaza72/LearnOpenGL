@@ -324,9 +324,9 @@ void RenderCube()
 	GLCall(glBindVertexArray(0));
 }
 
-void DisplayFramebufferTexture(unsigned int textureID)
+void DisplayFramebufferTexture(unsigned int textureID, int type)
 {
-	Shader fboShader("res/shaders/Debug/frame_debug.vs.glsl", "res/shaders/Debug/frame_debug.fs.glsl");
+	Shader fboShader("res/shaders/frame_debug/frame_debug.vs.glsl", "res/shaders/frame_debug/frame_debug.fs.glsl");
 
 	float vertices[] = {
 		// pos		 // texcords
@@ -356,7 +356,7 @@ void DisplayFramebufferTexture(unsigned int textureID)
 	fboShader.use();
 
 	GLCall(glActiveTexture(GL_TEXTURE0));
-	GLCall(glBindTexture(GL_TEXTURE_2D, textureID));
+	GLCall(glBindTexture(type, textureID));
 	GLCall(glBindVertexArray(quadVAO));
 
 	GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));

@@ -20,4 +20,4 @@ void RenderScene(const Shader& shader);
 void RenderPlane();
 void RenderCube();
 
-void DisplayFramebufferTexture(unsigned int textureID);
+void DisplayFramebufferTexture(unsigned int textureID, int type = GL_TEXTURE_2D);

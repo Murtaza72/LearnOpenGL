@@ -87,6 +87,9 @@
     <ClCompile Include="src\TextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestNormalMapping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -329,6 +332,9 @@
     <ClInclude Include="src\TextRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestNormalMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
@@ -363,6 +369,8 @@
     <None Include="res\shaders\frame_debug\frame_debug.vs.glsl" />
     <None Include="res\shaders\Text\text_rendering.fs.glsl" />
     <None Include="res\shaders\Text\text_rendering.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\normal_mapping.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\normal_mapping.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
