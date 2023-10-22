@@ -4,20 +4,20 @@
 #include "Utils.h"
 
 Texture::Texture(std::string name)
-	: m_Name(name), m_TexType(aiTextureType_NONE), m_Id(0)
+	: m_Name(name), m_TexType(aiTextureType_NONE), Id(0)
 {
-	GLCall(glGenTextures(1, &m_Id));
+	GLCall(glGenTextures(1, &Id));
 }
 
 Texture::Texture(const char* path, aiTextureType texType)
-	: m_Path(path), m_TexType(texType), m_Id(0)
+	: m_Path(path), m_TexType(texType), Id(0)
 {
-	GLCall(glGenTextures(1, &m_Id));
+	GLCall(glGenTextures(1, &Id));
 }
 
 Texture::~Texture()
 {
-	GLCall(glDeleteTextures(1, &m_Id));
+	GLCall(glDeleteTextures(1, &Id));
 }
 
 // used with textures for framebuffers
@@ -50,7 +50,7 @@ void Texture::Load(bool flip)
 		else if (nrComponents == 4)
 			format = GL_RGBA;
 
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_Id));
+		GLCall(glBindTexture(GL_TEXTURE_2D, Id));
 		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data));
 		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
@@ -70,5 +70,5 @@ void Texture::Load(bool flip)
 
 void Texture::Bind()
 {
-	GLCall(glBindTexture(GL_TEXTURE_2D, m_Id));
+	GLCall(glBindTexture(GL_TEXTURE_2D, Id));
 }

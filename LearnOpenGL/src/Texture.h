@@ -5,7 +5,7 @@
 class Texture
 {
 public:
-	unsigned int m_Id;
+	unsigned int Id;
 
 public:
 	Texture(std::string name);

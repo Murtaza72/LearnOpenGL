@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Framebuffer.cpp" />
     <ClCompile Include="src\glpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -107,7 +108,6 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
     <ClCompile Include="src\tests\Basic\TestModel.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
     <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
@@ -145,6 +145,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Framebuffer.h" />
     <ClInclude Include="src\glpch.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Camera.h" />
@@ -163,7 +164,6 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\Basic\TestModel.h" />
-    <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="src\tests\Advanced\TestDepth.h" />
     <ClInclude Include="src\tests\Advanced\TestInstancing.h" />
