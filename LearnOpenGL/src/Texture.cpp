@@ -4,18 +4,18 @@
 #include "Utils.h"
 
 Texture::Texture(std::string name)
-	: m_Name(name), m_TexType(aiTextureType_NONE), Id(0)
+	: name(name), texType(aiTextureType_NONE), Id(0)
 {
 	GLCall(glGenTextures(1, &Id));
 }
 
-Texture::Texture(const char* path, aiTextureType texType)
-	: m_Path(path), m_TexType(texType), Id(0)
+Texture::Texture(std::string dir, std::string path, aiTextureType texType)
+	: directory(dir), path(path), texType(texType), Id(0)
 {
 	GLCall(glGenTextures(1, &Id));
 }
 
-Texture::~Texture()
+void Texture::Destroy()
 {
 	GLCall(glDeleteTextures(1, &Id));
 }
@@ -38,8 +38,11 @@ void Texture::Load(bool flip)
 {
 	stbi_set_flip_vertically_on_load(flip);
 
+	std::string filename = std::string(path);
+	filename = directory + '/' + filename;
+
 	int width, height, nrComponents;
-	unsigned char* data = stbi_load(m_Path, &width, &height, &nrComponents, 0);
+	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
 	if (data)
 	{
 		GLenum format = 0;
@@ -62,7 +65,7 @@ void Texture::Load(bool flip)
 	}
 	else
 	{
-		std::cout << "Texture failed to load at path: " << m_Path << std::endl;
+		std::cout << "Texture failed to load at path: " << path << std::endl;
 	}
 
 	stbi_image_free(data);

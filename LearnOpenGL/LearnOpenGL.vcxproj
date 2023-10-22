@@ -108,6 +108,7 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
     <ClCompile Include="src\tests\Basic\TestModel.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
     <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\Basic\TestModel.h" />
+    <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="src\tests\Advanced\TestDepth.h" />
     <ClInclude Include="src\tests\Advanced\TestInstancing.h" />

@@ -21,6 +21,7 @@ public:
 	{
 		LoadModel(path);
 	}
+	void Destroy();
 
 	void Draw(Shader& shader)
 	{

@@ -19,7 +19,7 @@ namespace test {
 
 	TestModel::~TestModel()
 	{
-
+		m_Model.Destroy();
 	}
 
 	void TestModel::OnRender(Camera camera)

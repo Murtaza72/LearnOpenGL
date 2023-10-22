@@ -6,11 +6,15 @@ class Texture
 {
 public:
 	unsigned int Id;
+	aiTextureType texType;
+	std::string name;
+	std::string directory;  // required in model
+	std::string path;
 
 public:
 	Texture(std::string name);
-	Texture(const char* path, aiTextureType type);
-	~Texture();
+	Texture(std::string dir, std::string path, aiTextureType texType);
+	void Destroy();
 
 	void Allocate(GLenum format, GLuint width, GLuint height, GLenum type);
 	void Load(bool flip = true);
@@ -20,10 +24,4 @@ public:
 				   GLenum wrapT = GL_REPEAT);
 
 	void Bind();
-
-private:
-	// texture type
-	aiTextureType m_TexType;
-	std::string m_Name;
-	const char* m_Path;
 };
