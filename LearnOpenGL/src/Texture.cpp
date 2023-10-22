@@ -1,35 +1,42 @@
 #include "glpch.h"
 
 #include "Texture.h"
+#include "Utils.h"
 
-Texture::Texture(std::string m_Name)
-	: m_Name(m_Name), m_TexType(aiTextureType_NONE), m_Id(0)
+Texture::Texture(std::string name)
+	: m_Name(name), m_TexType(aiTextureType_NONE), m_Id(0)
 {
+	GLCall(glGenTextures(1, &m_Id));
 }
 
 Texture::Texture(const char* path, aiTextureType texType)
 	: m_Path(path), m_TexType(texType), m_Id(0)
 {
+	GLCall(glGenTextures(1, &m_Id));
 }
 
 Texture::~Texture()
 {
-	glDeleteTextures(1, &m_Id);
+	GLCall(glDeleteTextures(1, &m_Id));
+}
+
+// used with textures for framebuffers
+void Texture::Allocate(GLenum format, GLuint width, GLuint height, GLenum type)
+{
+	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, nullptr));
 }
 
 void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, GLenum wrapT)
 {
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texMinFilter);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texMagFilter);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapS);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT);
+	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texMinFilter));
+	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texMagFilter));
+	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapS));
+	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT));
 }
 
 void Texture::Load(bool flip)
 {
 	stbi_set_flip_vertically_on_load(flip);
-
-	glGenTextures(1, &m_Id);
 
 	int width, height, nrComponents;
 	unsigned char* data = stbi_load(m_Path, &width, &height, &nrComponents, 0);
@@ -43,14 +50,14 @@ void Texture::Load(bool flip)
 		else if (nrComponents == 4)
 			format = GL_RGBA;
 
-		glBindTexture(GL_TEXTURE_2D, m_Id);
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_Id));
+		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data));
+		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
+		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
+		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR));
+		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
 
 	}
 	else
@@ -63,5 +70,5 @@ void Texture::Load(bool flip)
 
 void Texture::Bind()
 {
-	glBindTexture(GL_TEXTURE_2D, m_Id);
+	GLCall(glBindTexture(GL_TEXTURE_2D, m_Id));
 }

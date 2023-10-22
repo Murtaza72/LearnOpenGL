@@ -12,8 +12,8 @@ public:
 	Texture(const char* path, aiTextureType type);
 	~Texture();
 
+	void Allocate(GLenum format, GLuint width, GLuint height, GLenum type);
 	void Load(bool flip = true);
-
 	void SetParams(GLenum texMinFilter = GL_NEAREST,
 				   GLenum texMagFilter = GL_NEAREST,
 				   GLenum wrapS = GL_REPEAT,
