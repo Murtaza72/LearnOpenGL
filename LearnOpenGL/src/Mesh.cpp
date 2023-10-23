@@ -11,6 +11,18 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std:
 	SetupMesh();
 }
 
+void Mesh::Destroy()
+{
+	GLCall(glDeleteVertexArrays(1, &VAO));
+	GLCall(glDeleteBuffers(1, &VBO));
+	GLCall(glDeleteBuffers(1, &EBO));
+
+	for (int i = 0, len = textures.size(); i < len; i++)
+	{
+		textures[i].Destroy();
+	}
+}
+
 void Mesh::Draw(Shader& shader)
 {
 	unsigned int diffuseNr = 1;
@@ -20,27 +32,32 @@ void Mesh::Draw(Shader& shader)
 
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
-		GLCall(glActiveTexture(GL_TEXTURE0 + i)); // active proper texture unit before binding
-		// retrieve texture number (the N in diffuse_textureN)
-		std::string number;
-		std::string name = textures[i].type;
+		// activate texture
+		glActiveTexture(GL_TEXTURE0 + i);
 
-		if (name == "texture_diffuse")
-			number = std::to_string(diffuseNr++);
+		// retrieve texture info
+		std::string name;
+		switch (textures[i].texType)
+		{
+			case aiTextureType_DIFFUSE:
+				name = "texture_diffuse" + std::to_string(diffuseNr++);
+				break;
+			case aiTextureType_NORMALS:
+				name = "texture_normal" + std::to_string(normalNr++);
+				shader.setBool("noNormalMap", false);
+				break;
+			case aiTextureType_SPECULAR:
+				name = "texture_specular" + std::to_string(specularNr++);
+				break;
+			default:
+				name = textures[i].name;
+				break;
+		}
 
-		else if (name == "texture_specular")
-			number = std::to_string(specularNr++);
-
-		else if (name == "texture_normal")
-			number = std::to_string(normalNr++);
-
-		else if (name == "texture_height")
-			number = std::to_string(heightNr++);
-
-		// now set the sampler to the correct texture unit
-		GLCall(glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i));
-		// and finally bind the texture
-		GLCall(glBindTexture(GL_TEXTURE_2D, textures[i].id));
+		// set the shader value
+		shader.setInt(name, i);
+		// bind texture
+		textures[i].Bind();
 	}
 
 	// draw mesh

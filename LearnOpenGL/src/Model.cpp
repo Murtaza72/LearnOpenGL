@@ -134,19 +134,31 @@ std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* mat, aiTextureType 
 			if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
 			{
 				textures.push_back(textures_loaded[j]);
-				skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+				skip = true;
 				break;
 			}
 		}
 		if (!skip)
-		{   // if texture hasn't been loaded already, load it
-			Texture texture;
-			texture.id = TextureFromFile(str.C_Str(), this->directory);
-			texture.type = typeName;
-			texture.path = str.C_Str();
-			textures.push_back(texture);
-			textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecessary load duplicate textures.
+		{
+			// if texture hasn't been loaded already, load it
+			Texture tex(directory, str.C_Str(), type);
+			tex.Load(false);
+			textures.push_back(tex);
+			textures_loaded.push_back(tex);
 		}
 	}
 	return textures;
+}
+
+void Model::Destroy()
+{
+	for (int i = 0, len = textures_loaded.size(); i < len; i++)
+	{
+		textures_loaded[i].Destroy();
+	}
+
+	for (int i = 0, len = meshes.size(); i < len; i++)
+	{
+		meshes[i].Destroy();
+	}
 }
