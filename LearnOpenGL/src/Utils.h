@@ -21,3 +21,5 @@ void RenderPlane();
 void RenderCube();
 
 void DisplayFramebufferTexture(unsigned int textureID, int type = GL_TEXTURE_2D);
+
+unsigned int GenerateTangents();

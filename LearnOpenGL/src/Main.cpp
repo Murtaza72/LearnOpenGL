@@ -12,6 +12,7 @@
 #include "tests/Lighting/Advanced/TestShadowMapping.h"
 #include "tests/Lighting/Advanced/TestPointShadows.h"
 #include "tests/Lighting/Advanced/TestNormalMapping.h"
+#include "tests/Lighting/Advanced/TestParallaxMapping.h"
 
 #include "TextRenderer.h"
 
@@ -78,6 +79,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestParallaxMapping>("Parallax Mapping");
 	testMenu->RegisterTest<test::TestNormalMapping>("Normal Mapping");
 	testMenu->RegisterTest<test::TestPointShadows>("Point Shadows");
 	testMenu->RegisterTest<test::TestShadowMapping>("Shadow Mapping");
