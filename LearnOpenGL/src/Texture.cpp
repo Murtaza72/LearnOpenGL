@@ -21,9 +21,9 @@ void Texture::Destroy()
 }
 
 // used with textures for framebuffers
-void Texture::Allocate(GLenum format, GLuint width, GLuint height, GLenum type)
+void Texture::Allocate(GLenum format, GLuint width, GLuint height, GLenum type, const void* data)
 {
-	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, nullptr));
+	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, data));
 }
 
 void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, GLenum wrapT)
@@ -34,7 +34,7 @@ void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, 
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT));
 }
 
-void Texture::Load(bool flip)
+void Texture::Load(GLint internalFormat, bool flip)
 {
 	stbi_set_flip_vertically_on_load(flip);
 
@@ -54,7 +54,7 @@ void Texture::Load(bool flip)
 			format = GL_RGBA;
 
 		GLCall(glBindTexture(GL_TEXTURE_2D, Id));
-		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data));
+		Allocate(format, width, height, GL_UNSIGNED_BYTE, data);
 		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
 		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));

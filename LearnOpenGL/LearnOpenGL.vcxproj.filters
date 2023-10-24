@@ -90,6 +90,18 @@
     <ClCompile Include="src\tests\Lighting\Advanced\TestNormalMapping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Framebuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestParallaxMapping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -335,6 +347,18 @@
     <ClInclude Include="src\tests\Lighting\Advanced\TestNormalMapping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Framebuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestParallaxMapping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
@@ -371,6 +395,12 @@
     <None Include="res\shaders\Text\text_rendering.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\normal_mapping.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\normal_mapping.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\parallax_mapping.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\parallax_mapping.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\hdr.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\hdr.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\quad.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\quad.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
@@ -413,6 +443,21 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\wood.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\bricks.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\bricks_disp.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\bricks_normal.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\brickwall_diffuse.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\brickwall_normal.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

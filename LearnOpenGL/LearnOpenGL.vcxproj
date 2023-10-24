@@ -94,6 +94,10 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestNormalMapping.cpp">
       <SubType>
       </SubType>
@@ -215,6 +219,10 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestNormalMapping.h">
       <SubType>
       </SubType>
@@ -257,6 +265,10 @@
     <None Include="res\shaders\frame_debug\frame_debug.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\hdr.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\hdr.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\quad.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\hdr\quad.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\normal_mapping.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\normal_mapping.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\parallax_mapping.fs.glsl" />

@@ -19,6 +19,7 @@ unsigned int LoadCubeMap(std::vector<std::string> faces, std::string relPath);
 void RenderScene(const Shader& shader);
 void RenderPlane();
 void RenderCube();
+void RenderQuad();
 
 void DisplayFramebufferTexture(unsigned int textureID, int type = GL_TEXTURE_2D);
 

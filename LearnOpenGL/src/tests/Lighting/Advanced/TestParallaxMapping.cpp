@@ -18,9 +18,9 @@ namespace test {
 
 		m_VAO = GenerateTangents();
 
-		m_DiffuseTex.Load();
-		m_NormalTex.Load();
-		m_ParallaxTex.Load();
+		m_DiffuseTex.Load(GL_RGB);
+		m_NormalTex.Load(GL_RGB);
+		m_ParallaxTex.Load(GL_RGB);
 
 		m_Shader.use();
 		m_Shader.setInt("diffuseMap", 0);
