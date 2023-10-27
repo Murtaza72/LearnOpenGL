@@ -94,6 +94,10 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
       <SubType>
       </SubType>
@@ -219,6 +223,10 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestBloom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h">
       <SubType>
       </SubType>
@@ -265,6 +273,13 @@
     <None Include="res\shaders\frame_debug\frame_debug.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\blinn_phong.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\blur.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\blur.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\hdr.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\hdr.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\bloom.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\bloom.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\light_cube.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\hdr\hdr.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\hdr\hdr.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\hdr\quad.fs.glsl" />

@@ -14,6 +14,7 @@
 #include "tests/Lighting/Advanced/TestNormalMapping.h"
 #include "tests/Lighting/Advanced/TestParallaxMapping.h"
 #include "tests/Lighting/Advanced/TestHDR.h"
+#include "tests/Lighting/Advanced/TestBloom.h"
 
 #include "TextRenderer.h"
 
@@ -53,20 +54,17 @@ int main(void)
 	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 
 	// Create a windowed fullscreen window
-	window = glfwCreateWindow(mode->width, mode->height, "Learning OpenGL", NULL, NULL);
+	window = glfwCreateWindow(mode->width, mode->height, "Learning OpenGL", monitor, NULL);
 	if (!window)
 	{
 		glfwTerminate();
 		return -1;
 	}
 
-	// Make the window borderless
-	glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_TRUE);
-
-	glfwMakeContextCurrent(window);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetKeyCallback(window, key_callback);
+	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error" << std::endl;
@@ -80,6 +78,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestBloom>("Bloom");
 	testMenu->RegisterTest<test::TestHDR>("High Dynamic Range");
 	testMenu->RegisterTest<test::TestParallaxMapping>("Parallax Mapping");
 	testMenu->RegisterTest<test::TestNormalMapping>("Normal Mapping");

@@ -102,6 +102,9 @@
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\imgui\imconfig.h">
@@ -359,6 +362,9 @@
     <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestBloom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Lighting\Basic\lighting_maps.fs.glsl" />
@@ -401,6 +407,13 @@
     <None Include="res\shaders\Lighting\Advanced\hdr\hdr.vs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\hdr\quad.fs.glsl" />
     <None Include="res\shaders\Lighting\Advanced\hdr\quad.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\hdr.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\hdr.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\bloom.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\bloom.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\blur.fs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\blur.vs.glsl" />
+    <None Include="res\shaders\Lighting\Advanced\bloom\light_cube.fs.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\me.jpg">
