@@ -21,10 +21,11 @@
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
-const int SCREEN_WIDTH = 1366;
-const int SCREEN_HEIGHT = 768;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCREEN_WIDTH / 2.0f;
@@ -50,11 +51,8 @@ int main(void)
 	// For MSAA
 	glfwWindowHint(GLFW_SAMPLES, 4);
 
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
 	// Create a windowed fullscreen window
-	window = glfwCreateWindow(mode->width, mode->height, "Learning OpenGL", monitor, NULL);
+	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Learning OpenGL", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -64,6 +62,7 @@ int main(void)
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
@@ -203,4 +202,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		else
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }
