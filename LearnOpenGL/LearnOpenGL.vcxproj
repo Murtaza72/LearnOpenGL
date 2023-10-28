@@ -50,7 +50,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;vendor;$(SolutionDir)LearnOpenGL\Dependencies\GLFW\include;$(SolutionDir)LearnOpenGL\Dependencies\GLEW\include;$(SolutionDir)LearnOpenGL\Dependencies\glm;$(SolutionDir)LearnOpenGL\Dependencies\FreeType\include;$(SolutionDir)LearnOpenGL\Dependencies\assimp\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Dependencies;$(SolutionDir)LearnOpenGL\Dependencies\imgui\;$(SolutionDir)LearnOpenGL\Dependencies\stb_image\;$(SolutionDir)LearnOpenGL\Dependencies\GLFW\include;$(SolutionDir)LearnOpenGL\Dependencies\GLEW\include;$(SolutionDir)LearnOpenGL\Dependencies\glm;$(SolutionDir)LearnOpenGL\Dependencies\FreeType\include;$(SolutionDir)LearnOpenGL\Dependencies\assimp\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>glpch.h</PrecompiledHeaderFile>
@@ -70,7 +70,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;vendor;$(SolutionDir)LearnOpenGL\Dependencies\GLFW\include;$(SolutionDir)LearnOpenGL\Dependencies\GLEW\include;$(SolutionDir)LearnOpenGL\Dependencies\glm;$(SolutionDir)LearnOpenGL\Dependencies\FreeType\include;$(SolutionDir)LearnOpenGL\Dependencies\assimp\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;Dependencies;$(SolutionDir)LearnOpenGL\Dependencies\imgui\;$(SolutionDir)LearnOpenGL\Dependencies\stb_image\;$(SolutionDir)LearnOpenGL\Dependencies\GLFW\include;$(SolutionDir)LearnOpenGL\Dependencies\GLEW\include;$(SolutionDir)LearnOpenGL\Dependencies\glm;$(SolutionDir)LearnOpenGL\Dependencies\FreeType\include;$(SolutionDir)LearnOpenGL\Dependencies\assimp\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>glpch.h</PrecompiledHeaderFile>
@@ -128,35 +128,35 @@
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp" />
-    <ClCompile Include="vendor\imgui\imgui.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_demo.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_demo.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_draw.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_draw.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_impl_glfw.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_impl_glfw.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_impl_opengl3.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_impl_opengl3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_tables.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_tables.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\imgui_widgets.cpp">
+    <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+    <ClCompile Include="Dependencies\stb_image\stb_image.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -257,15 +257,15 @@
     <ClInclude Include="src\Utils.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestBlinnPhong.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h" />
-    <ClInclude Include="vendor\imgui\imconfig.h" />
-    <ClInclude Include="vendor\imgui\imgui.h" />
-    <ClInclude Include="vendor\imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="vendor\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="vendor\imgui\imgui_internal.h" />
-    <ClInclude Include="vendor\imgui\imstb_rectpack.h" />
-    <ClInclude Include="vendor\imgui\imstb_textedit.h" />
-    <ClInclude Include="vendor\imgui\imstb_truetype.h" />
-    <ClInclude Include="vendor\stb_image\stb_image.h" />
+    <ClInclude Include="Dependencies\imgui\imconfig.h" />
+    <ClInclude Include="Dependencies\imgui\imgui.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_internal.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_textedit.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
+    <ClInclude Include="Dependencies\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Dependencies\FreeType\win64\freetype.dll" />
