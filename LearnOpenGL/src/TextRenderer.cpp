@@ -9,7 +9,7 @@
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
 
-TextRenderer::TextRenderer()
+TextRenderer::TextRenderer(std::string fontPath, unsigned int fontSize)
 	:
 	m_VAO(0),
 	m_VBO(0),
@@ -39,6 +39,8 @@ TextRenderer::TextRenderer()
 
 	GLCall(glEnableVertexAttribArray(0));
 	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+
+	Load(fontPath, fontSize);
 }
 
 TextRenderer::~TextRenderer()
@@ -47,7 +49,7 @@ TextRenderer::~TextRenderer()
 	GLCall(glBindVertexArray(0));
 }
 
-void TextRenderer::Load(std::string font, unsigned int fontSize)
+void TextRenderer::Load(std::string fontPath, unsigned int fontSize)
 {
 	m_Characters.clear();
 
@@ -58,7 +60,7 @@ void TextRenderer::Load(std::string font, unsigned int fontSize)
 	}
 
 	FT_Face face;
-	if (FT_New_Face(ft, font.c_str(), 0, &face))
+	if (FT_New_Face(ft, fontPath.c_str(), 0, &face))
 	{
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
 	}

@@ -13,10 +13,12 @@ struct Character
 class TextRenderer
 {
 public:
-	TextRenderer();
+	TextRenderer(std::string font, unsigned int fontSize);
 	~TextRenderer();
-	void Load(std::string font, unsigned int fontSize);
 	void RenderText(std::string text, float x, float y, float scale, glm::vec3 color);
+
+private:
+	void Load(std::string font, unsigned int fontSize);
 
 private:
 	unsigned int m_VAO, m_VBO;
