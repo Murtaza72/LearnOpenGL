@@ -18,8 +18,8 @@ public:
 	void Clear();
 	void Activate();
 
-	void AllocateAndAttachRBO(GLenum attachType, GLenum format);
-	void AllocateAndAttachTexture(GLenum attachType, GLenum format, GLenum type);
+	void AllocateAndAttachRBO(GLenum attachmentType, GLenum format);
+	void AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type);
 	void AttachTexture(GLenum attachType, Texture tex);
 
 private:

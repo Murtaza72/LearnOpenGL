@@ -21,9 +21,9 @@ void Texture::Destroy()
 }
 
 // used with textures for framebuffers
-void Texture::Allocate(GLenum format, GLuint width, GLuint height, GLenum type, const void* data)
+void Texture::Allocate(GLenum internalFormat, GLenum format, GLuint width, GLuint height, GLenum type, const void* data)
 {
-	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, data));
+	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, data));
 }
 
 void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, GLenum wrapT)
@@ -54,7 +54,7 @@ void Texture::Load(GLint internalFormat, bool flip)
 			format = GL_RGBA;
 
 		GLCall(glBindTexture(GL_TEXTURE_2D, Id));
-		Allocate(format, width, height, GL_UNSIGNED_BYTE, data);
+		Allocate(internalFormat, format, width, height, GL_UNSIGNED_BYTE, data);
 		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
 		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));

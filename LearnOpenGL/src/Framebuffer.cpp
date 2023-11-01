@@ -3,44 +3,45 @@
 #include "Framebuffer.h"
 //#include "Cubemap.h"
 
+#include "Utils.h"
 
 Framebuffer::Framebuffer()
 	: Id(0), m_Width(0), m_Height(0), m_BitCombo(0)
 {
-	glGenFramebuffers(1, &Id);
+	GLCall(glGenFramebuffers(1, &Id));
 }
 
 Framebuffer::Framebuffer(GLuint width, GLuint height, GLbitfield bitCombo)
 	: Id(0), m_Width(width), m_Height(height), m_BitCombo(bitCombo)
 {
-	glGenFramebuffers(1, &Id);
+	GLCall(glGenFramebuffers(1, &Id));
 }
 
 Framebuffer::~Framebuffer()
 {
-	glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]);
-	glDeleteFramebuffers(1, &Id);
+	GLCall(glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]));
+	GLCall(glDeleteFramebuffers(1, &Id));
 }
 
 void Framebuffer::DisableColorBuffer()
 {
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
+	GLCall(glDrawBuffer(GL_NONE));
+	GLCall(glReadBuffer(GL_NONE));
 }
 
 void Framebuffer::Bind()
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, Id);
+	GLCall(glBindFramebuffer(GL_FRAMEBUFFER, Id));
 }
 
 void Framebuffer::SetViewport()
 {
-	glViewport(0, 0, m_Width, m_Height);
+	GLCall(glViewport(0, 0, m_Width, m_Height));
 }
 
 void Framebuffer::Clear()
 {
-	glClear(m_BitCombo);
+	GLCall(glClear(m_BitCombo));
 }
 
 void Framebuffer::Activate()
@@ -50,50 +51,54 @@ void Framebuffer::Activate()
 	Clear();
 }
 
-void Framebuffer::AllocateAndAttachRBO(GLenum attachType, GLenum format)
+void Framebuffer::AllocateAndAttachRBO(GLenum attachmentType, GLenum format)
 {
 	GLuint rbo;
 
-	glGenRenderbuffers(1, &rbo);
-	glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+	GLCall(glGenRenderbuffers(1, &rbo));
+	GLCall(glBindRenderbuffer(GL_RENDERBUFFER, rbo));
 
-	glRenderbufferStorage(GL_RENDERBUFFER, format, m_Width, m_Height);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, attachType, GL_RENDERBUFFER, rbo);
+	GLCall(glRenderbufferStorage(GL_RENDERBUFFER, format, m_Width, m_Height));
+	GLCall(glFramebufferRenderbuffer(GL_FRAMEBUFFER, attachmentType, GL_RENDERBUFFER, rbo));
 
 	m_RBOs.push_back(rbo);
 }
 
-void Framebuffer::AllocateAndAttachTexture(GLenum attachType, GLenum format, GLenum type)
+void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type)
 {
+
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
+
 	std::string name = "tex" + m_Textures.size();
 	Texture texture(name);
 
 	// Allocate
 	texture.Bind();
-	texture.Allocate(format, m_Width, m_Height, type);
-	texture.SetParams(GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
+	texture.Allocate(internalFormat, format, m_Width, m_Height, type);
+	texture.SetParams(GL_LINEAR, GL_LINEAR, GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
 
 	// sets border color for each border texel
 	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+	//GLCall(glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor));
 
-	glFramebufferTexture2D(GL_FRAMEBUFFER, attachType, GL_TEXTURE_2D, texture.Id, 0);
+	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentType, GL_TEXTURE_2D, texture.Id, 0));
 
 	m_Textures.push_back(texture);
 }
 
 void Framebuffer::AttachTexture(GLenum attachType, Texture tex)
 {
-	glFramebufferTexture2D(GL_FRAMEBUFFER, attachType, GL_TEXTURE_2D, tex.Id, 0);
+	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachType, GL_TEXTURE_2D, tex.Id, 0));
 }
 
 /*void Framebuffer::allocateAndAttachCubemap(GLenum attachType, GLenum format, GLenum type)
 {
-	cubemap = Cubemap();
+	cubemap = Cubemap());
 
-	cubemap.generate();
-	cubemap.Bind();
-	cubemap.Allocate(format, m_Width, m_Height, type);
+	cubemap.generate());
+	cubemap.Bind());
+	cubemap.Allocate(format, m_Width, m_Height, type));
 
-	glFramebufferTexture(GL_FRAMEBUFFER, attachType, cubemap.id, 0);
+	GLCall(glFramebufferTexture(GL_FRAMEBUFFER, attachType, cubemap.id, 0));
 }*/

@@ -16,7 +16,7 @@ public:
 	Texture(std::string dir, std::string path, aiTextureType texType);
 	void Destroy();
 
-	void Allocate(GLenum format, GLuint width, GLuint height, GLenum type, const void* data = nullptr);
+	void Allocate(GLenum internalFormat, GLenum format, GLuint width, GLuint height, GLenum type, const void* data = nullptr);
 	void Load(GLint internalFormat, bool flip = true);
 	void SetParams(GLenum texMinFilter = GL_NEAREST,
 				   GLenum texMagFilter = GL_NEAREST,

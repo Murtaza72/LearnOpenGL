@@ -23,5 +23,7 @@ namespace test {
 		std::vector<glm::vec3> m_LightPositions, m_LightColors;
 		float m_Exposure;
 		bool m_Tone;
+
+		//Framebuffer test_HDRFBO;
 	};
 }

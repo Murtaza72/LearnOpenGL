@@ -9,6 +9,7 @@ namespace test {
 		m_HDRFBO(0),
 		m_Exposure(1.0f),
 		m_Tone(true),
+		//test_HDRFBO(SCREEN_WIDTH, SCREEN_HEIGHT, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT),
 		m_WoodTex("res", "textures/wood.png", aiTextureType_DIFFUSE),
 		m_HDRShader("res/shaders/Lighting/Advanced/hdr/hdr.vs.glsl", "res/shaders/Lighting/Advanced/hdr/hdr.fs.glsl"),
 		m_Shader("res/shaders/Lighting/Advanced/hdr/quad.vs.glsl", "res/shaders/Lighting/Advanced/hdr/quad.fs.glsl")
@@ -23,6 +24,9 @@ namespace test {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		//test_HDRFBO.AllocateAndAttachTexture(GL_COLOR_ATTACHMENT0, GL_RGBA16F, GL_RGBA, GL_FLOAT);
+		//test_HDRFBO.AllocateAndAttachRBO(GL_DEPTH_ATTACHMENT, GL_DEPTH_COMPONENT);
 
 		// create depth buffer (renderbuffer)
 		unsigned int rboDepth;
@@ -67,6 +71,8 @@ namespace test {
 		glBindFramebuffer(GL_FRAMEBUFFER, m_HDRFBO);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//test_HDRFBO.Activate();
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
