@@ -16,14 +16,11 @@ namespace test {
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_HDRFBO;
-		unsigned int m_ColorBuffer;
+		Framebuffer m_HDRFBO;
 		Shader m_Shader, m_HDRShader;
 		Texture m_WoodTex;
 		std::vector<glm::vec3> m_LightPositions, m_LightColors;
 		float m_Exposure;
 		bool m_Tone;
-
-		//Framebuffer test_HDRFBO;
 	};
 }

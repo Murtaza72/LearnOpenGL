@@ -6,43 +6,17 @@ namespace test {
 
 	TestHDR::TestHDR()
 		:
-		m_HDRFBO(0),
 		m_Exposure(1.0f),
 		m_Tone(true),
-		//test_HDRFBO(SCREEN_WIDTH, SCREEN_HEIGHT, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT),
+		m_HDRFBO(SCREEN_WIDTH, SCREEN_HEIGHT, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT),
 		m_WoodTex("res", "textures/wood.png", aiTextureType_DIFFUSE),
 		m_HDRShader("res/shaders/Lighting/Advanced/hdr/hdr.vs.glsl", "res/shaders/Lighting/Advanced/hdr/hdr.fs.glsl"),
 		m_Shader("res/shaders/Lighting/Advanced/hdr/quad.vs.glsl", "res/shaders/Lighting/Advanced/hdr/quad.fs.glsl")
 	{
-		glEnable(GL_DEPTH_TEST);
+		GLCall(glEnable(GL_DEPTH_TEST));
 
-		glGenFramebuffers(1, &m_HDRFBO);
-
-		// create floating point color buffer
-		glGenTextures(1, &m_ColorBuffer);
-		glBindTexture(GL_TEXTURE_2D, m_ColorBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		//test_HDRFBO.AllocateAndAttachTexture(GL_COLOR_ATTACHMENT0, GL_RGBA16F, GL_RGBA, GL_FLOAT);
-		//test_HDRFBO.AllocateAndAttachRBO(GL_DEPTH_ATTACHMENT, GL_DEPTH_COMPONENT);
-
-		// create depth buffer (renderbuffer)
-		unsigned int rboDepth;
-		glGenRenderbuffers(1, &rboDepth);
-		glBindRenderbuffer(GL_RENDERBUFFER, rboDepth);
-		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-		// attach buffers
-		glBindFramebuffer(GL_FRAMEBUFFER, m_HDRFBO);
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ColorBuffer, 0);
-		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rboDepth);
-
-		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-			std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
-
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		m_HDRFBO.AllocateAndAttachTexture(GL_COLOR_ATTACHMENT0, GL_RGBA16F, GL_RGBA, GL_FLOAT);
+		m_HDRFBO.AllocateAndAttachRBO(GL_DEPTH_ATTACHMENT, GL_DEPTH_COMPONENT);
 
 		m_WoodTex.Load(GL_SRGB);
 
@@ -64,17 +38,15 @@ namespace test {
 
 	TestHDR::~TestHDR()
 	{
+		m_WoodTex.Destroy();
+		m_HDRFBO.Destroy();
 	}
 
 	void TestHDR::OnRender(Camera camera)
 	{
-		glBindFramebuffer(GL_FRAMEBUFFER, m_HDRFBO);
+		m_HDRFBO.Activate();
 
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		//test_HDRFBO.Activate();
-
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.GetViewMatrix();
 		m_Shader.use();
 		m_Shader.setMat4("projection", projection);
@@ -99,11 +71,11 @@ namespace test {
 		RenderCube();
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		m_HDRShader.use();
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_ColorBuffer);
+		m_HDRFBO.ActivateTextures();
+
 		//m_HDRShader.setInt("hdr", hdr);
 		m_HDRShader.setFloat("exposure", m_Exposure);
 		m_HDRShader.setBool("tone", m_Tone);

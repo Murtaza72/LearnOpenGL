@@ -10,13 +10,14 @@ public:
 public:
 	Framebuffer();
 	Framebuffer(GLuint width, GLuint height, GLbitfield bitCombo);
-	~Framebuffer();
+	void Destroy();
 
 	void DisableColorBuffer();
 	void Bind();
 	void SetViewport();
 	void Clear();
 	void Activate();
+	void ActivateTextures();
 
 	void AllocateAndAttachRBO(GLenum attachmentType, GLenum format);
 	void AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type);

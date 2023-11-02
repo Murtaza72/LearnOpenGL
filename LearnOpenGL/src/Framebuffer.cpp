@@ -17,10 +17,16 @@ Framebuffer::Framebuffer(GLuint width, GLuint height, GLbitfield bitCombo)
 	GLCall(glGenFramebuffers(1, &Id));
 }
 
-Framebuffer::~Framebuffer()
+void Framebuffer::Destroy()
 {
-	GLCall(glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]));
 	GLCall(glDeleteFramebuffers(1, &Id));
+
+	GLCall(glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]));
+
+	for (int i = 0, len = m_Textures.size(); i < len; i++)
+	{
+		m_Textures[i].Destroy();
+	}
 }
 
 void Framebuffer::DisableColorBuffer()
@@ -58,6 +64,7 @@ void Framebuffer::AllocateAndAttachRBO(GLenum attachmentType, GLenum format)
 	GLCall(glGenRenderbuffers(1, &rbo));
 	GLCall(glBindRenderbuffer(GL_RENDERBUFFER, rbo));
 
+	Bind();
 	GLCall(glRenderbufferStorage(GL_RENDERBUFFER, format, m_Width, m_Height));
 	GLCall(glFramebufferRenderbuffer(GL_FRAMEBUFFER, attachmentType, GL_RENDERBUFFER, rbo));
 
@@ -66,22 +73,19 @@ void Framebuffer::AllocateAndAttachRBO(GLenum attachmentType, GLenum format)
 
 void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type)
 {
-
-	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
-
 	std::string name = "tex" + m_Textures.size();
 	Texture texture(name);
 
-	// Allocate
+	// Allocate Texture
 	texture.Bind();
 	texture.Allocate(internalFormat, format, m_Width, m_Height, type);
 	texture.SetParams(GL_LINEAR, GL_LINEAR, GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
 
 	// sets border color for each border texel
 	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	//GLCall(glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor));
+	GLCall(glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor));
 
+	Bind();
 	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentType, GL_TEXTURE_2D, texture.Id, 0));
 
 	m_Textures.push_back(texture);
@@ -90,6 +94,15 @@ void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum interna
 void Framebuffer::AttachTexture(GLenum attachType, Texture tex)
 {
 	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachType, GL_TEXTURE_2D, tex.Id, 0));
+}
+
+void Framebuffer::ActivateTextures()
+{
+	for (int i = 0, len = m_Textures.size(); i < len; i++)
+	{
+		glActiveTexture(GL_TEXTURE0 + i);
+		glBindTexture(GL_TEXTURE_2D, m_Textures[i].Id);
+	}
 }
 
 /*void Framebuffer::allocateAndAttachCubemap(GLenum attachType, GLenum format, GLenum type)
