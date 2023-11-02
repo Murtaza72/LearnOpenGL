@@ -21,7 +21,10 @@ void Framebuffer::Destroy()
 {
 	GLCall(glDeleteFramebuffers(1, &Id));
 
-	GLCall(glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]));
+	if (m_RBOs.size() > 0)
+	{
+		GLCall(glDeleteRenderbuffers(m_RBOs.size(), &m_RBOs[0]));
+	}
 
 	for (int i = 0, len = m_Textures.size(); i < len; i++)
 	{
@@ -71,7 +74,7 @@ void Framebuffer::AllocateAndAttachRBO(GLenum attachmentType, GLenum format)
 	m_RBOs.push_back(rbo);
 }
 
-void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type)
+void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type, GLint texMinFilter, GLint texMagFilter, GLint wrapT, GLint wrapS)
 {
 	std::string name = "tex" + m_Textures.size();
 	Texture texture(name);
@@ -79,7 +82,7 @@ void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum interna
 	// Allocate Texture
 	texture.Bind();
 	texture.Allocate(internalFormat, format, m_Width, m_Height, type);
-	texture.SetParams(GL_LINEAR, GL_LINEAR, GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
+	texture.SetParams(texMinFilter, texMagFilter, wrapS, wrapT);
 
 	// sets border color for each border texel
 	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -91,12 +94,12 @@ void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum interna
 	m_Textures.push_back(texture);
 }
 
-void Framebuffer::AttachTexture(GLenum attachType, Texture tex)
+void Framebuffer::AttachTexture(Texture tex)
 {
-	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachType, GL_TEXTURE_2D, tex.Id, 0));
+	m_Textures.push_back(tex);
 }
 
-void Framebuffer::ActivateTextures()
+void Framebuffer::ActivateTexture()
 {
 	for (int i = 0, len = m_Textures.size(); i < len; i++)
 	{

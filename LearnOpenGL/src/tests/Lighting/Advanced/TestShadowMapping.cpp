@@ -6,50 +6,39 @@ namespace test {
 
 	TestShadowMapping::TestShadowMapping()
 		:
-		m_DepthMap(0),
-		m_DepthMapFBO(0),
 		m_LightPos({ -2.0f, 4.0f, -1.0f }),
-		m_WoodTexture(0),
+		m_DepthFBO(SCREEN_WIDTH, SCREEN_HEIGHT, GL_DEPTH_BUFFER_BIT),
+		m_WoodTexture("res", "textures/wood.png", aiTextureType_DIFFUSE),
 		m_Shader("res/shaders/Lighting/Advanced/shadow mapping/shadow.vs.glsl", "res/shaders/Lighting/Advanced/shadow mapping/shadow.fs.glsl"),
 		m_DepthShader("res/shaders/Lighting/Advanced/shadow mapping/depth.vs.glsl", "res/shaders/Lighting/Advanced/shadow mapping/depth.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 
-		m_WoodTexture = LoadTexture("res/textures/wood.png");
+		m_WoodTexture.Load(GL_RGB);
 
-		GLCall(glGenFramebuffers(1, &m_DepthMapFBO));
+		m_DepthFBO.AttachTexture(m_WoodTexture);
 
-		GLCall(glGenTextures(1, &m_DepthMap));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_DepthMap));
-		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
-							SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL));
-		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST));
-		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST));
-		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
-		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
+		m_DepthFBO.AllocateAndAttachTexture(GL_DEPTH_ATTACHMENT, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT,
+											GL_FLOAT, GL_NEAREST, GL_NEAREST, GL_REPEAT, GL_REPEAT);
 
-		GLCall(glBindFramebuffer(GL_FRAMEBUFFER, m_DepthMapFBO));
-		GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_DepthMap, 0));
-		GLCall(glDrawBuffer(GL_NONE));
-		GLCall(glReadBuffer(GL_NONE));
+		m_DepthFBO.DisableColorBuffer();
+
 		GLCall(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 
 		m_Shader.use();
 		m_Shader.setInt("diffuseTexture", 0);
 		m_Shader.setInt("shadowMap", 1);
-
 	}
 
 	TestShadowMapping::~TestShadowMapping()
 	{
+		m_DepthFBO.Destroy();
 	}
 
 	void TestShadowMapping::OnRender(Camera camera)
 	{
 		// 1. first render to depth map
-		GLCall(glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT));
-		GLCall(glBindFramebuffer(GL_FRAMEBUFFER, m_DepthMapFBO));
-		GLCall(glClear(GL_DEPTH_BUFFER_BIT));
+		m_DepthFBO.Activate();
 
 		float near_plane = 1.0f, far_plane = 7.5f;
 		glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
@@ -66,7 +55,7 @@ namespace test {
 		m_DepthShader.setMat4("model", model);
 
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_WoodTexture);
+		glBindTexture(GL_TEXTURE_2D, m_WoodTexture.Id);
 
 		RenderScene(m_DepthShader);
 
@@ -87,10 +76,7 @@ namespace test {
 		m_Shader.setVec3("viewPos", camera.Position);
 		m_Shader.setVec3("lightPos", m_LightPos);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_WoodTexture);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, m_DepthMap);
+		m_DepthFBO.ActivateTexture();
 		RenderScene(m_Shader);
 	}
 
@@ -99,4 +85,3 @@ namespace test {
 		ImGui::DragFloat3("Light Pos", &m_LightPos.x, 1.0f, -10.0, 10.0f);
 	}
 }
-

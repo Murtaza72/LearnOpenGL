@@ -17,11 +17,17 @@ public:
 	void SetViewport();
 	void Clear();
 	void Activate();
-	void ActivateTextures();
+	void ActivateTexture();
 
 	void AllocateAndAttachRBO(GLenum attachmentType, GLenum format);
-	void AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type);
-	void AttachTexture(GLenum attachType, Texture tex);
+	void AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat,
+								  GLenum format, GLenum type,
+								  GLint texMinFilter = GL_NEAREST,
+								  GLint texMagFilter = GL_NEAREST,
+								  GLint wrapS = GL_REPEAT,
+								  GLint wrapT = GL_REPEAT);
+
+	void AttachTexture(Texture tex);
 
 private:
 	GLuint m_Width;

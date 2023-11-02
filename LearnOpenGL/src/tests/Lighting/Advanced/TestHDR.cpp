@@ -74,7 +74,7 @@ namespace test {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		m_HDRShader.use();
-		m_HDRFBO.ActivateTextures();
+		m_HDRFBO.ActivateTexture();
 
 		//m_HDRShader.setInt("hdr", hdr);
 		m_HDRShader.setFloat("exposure", m_Exposure);

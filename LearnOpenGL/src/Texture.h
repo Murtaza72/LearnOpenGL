@@ -18,10 +18,7 @@ public:
 
 	void Allocate(GLenum internalFormat, GLenum format, GLuint width, GLuint height, GLenum type, const void* data = nullptr);
 	void Load(GLint internalFormat, bool flip = true);
-	void SetParams(GLenum texMinFilter = GL_NEAREST,
-				   GLenum texMagFilter = GL_NEAREST,
-				   GLenum wrapS = GL_REPEAT,
-				   GLenum wrapT = GL_REPEAT);
+	void SetParams(GLint texMinFilter, GLint texMagFilter, GLint wrapS, GLint wrapT);
 
 	void Bind();
 };

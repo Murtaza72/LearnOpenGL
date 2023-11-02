@@ -26,7 +26,7 @@ void Texture::Allocate(GLenum internalFormat, GLenum format, GLuint width, GLuin
 	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, data));
 }
 
-void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, GLenum wrapT)
+void Texture::SetParams(GLint texMinFilter, GLint texMagFilter, GLint wrapS, GLint wrapT)
 {
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texMinFilter));
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texMagFilter));

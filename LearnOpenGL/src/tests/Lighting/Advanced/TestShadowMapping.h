@@ -2,6 +2,8 @@
 
 #include "tests/Test.h"
 
+#include "Framebuffer.h"
+
 const int SHADOW_WIDTH = SCREEN_WIDTH;
 const int SHADOW_HEIGHT = SCREEN_HEIGHT;
 
@@ -17,9 +19,9 @@ namespace test {
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_DepthMapFBO, m_DepthMap;
+		Framebuffer m_DepthFBO;
 		Shader m_DepthShader, m_Shader;
 		glm::vec3 m_LightPos;
-		unsigned int m_WoodTexture;
+		Texture m_WoodTexture;
 	};
 }
