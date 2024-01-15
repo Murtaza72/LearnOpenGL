@@ -54,7 +54,7 @@ namespace test {
 
 	TestPointShadows::~TestPointShadows()
 	{
-
+		GLCall(glDisable(GL_CULL_FACE));
 	}
 
 	void TestPointShadows::OnRender(Camera camera)
