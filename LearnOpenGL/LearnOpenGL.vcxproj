@@ -631,6 +631,7 @@
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\TextRenderer.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Utils.cpp" />
@@ -638,7 +639,6 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestNormalMapping.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestParallaxMapping.cpp" />

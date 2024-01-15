@@ -1595,9 +1595,6 @@
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClCompile>
-    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp">
-      <Filter>src\tests\Lighting\Advanced</Filter>
-    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClCompile>
@@ -1631,5 +1628,7 @@
     <ClCompile Include="src\tests\Test.cpp">
       <Filter>src\tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
   </ItemGroup>
 </Project>

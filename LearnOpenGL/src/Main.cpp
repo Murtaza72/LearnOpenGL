@@ -14,7 +14,7 @@
 #include "tests/Lighting/Advanced/TestNormalMapping.h"
 #include "tests/Lighting/Advanced/TestParallaxMapping.h"
 #include "tests/Lighting/Advanced/TestHDR.h"
-#include "tests/Lighting/Advanced/TestBloom.h"
+//#include "tests/Lighting/Advanced/TestBloom.h"
 
 #include "TextRenderer.h"
 
@@ -77,7 +77,7 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
-	testMenu->RegisterTest<test::TestBloom>("Bloom");
+	//testMenu->RegisterTest<test::TestBloom>("Bloom");
 	testMenu->RegisterTest<test::TestHDR>("High Dynamic Range");
 	testMenu->RegisterTest<test::TestParallaxMapping>("Parallax Mapping");
 	testMenu->RegisterTest<test::TestNormalMapping>("Normal Mapping");

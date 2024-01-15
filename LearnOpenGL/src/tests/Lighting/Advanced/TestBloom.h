@@ -2,6 +2,8 @@
 
 #include "tests/Test.h"
 
+#include "Framebuffer.h"
+
 namespace test {
 
 	class TestBloom : public Test
@@ -14,8 +16,7 @@ namespace test {
 		void OnImGuiRender() override;
 
 	private:
-		unsigned int m_HDRFBO;
-		unsigned int colorBuffers[2], pingpongColorbuffers[2], pingpongFBO[2];
+		Framebuffer m_HDRFBO, m_PingpongFBO[2];
 		Shader m_HDRShader, m_BlurShader, m_BloomShader, m_LightCubeShader;
 		Texture m_WoodTex, m_ContainerTex;
 
