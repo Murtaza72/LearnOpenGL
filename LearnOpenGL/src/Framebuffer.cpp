@@ -76,7 +76,7 @@ void Framebuffer::AllocateAndAttachRBO(GLenum attachmentType, GLenum format)
 
 void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat, GLenum format, GLenum type, GLint texMinFilter, GLint texMagFilter, GLint wrapT, GLint wrapS)
 {
-	std::string name = "tex" + m_Textures.size();
+	std::string name = "tex" + std::to_string(m_Textures.size());
 	Texture texture(name);
 
 	// Allocate Texture
@@ -106,6 +106,23 @@ void Framebuffer::ActivateTexture()
 		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, m_Textures[i].Id);
 	}
+}
+
+unsigned int Framebuffer::GetTexture(int index)
+{
+	if (index < m_Textures.size())
+		return m_Textures[index].Id;
+}
+
+bool Framebuffer::IsComplete()
+{
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	{
+		std::cout << "Framebuffer not complete!" << std::endl;
+		__debugbreak();
+		return false;
+	}
+	return true;
 }
 
 /*void Framebuffer::allocateAndAttachCubemap(GLenum attachType, GLenum format, GLenum type)

@@ -18,6 +18,8 @@ public:
 	void Clear();
 	void Activate();
 	void ActivateTexture();
+	unsigned int GetTexture(int index);
+	bool IsComplete();
 
 	void AllocateAndAttachRBO(GLenum attachmentType, GLenum format);
 	void AllocateAndAttachTexture(GLenum attachmentType, GLenum internalFormat,
