@@ -33,7 +33,13 @@ void Mesh::Draw(Shader& shader)
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
 		// activate texture
-		glActiveTexture(GL_TEXTURE0 + i);
+		GLCall(glActiveTexture(GL_TEXTURE0 + i));
+		std::string number;
+		std::string name = textures[i].type;
+		std::string number;
+		std::string name = textures[i].type;
+		std::string number;
+		std::string name = textures[i].type;
 
 		// retrieve texture info
 		std::string name;

@@ -10,9 +10,9 @@ namespace test {
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
 		m_Shininess(32.0f),
-		m_DiffuseMap(0),
-		m_SpecularMap(0),
-		m_EmissionMap(0),
+		m_DiffuseMap("res", "textures/container.png", aiTextureType_DIFFUSE),
+		m_SpecularMap("res", "textures/container_specular.png", aiTextureType_SPECULAR),
+		m_EmissionMap("res", "textures/emission_map.png", aiTextureType_EMISSIVE),
 		m_RotateCube(0),
 		m_LightingShader("res/shaders/Lighting/Basic/lighting_maps.vs.glsl", "res/shaders/Lighting/Basic/lighting_maps.fs.glsl"),
 		m_LightCubeShader("res/shaders/Lighting/Basic/light_cube.vs.glsl", "res/shaders/Lighting/Basic/light_cube.fs.glsl")
@@ -91,9 +91,9 @@ namespace test {
 		GLCall(glEnableVertexAttribArray(0));
 		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)0));
 
-		m_DiffuseMap = LoadTexture("res/textures/container.png");
-		m_SpecularMap = LoadTexture("res/textures/container_specular.png");
-		m_EmissionMap = LoadTexture("res/textures/emission_map.png");
+		m_DiffuseMap.Load(0);
+		m_SpecularMap.Load(0);
+		m_EmissionMap.Load(0);
 
 		m_LightingShader.use();
 		m_LightingShader.setInt("material.diffuse", 0);
@@ -145,14 +145,14 @@ namespace test {
 
 		// bind diffuse map
 		GLCall(glActiveTexture(GL_TEXTURE0));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseMap));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseMap.Id));
 
 		// binding specular map
 		GLCall(glActiveTexture(GL_TEXTURE1));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap.Id));
 
 		GLCall(glActiveTexture(GL_TEXTURE2));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_EmissionMap));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_EmissionMap.Id));
 
 		// render the cube
 		GLCall(glBindVertexArray(m_CubeVAO));

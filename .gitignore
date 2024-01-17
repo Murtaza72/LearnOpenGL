@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /LearnOpenGL/imgui.ini
 /LearnOpenGL/imgui.ini
+/imgui.ini
+/bin-int/
+/LearnOpenGL/Dependencies/imgui/em_build.bat

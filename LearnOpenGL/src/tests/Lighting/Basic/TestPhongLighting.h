@@ -15,12 +15,11 @@ namespace test {
 
 	private:
 		unsigned int m_VBO, m_CubeVAO, m_LightCubeVAO;
-		glm::vec3 m_LightPos;
-		Shader m_LightingShader;
-		Shader m_LightCubeShader;
+		Shader m_LightingShader, m_LightCubeShader;
 		Camera m_Camera;
-		glm::vec3 m_ObjectColor;
-		glm::vec3 m_LightColor;
-		int m_RotateCube;
+
+		glm::vec3 m_ObjectColor, m_LightColor;
+		glm::vec3 m_LightPos;
+		int m_RotateCube, m_Shininess;
 	};
 }

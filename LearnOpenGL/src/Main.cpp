@@ -13,6 +13,18 @@
 #include "tests/Lighting/Basic/TestLightCasters.h"
 #include "tests/Lighting/Basic/TestMultipleLights.h"
 
+#include "tests/Lighting/Advanced/TestBlinnPhong.h"
+#include "tests/Lighting/Advanced/TestShadowMapping.h"
+#include "tests/Lighting/Advanced/TestPointShadows.h"
+#include "tests/Lighting/Advanced/TestNormalMapping.h"
+#include "tests/Lighting/Advanced/TestParallaxMapping.h"
+#include "tests/Lighting/Advanced/TestHDR.h"
+#include "tests/Lighting/Advanced/TestBloom.h"
+#include "tests/Lighting/Advanced/TestDeferredRendering.h"
+
+
+#include "TextRenderer.h"
+
 #include "tests/Advanced/TestDepth.h"
 #include "tests/Advanced/TestStencilBuffer.h"
 #include "tests/Advanced/TestFrameBuffers.h"
@@ -23,10 +35,11 @@
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
-const int SCREEN_WIDTH = 1366;
-const int SCREEN_HEIGHT = 768;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCREEN_WIDTH / 2.0f;
@@ -52,24 +65,19 @@ int main(void)
 	// For MSAA
 	glfwWindowHint(GLFW_SAMPLES, 4);
 
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
 	// Create a windowed fullscreen window
-	window = glfwCreateWindow(mode->width, mode->height, "Learning OpenGL", NULL, NULL);
+	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Learning OpenGL", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
 		return -1;
 	}
 
-	// Make the window borderless
-	glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_TRUE);
-
-	glfwMakeContextCurrent(window);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwMakeContextCurrent(window);
 
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error" << std::endl;
@@ -83,6 +91,20 @@ int main(void)
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
 
+	testMenu->RegisterTest<test::TestDeferredRendering>("Deferred Rendering");
+	testMenu->RegisterTest<test::TestBloom>("Bloom");
+	testMenu->RegisterTest<test::TestHDR>("High Dynamic Range");
+	testMenu->RegisterTest<test::TestParallaxMapping>("Parallax Mapping");
+	testMenu->RegisterTest<test::TestNormalMapping>("Normal Mapping");
+	testMenu->RegisterTest<test::TestPointShadows>("Point Shadows");
+	testMenu->RegisterTest<test::TestShadowMapping>("Shadow Mapping");
+	testMenu->RegisterTest<test::TestBlinnPhong>("Blinn-Phong");
+
+	testMenu->RegisterTest<test::TestMultipleLights>("Multiple Lights");
+	testMenu->RegisterTest<test::TestLightCasters>("Light Casters");
+	testMenu->RegisterTest<test::TestLightingMaps>("Lighting Maps");
+	testMenu->RegisterTest<test::TestMaterials>("Materials");
+	testMenu->RegisterTest<test::TestPhongLighting>("Phong Lighting");
 	testMenu->RegisterTest<test::TestAntiAliasing>("Anti Aliasing");
 	testMenu->RegisterTest<test::TestInstancing>("Instancing");
 	testMenu->RegisterTest<test::TestCubemap>("Skybox");
@@ -167,9 +189,9 @@ void processInput(GLFWwindow* window)
 		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 		camera.ProcessKeyboard(UP, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		camera.ProcessKeyboard(DOWN, deltaTime);
 }
 
@@ -211,4 +233,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		else
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }

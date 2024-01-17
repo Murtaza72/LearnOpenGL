@@ -15,7 +15,8 @@ namespace test {
 		m_LightCubeVAO(0),
 		m_ObjectColor{ 1.0f, 0.5f, 0.31f },
 		m_LightColor{ 1.0f,1.0f,1.0f },
-		m_RotateCube(0)
+		m_RotateCube(0),
+		m_Shininess(32)
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 
@@ -110,6 +111,7 @@ namespace test {
 		m_LightingShader.setVec3("lightColor", m_LightColor);
 		m_LightingShader.setVec3("lightPos", m_LightPos);
 		m_LightingShader.setVec3("viewPos", m_Camera.Position);
+		m_LightingShader.setInt("shininess", m_Shininess);
 
 		glm::mat4 projection = glm::perspective(glm::radians(m_Camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 		m_LightingShader.setMat4("projection", projection);
@@ -139,8 +141,9 @@ namespace test {
 	{
 		ImGui::SliderFloat3("Light Position", &m_LightPos.x, -5.0f, 5.0f);
 		ImGui::SliderInt("Rotate", &m_RotateCube, 0, 1);
-		ImGui::ColorPicker3("Light Color", &m_LightColor.x);
-		ImGui::ColorPicker3("Object Color", &m_ObjectColor.x);
+		ImGui::SliderInt("Shininess", &m_Shininess, 1, 1024);
+		ImGui::ColorEdit3("Light Color", &m_LightColor.x);
+		ImGui::ColorEdit3("Object Color", &m_ObjectColor.x);
 
 	}
 }

@@ -21,12 +21,12 @@ void Texture::Destroy()
 }
 
 // used with textures for framebuffers
-void Texture::Allocate(GLenum format, GLuint width, GLuint height, GLenum type)
+void Texture::Allocate(GLenum internalFormat, GLenum format, GLuint width, GLuint height, GLenum type, const void* data)
 {
-	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, type, nullptr));
+	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, data));
 }
 
-void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, GLenum wrapT)
+void Texture::SetParams(GLint texMinFilter, GLint texMagFilter, GLint wrapS, GLint wrapT)
 {
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texMinFilter));
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texMagFilter));
@@ -34,7 +34,7 @@ void Texture::SetParams(GLenum texMinFilter, GLenum texMagFilter, GLenum wrapS, 
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapT));
 }
 
-void Texture::Load(bool flip)
+void Texture::Load(GLint internalFormat, bool flip)
 {
 	stbi_set_flip_vertically_on_load(flip);
 
@@ -53,8 +53,11 @@ void Texture::Load(bool flip)
 		else if (nrComponents == 4)
 			format = GL_RGBA;
 
+		if (internalFormat == 0) // same internal format when invoked from model class
+			internalFormat = format;
+
 		GLCall(glBindTexture(GL_TEXTURE_2D, Id));
-		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data));
+		Allocate(internalFormat, format, width, height, GL_UNSIGNED_BYTE, data);
 		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
 		GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
