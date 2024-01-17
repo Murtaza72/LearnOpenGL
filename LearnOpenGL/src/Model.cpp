@@ -142,7 +142,7 @@ std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* mat, aiTextureType 
 		{
 			// if texture hasn't been loaded already, load it
 			Texture tex(directory, str.C_Str(), type);
-			tex.Load(false);
+			tex.Load(0, false); // internalformat and format are same
 			textures.push_back(tex);
 			textures_loaded.push_back(tex);
 		}
