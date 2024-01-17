@@ -10,8 +10,8 @@ namespace test {
 		m_CubeVBO(0),
 		m_PlaneVAO(0),
 		m_PlaneVBO(0),
-		m_CubeTexture(0),
-		m_FloorTexture(0),
+		m_CubeTexture("res", "textures/marble.jpg", aiTextureType_DIFFUSE),
+		m_FloorTexture("res", "textures/metal.png", aiTextureType_DIFFUSE),
 		m_Scale(1.1f),
 		m_Shader("res/shaders/Advanced/stencil_test.vs.glsl", "res/shaders/Advanced/stencil_test.fs.glsl"),
 		m_OutlineShader("res/shaders/Advanced/stencil_test.vs.glsl", "res/shaders/Advanced/outline_color.fs.glsl")
@@ -106,8 +106,8 @@ namespace test {
 		GLCall(glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float))));
 		GLCall(glBindVertexArray(0));
 
-		m_CubeTexture = LoadTexture("res/textures/marble.jpg");
-		m_FloorTexture = LoadTexture("res/textures/metal.png");
+		m_CubeTexture.Load(0);
+		m_FloorTexture.Load(0);
 
 		m_Shader.use();
 		m_Shader.setInt("texture1", 0);
@@ -145,7 +145,7 @@ namespace test {
 		m_Shader.use();
 		// floor
 		GLCall(glBindVertexArray(m_PlaneVAO));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_FloorTexture));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_FloorTexture.Id));
 		m_Shader.setMat4("model", glm::mat4(1.0f));
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));
 
@@ -154,7 +154,7 @@ namespace test {
 		// cubes
 		GLCall(glBindVertexArray(m_CubeVAO));
 		GLCall(glActiveTexture(GL_TEXTURE0));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_CubeTexture));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_CubeTexture.Id));
 		model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
 		m_Shader.setMat4("model", model);
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
@@ -171,7 +171,7 @@ namespace test {
 
 		// upscaled cubes
 		GLCall(glBindVertexArray(m_CubeVAO));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_CubeTexture));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_CubeTexture.Id));
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
 		model = glm::scale(model, glm::vec3(m_Scale));

@@ -9,7 +9,7 @@ namespace test {
 		m_VBO(0),
 		m_VAO(0),
 		m_IBO(0),
-		m_TextureID(0),
+		m_Texture("res", "textures/me.png", aiTextureType_DIFFUSE),
 		m_Shader("res/shaders/Basic/texture.vs.glsl", "res/shaders/Basic/texture.fs.glsl")
 	{
 		GLCall(glEnable(GL_BLEND));
@@ -45,7 +45,7 @@ namespace test {
 		GLCall(glEnableVertexAttribArray(1));
 		GLCall(glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float))));
 
-		m_TextureID = LoadTexture("res/textures/me.png");
+		m_Texture.Load(0);
 
 		m_Shader.use();
 		m_Shader.setInt("tex1", 0);
@@ -63,7 +63,7 @@ namespace test {
 	void TestTextures::OnRender(Camera camera)
 	{
 		GLCall(glActiveTexture(GL_TEXTURE0));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_TextureID));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_Texture.Id));
 
 		GLCall(glBindVertexArray(m_VAO));
 		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));

@@ -77,6 +77,8 @@ namespace test {
 
 	TestInstancing::~TestInstancing()
 	{
+		m_AsteroidModel.Destroy();
+		m_PlanetModel.Destroy();
 	}
 
 	void TestInstancing::OnRender(Camera camera)

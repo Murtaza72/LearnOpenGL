@@ -16,7 +16,7 @@ namespace test {
 	private:
 		unsigned int m_VBO, m_IBO, m_VAO;
 		Shader m_Shader;
-		unsigned int m_TextureID;
+		Texture m_Texture;
 		unsigned char* m_ImageBuffer;
 	};
 }

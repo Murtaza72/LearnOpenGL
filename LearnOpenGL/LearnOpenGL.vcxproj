@@ -582,6 +582,16 @@
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h" />
+    <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
+    <ClInclude Include="src\tests\Advanced\TestDepth.h" />
+    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
+    <ClInclude Include="src\tests\Advanced\TestInstancing.h" />
+    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
+    <ClInclude Include="src\tests\Basic\TestClearColor.h" />
+    <ClInclude Include="src\tests\Basic\TestModel.h" />
+    <ClInclude Include="src\tests\Basic\TestTextures.h" />
+    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h">
       <SubType>
       </SubType>
@@ -639,6 +649,16 @@
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
+    <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\Basic\TestModel.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp">
       <SubType>

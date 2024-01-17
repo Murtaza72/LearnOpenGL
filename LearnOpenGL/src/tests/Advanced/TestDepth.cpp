@@ -19,6 +19,7 @@ namespace test {
 	TestDepth::~TestDepth()
 	{
 		GLCall(glDepthFunc(GL_LESS));
+		m_Model.Destroy();
 	}
 
 	void TestDepth::OnRender(Camera camera)

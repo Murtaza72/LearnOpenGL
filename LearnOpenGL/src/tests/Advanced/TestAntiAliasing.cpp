@@ -9,7 +9,6 @@ namespace test {
 		m_VAO(0),
 		m_VBO(0),
 		m_Shader("res/shaders/Advanced/anti_aliasing.vs.glsl", "res/shaders/Advanced/anti_aliasing.fs.glsl")
-
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
 		GLCall(glEnable(GL_MULTISAMPLE));

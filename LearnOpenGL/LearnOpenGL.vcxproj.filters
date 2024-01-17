@@ -1541,6 +1541,16 @@
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h" />
+    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h" />
+    <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
+    <ClInclude Include="src\tests\Advanced\TestDepth.h" />
+    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
+    <ClInclude Include="src\tests\Advanced\TestInstancing.h" />
+    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
+    <ClInclude Include="src\tests\Basic\TestClearColor.h" />
+    <ClInclude Include="src\tests\Basic\TestModel.h" />
+    <ClInclude Include="src\tests\Basic\TestTextures.h" />
+    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -1634,5 +1644,22 @@
     <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
+    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
+    <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\Basic\TestModel.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
+    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\objects\asteroid\planet.obj" />
+    <Image Include="res\objects\asteroid\rock.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
 </Project>

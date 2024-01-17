@@ -82,7 +82,7 @@ namespace test {
 
 	TestCubemap::~TestCubemap()
 	{
-
+		m_Model.Destroy();
 	}
 
 	void TestCubemap::OnRender(Camera camera)

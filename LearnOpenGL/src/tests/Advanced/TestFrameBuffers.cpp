@@ -71,6 +71,7 @@ namespace test {
 
 	TestFrameBuffers::~TestFrameBuffers()
 	{
+		m_Model.Destroy();
 	}
 
 	void TestFrameBuffers::OnRender(Camera camera)
@@ -103,7 +104,6 @@ namespace test {
 
 		for (int i = 0; i < 9; i++)
 		{
-
 			m_ScreenShader.setFloat("kernel[" + std::to_string(i) + "]", (m_Kernel[i] / m_DivFactor));
 		}
 
