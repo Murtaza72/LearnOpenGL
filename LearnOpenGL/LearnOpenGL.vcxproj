@@ -582,6 +582,10 @@
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\TextRenderer.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Utils.h" />
+    <ClInclude Include="src\glpch.h" />
     <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h" />
     <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
     <ClInclude Include="src\tests\Advanced\TestDepth.h" />
@@ -592,24 +596,14 @@
     <ClInclude Include="src\tests\Basic\TestModel.h" />
     <ClInclude Include="src\tests\Basic\TestTextures.h" />
     <ClInclude Include="src\tests\Basic\TestTriangle.h" />
-    <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="src\TextRenderer.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Utils.h" />
-    <ClInclude Include="src\glpch.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestBlinnPhong.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestBloom.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestNormalMapping.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestParallaxMapping.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestPointShadows.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h" />
     <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightCasters.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestLightingMaps.h" />
@@ -649,6 +643,12 @@
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\TextRenderer.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
+    <ClCompile Include="src\glpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
     <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
     <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
@@ -659,26 +659,14 @@
     <ClCompile Include="src\tests\Basic\TestModel.cpp" />
     <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
     <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="src\TextRenderer.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\Utils.cpp" />
-    <ClCompile Include="src\glpch.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestNormalMapping.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestParallaxMapping.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestPointShadows.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightCasters.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestLightingMaps.cpp" />
@@ -686,17 +674,6 @@
     <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\objects\asteroid\planet.obj">
-      <FileType>Document</FileType>
-    </Image>
-    <Image Include="res\objects\asteroid\rock.obj">
-      <FileType>Document</FileType>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

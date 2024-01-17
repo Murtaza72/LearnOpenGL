@@ -46,6 +46,12 @@
     <Filter Include="src\tests">
       <UniqueIdentifier>{CF8328B6-3BEE-DC2C-842C-8ED2F0D5BA81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\tests\Advanced">
+      <UniqueIdentifier>{B4CBA05B-A0AF-61B1-0910-5C04F5124C33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tests\Basic">
+      <UniqueIdentifier>{C0D11972-2C5D-8736-356E-0A2BA178E336}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\tests\Lighting">
       <UniqueIdentifier>{34D0DCE0-20B4-9D36-8914-9889751788B8}</UniqueIdentifier>
     </Filter>
@@ -1500,10 +1506,43 @@
     <ClInclude Include="src\glpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestCubemap.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestDepth.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestInstancing.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h">
+      <Filter>src\tests\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Basic\TestClearColor.h">
+      <Filter>src\tests\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Basic\TestModel.h">
+      <Filter>src\tests\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Basic\TestTextures.h">
+      <Filter>src\tests\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Basic\TestTriangle.h">
+      <Filter>src\tests\Basic</Filter>
+    </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestBlinnPhong.h">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestBloom.h">
+      <Filter>src\tests\Lighting\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestHDR.h">
@@ -1516,6 +1555,9 @@
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestPointShadows.h">
+      <Filter>src\tests\Lighting\Advanced</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestShadowMapping.h">
@@ -1539,18 +1581,6 @@
     <ClInclude Include="src\tests\Test.h">
       <Filter>src\tests</Filter>
     </ClInclude>
-    <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h" />
-    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h" />
-    <ClInclude Include="src\tests\Advanced\TestAntiAliasing.h" />
-    <ClInclude Include="src\tests\Advanced\TestCubemap.h" />
-    <ClInclude Include="src\tests\Advanced\TestDepth.h" />
-    <ClInclude Include="src\tests\Advanced\TestFrameBuffers.h" />
-    <ClInclude Include="src\tests\Advanced\TestInstancing.h" />
-    <ClInclude Include="src\tests\Advanced\TestStencilBuffer.h" />
-    <ClInclude Include="src\tests\Basic\TestClearColor.h" />
-    <ClInclude Include="src\tests\Basic\TestModel.h" />
-    <ClInclude Include="src\tests\Basic\TestTextures.h" />
-    <ClInclude Include="src\tests\Basic\TestTriangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -1576,6 +1606,9 @@
     </ClCompile>
     <ClCompile Include="Dependencies\stb_image\stb_image.cpp">
       <Filter>Dependencies\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Framebuffer.cpp">
       <Filter>src</Filter>
@@ -1604,7 +1637,43 @@
     <ClCompile Include="src\glpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestDepth.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp">
+      <Filter>src\tests\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Basic\TestClearColor.cpp">
+      <Filter>src\tests\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Basic\TestModel.cpp">
+      <Filter>src\tests\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Basic\TestTextures.cpp">
+      <Filter>src\tests\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Basic\TestTriangle.cpp">
+      <Filter>src\tests\Basic</Filter>
+    </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestBlinnPhong.cpp">
+      <Filter>src\tests\Lighting\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp">
+      <Filter>src\tests\Lighting\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestHDR.cpp">
@@ -1617,6 +1686,9 @@
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestPointShadows.cpp">
+      <Filter>src\tests\Lighting\Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp">
       <Filter>src\tests\Lighting\Advanced</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\Lighting\Advanced\TestShadowMapping.cpp">
@@ -1640,26 +1712,5 @@
     <ClCompile Include="src\tests\Test.cpp">
       <Filter>src\tests</Filter>
     </ClCompile>
-    <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp" />
-    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestAntiAliasing.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestCubemap.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestDepth.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestFrameBuffers.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestInstancing.cpp" />
-    <ClCompile Include="src\tests\Advanced\TestStencilBuffer.cpp" />
-    <ClCompile Include="src\tests\Basic\TestClearColor.cpp" />
-    <ClCompile Include="src\tests\Basic\TestModel.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTextures.cpp" />
-    <ClCompile Include="src\tests\Basic\TestTriangle.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\objects\asteroid\planet.obj" />
-    <Image Include="res\objects\asteroid\rock.obj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\objects\asteroid\source.txt" />
   </ItemGroup>
 </Project>
