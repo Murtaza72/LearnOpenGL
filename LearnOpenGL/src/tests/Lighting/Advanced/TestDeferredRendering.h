@@ -21,6 +21,5 @@ namespace test {
 		Shader m_GeometryPassShader, m_LightingPassShader, m_LightCubeShader;
 		std::vector<glm::vec3> m_ModelPositions;
 		std::pair<std::vector<glm::vec3>, std::vector<glm::vec3>> m_LightCubes; // Pos, Color
-		glm::vec3 m_ClearColor;
 	};
 }

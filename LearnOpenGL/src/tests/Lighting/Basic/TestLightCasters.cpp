@@ -10,7 +10,8 @@ namespace test {
 		m_Camera(glm::vec3(0.0f, 0.0f, 3.0f)),
 		m_LightPos{ 1.2f, 1.0f, 2.0f },
 		m_Shininess(32.0f),
-		m_DiffuseMap(0),
+		m_DiffuseMap("res", "textures/container.png", aiTextureType_DIFFUSE),
+		m_SpecularMap("res", "textures/container_specular.png", aiTextureType_SPECULAR),
 		m_RotateCube(0),
 		m_RotationSpeed(20.0f),
 		m_Radius(2.0f),
@@ -102,8 +103,8 @@ namespace test {
 		GLCall(glEnableVertexAttribArray(0));
 		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (const void*)0));
 
-		m_DiffuseMap = LoadTexture("res/textures/container.png");
-		m_SpecularMap = LoadTexture("res/textures/container_specular.png");
+		m_DiffuseMap.Load(0);
+		m_SpecularMap.Load(0);
 
 		m_LightingShader.use();
 		m_LightingShader.setInt("material.diffuse", 0);
@@ -160,11 +161,11 @@ namespace test {
 
 		// bind diffuse map
 		GLCall(glActiveTexture(GL_TEXTURE0));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseMap));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseMap.Id));
 
 		// binding specular map
 		GLCall(glActiveTexture(GL_TEXTURE1));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_SpecularMap.Id));
 
 		// render the cube
 		glBindVertexArray(m_CubeVAO);

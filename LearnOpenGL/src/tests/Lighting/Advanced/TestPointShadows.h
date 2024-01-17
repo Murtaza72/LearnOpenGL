@@ -18,9 +18,8 @@ namespace test {
 		int SHADOW_HEIGHT_POINT;
 
 		unsigned int m_DepthMapFBO, m_DepthCubemap;
+		Texture m_WoodTexture;
+		Shader m_DepthShader, m_Shader;
 		glm::vec3 m_LightPos;
-		Shader m_DepthShader;
-		Shader m_Shader;
-		unsigned int m_WoodTexture;
 	};
 }

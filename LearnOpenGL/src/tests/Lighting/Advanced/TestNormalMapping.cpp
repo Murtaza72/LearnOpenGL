@@ -9,8 +9,8 @@ namespace test {
 		m_VAO(0),
 		m_VBO(0),
 		m_LightPos({ 0.5f, 1.0f, 0.3f }),
-		m_DiffuseTex(0),
-		m_NormalTex(0),
+		m_DiffuseTex("res", "textures/brickwall_diffuse.jpg", aiTextureType_DIFFUSE),
+		m_NormalTex("res", "textures/brickwall_normal.jpg", aiTextureType_NORMALS),
 		m_Shader("res/shaders/Lighting/Advanced/normal_mapping.vs.glsl", "res/shaders/Lighting/Advanced/normal_mapping.fs.glsl")
 	{
 		GLCall(glEnable(GL_DEPTH_TEST));
@@ -97,8 +97,8 @@ namespace test {
 		GLCall(glEnableVertexAttribArray(4));
 		GLCall(glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 14 * sizeof(float), (void*)(11 * sizeof(float))));
 
-		m_DiffuseTex = LoadTexture("res/textures/brickwall_diffuse.jpg");
-		m_NormalTex = LoadTexture("res/textures/brickwall_normal.jpg");
+		m_DiffuseTex.Load(0);
+		m_NormalTex.Load(0);
 
 		m_Shader.use();
 		m_Shader.setInt("diffuseMap", 0);
@@ -127,9 +127,9 @@ namespace test {
 
 		GLCall(glBindVertexArray(m_VAO));
 		GLCall(glActiveTexture(GL_TEXTURE0));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseTex));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_DiffuseTex.Id));
 		GLCall(glActiveTexture(GL_TEXTURE1));
-		GLCall(glBindTexture(GL_TEXTURE_2D, m_NormalTex));
+		GLCall(glBindTexture(GL_TEXTURE_2D, m_NormalTex.Id));
 
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));
 

@@ -14,7 +14,7 @@ namespace test {
 		m_LightPos(0.0f),
 		SHADOW_WIDTH_POINT(1366),
 		SHADOW_HEIGHT_POINT(1366),
-		m_WoodTexture(0),
+		m_WoodTexture("res", "textures/wood.png", aiTextureType_DIFFUSE),
 		m_Shader("res/shaders/Lighting/Advanced/point shadows/shadow.vs.glsl", "res/shaders/Lighting/Advanced/point shadows/shadow.fs.glsl"),
 		m_DepthShader("res/shaders/Lighting/Advanced/point shadows/depth.vs.glsl", "res/shaders/Lighting/Advanced/point shadows/depth.fs.glsl", "res/shaders/Lighting/Advanced/point shadows/depth.gs.glsl")
 	{
@@ -45,7 +45,7 @@ namespace test {
 		GLCall(glReadBuffer(GL_NONE));
 		GLCall(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 
-		m_WoodTexture = LoadTexture("res/textures/wood.png");
+		m_WoodTexture.Load(0);
 
 		m_Shader.use();
 		m_Shader.setInt("diffuseTexture", 0);
@@ -110,7 +110,7 @@ namespace test {
 		m_Shader.setFloat("far_plane", far_plane);
 
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_WoodTexture);
+		glBindTexture(GL_TEXTURE_2D, m_WoodTexture.Id);
 		glActiveTexture(GL_TEXTURE1);
 		GLCall(glBindTexture(GL_TEXTURE_CUBE_MAP, m_DepthCubemap));
 

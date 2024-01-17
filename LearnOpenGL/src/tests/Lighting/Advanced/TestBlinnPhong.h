@@ -15,8 +15,9 @@ namespace test {
 
 	private:
 		unsigned int m_VAO, m_VBO;
-		unsigned int m_FloorTex;
+		Texture m_FloorTex;
 		Shader m_Shader;
+
 		glm::vec3 m_LightPos;
 		bool m_Blinn;
 		int m_Shininess;

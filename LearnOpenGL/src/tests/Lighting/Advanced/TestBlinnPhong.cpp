@@ -8,7 +8,7 @@ namespace test {
 		:
 		m_VAO(0),
 		m_VBO(0),
-		m_FloorTex(0),
+		m_FloorTex("res", "textures/wood.png", aiTextureType_DIFFUSE),
 		m_LightPos(0.0f),
 		m_Blinn(true),
 		m_Shininess(32),
@@ -39,7 +39,7 @@ namespace test {
 		glEnableVertexAttribArray(2);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
-		m_FloorTex = LoadTexture("res/textures/wood.png");
+		m_FloorTex.Load(0);
 
 		m_Shader.use();
 		m_Shader.setInt("texture1", 0);
@@ -64,11 +64,8 @@ namespace test {
 
 		glBindVertexArray(m_VAO);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_FloorTex);
+		glBindTexture(GL_TEXTURE_2D, m_FloorTex.Id);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-
-		std::cout << (m_Blinn ? "Blinn-Phong" : "Phong") << std::endl;
-
 	}
 
 	void TestBlinnPhong::OnImGuiRender()
