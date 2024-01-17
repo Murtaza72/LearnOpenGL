@@ -84,10 +84,6 @@ void Framebuffer::AllocateAndAttachTexture(GLenum attachmentType, GLenum interna
 	texture.Allocate(internalFormat, format, m_Width, m_Height, type);
 	texture.SetParams(texMinFilter, texMagFilter, wrapS, wrapT);
 
-	// sets border color for each border texel
-	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLCall(glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor));
-
 	Bind();
 	GLCall(glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentType, GL_TEXTURE_2D, texture.Id, 0));
 

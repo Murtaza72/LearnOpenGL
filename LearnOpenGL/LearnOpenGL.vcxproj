@@ -586,6 +586,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\TextRenderer.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Utils.h" />
@@ -637,6 +641,10 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp">
       <SubType>
       </SubType>
     </ClCompile>

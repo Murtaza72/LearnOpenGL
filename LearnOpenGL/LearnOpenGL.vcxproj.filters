@@ -1540,6 +1540,7 @@
       <Filter>src\tests</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestSSAO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -1632,5 +1633,6 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestSSAO.cpp" />
   </ItemGroup>
 </Project>
