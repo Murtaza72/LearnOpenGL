@@ -582,6 +582,10 @@
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Lighting\Advanced\TestDeferredRendering.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\TextRenderer.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Utils.h" />
@@ -632,6 +636,10 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\tests\Lighting\Advanced\TestBloom.cpp" />
+    <ClCompile Include="src\tests\Lighting\Advanced\TestDeferredRendering.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="src\TextRenderer.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Utils.cpp" />
