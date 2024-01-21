@@ -18,6 +18,7 @@ void RenderScene(const Shader& shader);
 void RenderPlane();
 void RenderCube();
 void RenderQuad();
+void RenderSphere();
 
 void DisplayFramebufferTexture(unsigned int textureID, int type = GL_TEXTURE_2D);
 

@@ -56,7 +56,7 @@ void Texture::Load(GLint internalFormat, bool flip)
 		if (internalFormat == 0) // same internal format when invoked from model class
 			internalFormat = format;
 
-		GLCall(glBindTexture(GL_TEXTURE_2D, Id));
+		Bind();
 		Allocate(internalFormat, format, width, height, GL_UNSIGNED_BYTE, data);
 		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 

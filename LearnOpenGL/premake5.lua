@@ -54,10 +54,11 @@ project "LearnOpenGL"
 		"opengl32.lib"
 	}
 
-	-- needed because assimp dll needs to exist where the exe is
+	-- needed because assimp, freetype dll needs to exist where the exe is
 	postbuildcommands
     {
-        '{COPY} "%{wks.location}/%{prj.name}/Dependencies/assimp/lib/x64/assimp-vc143-mt.dll" "%{cfg.targetdir}"'
+        '{COPY} "%{wks.location}/%{prj.name}/Dependencies/assimp/lib/x64/assimp-vc143-mt.dll" "%{cfg.targetdir}"',
+		'{COPY} "%{wks.location}/%{prj.name}/Dependencies/FreeType/lib/x64/freetype.dll" "%{cfg.targetdir}"'
     }
 
 	defines

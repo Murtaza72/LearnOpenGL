@@ -1581,6 +1581,9 @@
     <ClInclude Include="src\tests\Test.h">
       <Filter>src\tests</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\TestPBR.h">
+      <Filter>src\tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -1710,6 +1713,9 @@
       <Filter>src\tests\Lighting\Basic</Filter>
     </ClCompile>
     <ClCompile Include="src\tests\Test.cpp">
+      <Filter>src\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestPBR.cpp">
       <Filter>src\tests</Filter>
     </ClCompile>
   </ItemGroup>

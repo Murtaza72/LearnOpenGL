@@ -1,7 +1,7 @@
 #include "glpch.h"
 
 #include "tests/Test.h"
-
+//
 #include "tests/Basic/TestClearColor.h"
 #include "tests/Basic/TestTriangle.h"
 #include "tests/Basic/TestTextures.h"
@@ -28,6 +28,8 @@
 #include "tests/Lighting/Advanced/TestHDR.h"
 #include "tests/Lighting/Advanced/TestBloom.h"
 #include "tests/Lighting/Advanced/TestDeferredRendering.h"
+
+#include "tests/TestPBR.h"
 
 #include "TextRenderer.h"
 
@@ -89,6 +91,8 @@ int main(void)
 	test::Test* currentTest = nullptr;
 	test::TestMenu* testMenu = new test::TestMenu(currentTest);
 	currentTest = testMenu;
+
+	testMenu->RegisterTest<test::TestPBR>("Physically Based Rendering");
 
 	testMenu->RegisterTest<test::TestDeferredRendering>("Deferred Rendering");
 	testMenu->RegisterTest<test::TestBloom>("Bloom");

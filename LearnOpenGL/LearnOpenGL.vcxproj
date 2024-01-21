@@ -74,7 +74,8 @@
       <AdditionalLibraryDirectories>Dependencies\GLFW\lib\x64;Dependencies\GLEW\lib\x64;Dependencies\FreeType\lib\x64;Dependencies\assimp\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Debug-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Debug-x86_64" &gt; nul)</Command>
+      <Command>IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Debug-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Debug-x86_64" &gt; nul)
+IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll" "..\bin\Debug-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll" "..\bin\Debug-x86_64" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -101,7 +102,8 @@
       <AdditionalLibraryDirectories>Dependencies\GLFW\lib\x64;Dependencies\GLEW\lib\x64;Dependencies\FreeType\lib\x64;Dependencies\assimp\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Release-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Release-x86_64" &gt; nul)</Command>
+      <Command>IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Release-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\assimp\lib\x64\assimp-vc143-mt.dll" "..\bin\Release-x86_64" &gt; nul)
+IF EXIST "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll" "..\bin\Release-x86_64" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\$(ProjectName)\Dependencies\FreeType\lib\x64\freetype.dll" "..\bin\Release-x86_64" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -611,6 +613,7 @@
     <ClInclude Include="src\tests\Lighting\Basic\TestMultipleLights.h" />
     <ClInclude Include="src\tests\Lighting\Basic\TestPhongLighting.h" />
     <ClInclude Include="src\tests\Test.h" />
+    <ClInclude Include="src\tests\TestPBR.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -674,6 +677,7 @@
     <ClCompile Include="src\tests\Lighting\Basic\TestMultipleLights.cpp" />
     <ClCompile Include="src\tests\Lighting\Basic\TestPhongLighting.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
+    <ClCompile Include="src\tests\TestPBR.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
